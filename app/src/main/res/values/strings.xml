@@ -1,0 +1,188 @@
+<resources>
+    <string name="app_name">QTP MART</string>
+    <!--    <string name="app_name">Heritage Food</string>-->
+    <string name="currency" translatable="false">\u20B9</string>
+    <string name="currencyAED">AED </string>
+    <string name="emptyCart">NO items in the cart</string>
+    <string name="noProducts">NO items</string>
+    <string name="emptyFav">NO items in the Favourite</string>
+    <string name="tv_order_rs">Rs.</string>
+    <string name="tv_order_qty">Qty</string>
+    <string name="cash" translatable="false">Cash On Delivery</string>
+    <string name="tv_reg_name_hint">Name</string>
+    <string name="date_d" translatable="false">Date:</string>
+    <string name="no_rcord_found" translatable="false">No record found</string>
+    <string name="emptyCartInfo">Please add some of the items in cart that will appear here</string>
+    <string name="orderSuccess">order accepted successfully</string>
+    <string name="orderSuccessInfo">Your order accepted successfully. Delivery boy will contact you soon</string>
+    <string name="noNet">NO internet connection</string>
+    <string name="noNetInfo">Please check your internet connectivity and continue your shopping</string>
+    <string name="location">Choose your location</string>
+    <string name="locationInfo">Choose your location and start shopping</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="cancle_order_note">Are you sure!\nyou want to cancle order ?</string>
+    <string name="no">No</string>
+    <string name="yes">Yes</string>
+    <string name="order_detail" translatable="false">Order Detail</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="map_api_key">AIzaSyBvTaVufSFg8S4Buq1d0KzYZMDW_qd0L7Q</string>
+
+    <string name="facebook_app_id">877679882898483</string>
+    <string name="fb_login_protocol_scheme">fb877679882898483</string>
+
+    <string name="home_second">Home Second</string>
+    <string name="status_stop">Powered By <font color="#00732F">QTP Mart</font></string>
+    <string name="nav_terms" translatable="false">Terms &amp; Privacy</string>
+    <string name="cart" translatable="false">Cart</string>
+    <string name="nav_home" translatable="false">Shop Now</string>
+
+    `<string name="outOfStock" translatable="false">Out of stock</string>`
+    <string name="nav_chat" translatable="false">Chat With Us</string>
+    <string name="nav_user" translatable="false">User</string>
+    <string name="nav_order" translatable="false">My Orders</string>
+    <string name="nav_profile" translatable="false">My Profile</string>
+    <string name="nav_support" translatable="false">Support</string>
+    <string name="nav_about" translatable="false">About Us</string>
+    <string name="failed" translatable="false">Sorry,Your Payment Has Failed</string>
+    <string name="again" translatable="false">Please Try Again</string>
+    <string name="retry" translatable="false">Retry Order</string>
+    <string name="nav_review" translatable="false">Review Us</string>
+    <string name="nav_contact" translatable="false">Contact Us</string>
+    <string name="nav_share" translatable="false">Share with Friends</string>
+    <string name="nav_logout" translatable="false">Logout</string>
+    <string name="btn_continue" translatable="false">Continue</string>
+    <string name="btn_Register" translatable="false">Register</string>
+    <string name="no_internet" translatable="false">Sorry! Not connected to internet</string>
+
+    <!--  <string name="currency" translatable="false">\u20B9</string>
+    <string name="title_activity_main" translatable="false">MainActivity</string>
+    <string name="txtCredits" translatable="false"><a href="http://www.google.com">Google</a></string>
+
+    <string name="navigation_drawer_open" translatable="false">Open navigation drawer</string>
+    <string name="navigation_drawer_close" translatable="false">Close navigation drawer</string>
+
+    <string name="action_settings" translatable="false">Settings</string>
+
+    <string name="nav_terms" translatable="false">Terms &amp; Privacy</string>
+    <string name="offer" translatable="false">Offer</string>
+    <string name="start_time" translatable="false">Start Time :</string>
+    <string name="end_time" translatable="false">End Time :</string>
+    <string name="wallet" translatable="false">Wallet Used</string>
+    <string name="coupon_used" translatable="false">Coupon Used</string>
+    <string name="apply" translatable="false">Apply</string>
+    &lt;!&ndash; string.xml &ndash;&gt;
+    <string name="nav_home" translatable="false">Shop Now</string>
+    <string name="nav_chat" translatable="false">Chat With Us</string>
+    <string name="nav_user" translatable="false">User</string>
+    <string name="nav_order" translatable="false">My Orders</string>
+    <string name="nav_profile" translatable="false">My Profile</string>
+    <string name="nav_support" translatable="false">Support</string>
+    <string name="nav_about" translatable="false">About Us</string>
+    <string name="failed" translatable="false">Sorry,Your Payment Has Failed</string>
+    <string name="again" translatable="false">Please Try Again</string>
+    <string name="retry" translatable="false">Retry Order</string>
+    <string name="nav_review" translatable="false">Review Us</string>
+    <string name="nav_contact" translatable="false">Contact Us</string>
+    <string name="nav_share" translatable="false">Share with Friends</string>
+    <string name="nav_logout" translatable="false">Logout</string>
+    <string name="btn_continue" translatable="false">Continue</string>
+    <string name="btn_Register" translatable="false">Register</string>
+    <string name="rewards_points" translatable="false">Rewards Points</string>
+    <string name="rech_wallet" translatable="false">Recharge Wallet</string>
+    <string name="continue_bt" translatable="false">Continue</string>
+    <string name="wall_am" translatable="false">My Wallet Amount</string>-->
+
+    <string name="order_no" translatable="false">Order No.:\u0020</string>
+    <string name="pending" translatable="false">Pending</string>
+    <string name="confirm" translatable="false">Confirm</string>
+    <string name="delivered" translatable="false">Delivered</string>
+    <string name="outfordeliverd" translatable="false">Out for Delivered\nReady to pickup</string>
+    <string name="cancle" translatable="false">Cancel</string>
+    <string name="date">Date:\u0020</string>
+    <string name="time">Time:\u0020</string>
+    <string name="tv_cart_title">Cart</string>
+
+    <string name="debit" translatable="false">Debit / Credit Card</string>
+    <string name="net" translatable="false">Net Banking</string>
+    <string name="card" translatable="false">Cards</string>
+    <string name="promo" translatable="false">Promo Code</string>
+    <string name="tv_cart_clear">Clear All Product</string>
+    <string name="tv_cart_checkout">Continue Checkout</string>
+    <string name="tv_cart_total">Total:\u0020</string>
+    <string name="tv_cart_item">Items:\u0020</string>
+    <string name="tv_cart_rs">\u0020Rs</string>
+    <string name="coupon" translatable="false">Coupon</string>
+    <string name="sure_del" translatable="false">Are you sure!
+    you want to delete all cart product</string>
+    <string name="tv_del_title">Delivery Date/Time</string>
+    <!-- fragment_delivery_time.xml -->
+    <string name="tv_del_address">Delivery Address</string>
+    <string name="et_del_address_hint">Enter Delivery address..</string>
+    <string name="tv_del_continue">Continue With Time</string>
+    <string name="tv_del_date">Select delivery date</string>
+    <string name="tv_del_time">Select delivery time</string>
+    <string name="tv_del_date_time">Delivery Data/Time</string>
+    <string name="tv_total_item_amount">Total Items And Amount</string>
+    <string name="tv_total_total">Total Amount </string>
+    <string name="Category">Category</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="menu_icon">menu icon</string>
+    <string name="top_category">Top Category</string>
+    <string name="lbl_set_profile_photo">Set profile image</string>
+
+
+    <string name="lbl_take_camera_picture">Take a picture</string>
+    <string name="lbl_choose_from_gallery">Choose from gallery</string>
+    <string name="toast_image_intent_null">Image picker option is missing!</string>
+    <string name="dialog_permission_title">Grant Permissions</string>
+    <string name="dialog_permission_message">This app needs permission to use this feature. You can grant them in app settings.</string>
+    <string name="go_to_settings">GOTO SETTINGS</string>
+    <string name="shipping_handling"><![CDATA[Shipping & Handling ]]></string>
+    <string name="app_upto_date">New Version Available</string>
+
+    <string name="updateNow">Update Now</string>
+    <string name="cancel">Cancel</string>
+    <string name="detail">Detail</string>
+    <string name="dummy_text">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam</string>
+    <string name="dummy_text_2">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod</string>
+    <string name="dummy_text_3">Lorem ipsum dolor sit amet, consetetur </string>
+
+    <string name="agree_to_our_terms">Agree to our <font color='#004C3F'>Terms &amp; Conditions</font></string>
+    <string name="back">Back</string>
+    <string name="submit">Submit</string>
+    <string name="update">Update</string>
+
+    <string name="address_type_required" translatable="false">Address type required</string>
+    <string name="country_required" translatable="false">Country required</string>
+    <string name="state_required" translatable="false">State/Emirate required</string>
+    <string name="city_required" translatable="false">City/Province required</string>
+    <string name="landmark_required" translatable="false">Landmark/Flat/Building No. required</string>
+    <string name="street_required" translatable="false">Street required</string>
+    <string name="postcode_required" translatable="false">Postcode required</string>
+    <string name="address_required" translatable="false">Address required</string>
+
+    <string name="full_name_required" translatable="false">Full name required</string>
+    <string name="email_required" translatable="false">Email required</string>
+    <string name="valid_email_required" translatable="false">Valid Email required</string>
+    <string name="contact_no_required" translatable="false">Contact no. required</string>
+    <string name="dob_required" translatable="false">DOB required</string>
+    <string name="area_required" translatable="false">Area required</string>
+
+    <string name="assignDeliveryManMsg" translatable="false">Please note, Delivery Men will be assigning shortly to your order, we highly appreciate your patience.</string>
+
+    <string-array name="selectAction">
+        <item>Resend OTP</item>
+        <item>Enter OTP Manually</item>
+    </string-array>
+
+</resources>

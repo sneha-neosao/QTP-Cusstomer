@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/co_landing"
+    android:background="@color/green_1">
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nsDashboardFrag"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <!--ll-main-->
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            >
+
+            <ImageView
+                android:layout_marginTop="10dp"
+                android:layout_width="140dp"
+                android:layout_height="126dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/landing_page_logo"/>
+
+            <include
+                layout="@layout/item_layout_menu_service"/>
+
+
+
+            <!--1st row services-->
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp"
+                >
+
+                <!--Offer Zone-->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cvOfferZone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="150dp"
+                    app:cardCornerRadius="12dp"
+                    android:layout_weight="4"
+                    android:clickable="true"
+                    android:background="@color/white"
+                    android:layout_gravity="center">
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        >
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_offer_zone"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="30dp"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="35dp"
+                            android:layout_marginBottom="15dp"
+                            android:text="Offer Zone "
+                            android:textSize="10sp"
+                            app:fontFamily="@font/montserrat_semi_bold"
+                            android:textColor="@color/colorPrimary"/>
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <!--Orders-->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cvOrders"
+                    android:layout_width="wrap_content"
+                    android:layout_height="150dp"
+                    app:cardCornerRadius="12dp"
+                    android:layout_weight="6"
+                    android:layout_marginStart="15dp"
+                    android:clickable="true"
+                    android:background="@color/white"
+                    android:layout_gravity="center">
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:padding="5dp"
+                            android:src="@drawable/ic_order" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="Orders"
+                            android:textSize="10sp"
+                            android:layout_marginTop="30dp"
+                            app:fontFamily="@font/montserrat_semi_bold"
+                            android:textColor="@color/colorPrimary"/>
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                </com.google.android.material.card.MaterialCardView>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <!--2nd row services-->
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="15dp"
+                >
+
+                <!--Categories-->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cvCategories"
+                    android:layout_width="wrap_content"
+                    android:layout_height="150dp"
+                    app:cardCornerRadius="12dp"
+                    android:layout_weight="6"
+                    android:clickable="true"
+                    android:background="@color/white"
+                    android:layout_gravity="center"
+                    android:visibility="visible"
+                    >
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_gravity="center"
+                        >
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_categories"
+                            android:layout_gravity="center"
+
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="Categories"
+                            android:textSize="10sp"
+                            android:layout_marginTop="30dp"
+                            app:fontFamily="@font/montserrat_semi_bold"
+                            android:textColor="@color/colorPrimary"/>
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <!--Baqala-->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cvBaqala"
+                    android:layout_width="wrap_content"
+                    android:layout_height="150dp"
+                    app:cardCornerRadius="12dp"
+                    android:layout_weight="4"
+                    android:clickable="true"
+                    android:layout_marginLeft="15dp"
+                    android:background="@color/white"
+                    android:layout_gravity="center">
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_gravity="center"
+                        >
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_baqala"
+                            android:layout_gravity="center"
+                            />
+                        <TextView
+                            android:layout_marginTop="30dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textSize="10sp"
+                            app:fontFamily="@font/montserrat_semi_bold"
+                            android:text="Baqala"
+                            android:textColor="@color/colorPrimary"/>
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                </com.google.android.material.card.MaterialCardView>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <!--3rd row services-->
+            <!--Track Grocery-->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cvTrackGrocery"
+                android:layout_width="match_parent"
+                android:layout_height="85dp"
+                app:cardCornerRadius="12dp"
+                android:layout_weight="7"
+                android:clickable="true"
+                android:background="@color/white"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:visibility="visible"
+                >
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_track_grocery"
+                        android:layout_gravity="center"
+
+                        />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end|center"
+                        android:gravity="end"
+                        android:text="Track Your Grocery"
+                        android:textSize="10sp"
+                        app:fontFamily="@font/montserrat_semi_bold"
+                        android:textColor="@color/colorPrimary"/>
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!--4th row services-->
+            <!--Favourite List-->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cvFavouriteList"
+                android:layout_width="match_parent"
+                android:layout_height="85dp"
+                app:cardCornerRadius="12dp"
+                android:layout_weight="7"
+                android:clickable="true"
+                android:background="@color/white"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="10dp"
+                android:visibility="visible"
+                >
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_fav_list"
+                        android:layout_gravity="center"
+
+                        />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end|center"
+                        android:gravity="end"
+                        android:text="Favourite Lists"
+                        android:textSize="10sp"
+                        app:fontFamily="@font/montserrat_semi_bold"
+                        android:textColor="@color/colorPrimary"/>
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+    </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabFAQ"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        app:tint="@color/white"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="60dp"
+        app:backgroundTint="@color/colorPrimary"
+        app:fabCustomSize="42dp"
+        app:srcCompat="@drawable/ic_question"
+        tools:ignore="VectorDrawableCompat" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

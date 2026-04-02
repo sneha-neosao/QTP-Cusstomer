@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="activities.AlternativeProductsActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bars"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            app:layout_scrollFlags="scroll|enterAlways"
+            android:id="@+id/ll1"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:background="#324764"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start|center_vertical"
+                android:layout_marginTop="2dp"
+                android:gravity="start"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp">
+
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/ic_left_arrow"
+                    android:backgroundTint="@color/white" />
+
+                <ImageView
+                    android:id="@+id/img_logo"
+                    android:layout_width="32dp"
+                    android:layout_height="34dp"
+                    android:layout_marginStart="10dp"
+                    android:src="@drawable/qtp_logo_new_1"
+                    android:layout_gravity="center_vertical"
+                    />
+
+            </LinearLayout>
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginRight="10dp"
+                app:fontFamily="@font/montserrat_medium"
+                android:gravity="center|left"
+                android:text="Alternate Products"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_gravity="end|center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/search"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_loupe"
+                    app:tint="@color/white"
+                    android:layout_marginHorizontal="10dp"/>
+
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="10dp"
+                    android:onClick="onClickCart">
+
+                    <ImageView
+                        android:id="@+id/hotlist_bell"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginBottom="15dp"
+                        android:contentDescription="bell"
+                        android:src="@drawable/ic_cart"
+                        app:tint="@color/white" />
+
+                    <TextView
+                        android:id="@+id/cartCount"
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/xml_budget"
+                        android:padding="1dp"
+                        android:gravity="center"
+                        android:text="99"
+                        android:textColor="#ffffff"
+                        android:textSize="9sp"
+                        android:visibility="visible"/>
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/rvAlternateProduct"/>
+
+    <TextView
+        android:id="@+id/noData"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="@string/noProducts"
+        android:textAllCaps="true"
+        android:layout_centerInParent="true"
+        android:padding="5dp"
+        android:textSize="17sp"
+        android:textColor="@color/darkGrey"
+        android:fontFamily="@font/montserrat_bold"/>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

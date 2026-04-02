@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+   <!-- <color name="colorPrimary">#00732F</color>-->
+    <color name="colorPrimary">#324764</color>
+   <!-- <color name="colorPrimaryDark">#014C1F</color>-->
+    <color name="colorPrimaryDark">#324764</color>
+   <!-- <color name="colorAccent">#00732F</color>-->
+    <color name="colorAccent">#324764</color>
+
+<!--    <color name="colorPrimary">#FE8100</color>-->
+<!--    <color name="colorPrimaryDark">#C16303</color>-->
+<!--    <color name="colorAccent">#FE8100</color>-->
+    <color name="light_grey">#bdbdbd</color>
+    <color name="lighter_greys">#F5F5F5</color>
+    <color name="grey_1">#B6B6B6</color>
+
+    <color name="buttons">#324764</color>
+    <color name="duskYellow">#ffc922</color>
+    <color name="duskYellow1">#F6BE00</color>
+    <color name="white">#ffffff</color>
+    <color name="white_trans">#80ffffff</color>
+    <color name="white_trans1">#E6ffffff</color>
+    <color name="black">#000000</color>
+    <color name="black_fade">#C4000000</color>
+    <color name="hintColor">#808080</color>
+    <color name="lightGrey">#dcdcdc</color>
+    <color name="faintGrey">#79DCDCDC</color>
+    <color name="darkGrey">#2F2929</color>
+    <color name="mediumGrey">#B9B8B6</color>
+
+    <!--<color name="green">#00732F</color>-->
+    <color name="green">#324764</color>
+<!--    <color name="green">#42B029</color>-->
+    <color name="orange">#F57722</color>
+    <color name="color_1">#1bdc84</color>
+
+
+    <color name="color_2">#1b4ddc</color>
+    <color name="color_3">#ff0023</color>
+    <color name="red">#FF0000</color>
+    <!--<color name="green_orl">#008000</color>-->
+    <color name="green_orl">#324764</color>
+    <color name="yelow">#ffee05</color>
+    <color name="purple">#ed0bc0</color>
+    <color name="grey">#C0C0C0</color>
+    <color name="color_home_background">#F6F7F9</color>
+    <color name="home_bg">#f2f0f4</color>
+    <color name="wallet_color">#2CB3A9A8</color>
+
+
+ <color name="green_1">#E5EDEB</color>
+ <color name="aqua">#06BEA6</color>
+ <color name="light_aqua2">#80DCD0</color>
+ <color name="light_aqua">#F0F9FF</color>
+ <color name="orange_1">#F57722</color>
+ <color name="orange_light">#FEF8F4</color>
+ <color name="card_bg">#E5EDEB</color>
+ <color name="grey_63">#A1F5F5F5</color>
+ <color name="grey_60">#6B000000</color>
+
+ <color name="transparent_color">#00000000</color>
+ <color name="emoji_default_color">#272525</color>
+
+ <color name="rvshrget_bg">#E9E3E3</color>
+ <color name="txt_share">#b2b2b2</color>
+ <color name="view_color">#C6C1C1</color>
+ <color name="viewtxt_color">#f98700</color>
+
+</resources>

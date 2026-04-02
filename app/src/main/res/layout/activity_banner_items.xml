@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="activities.BannerItemsActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/app_bars"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <androidx.coordinatorlayout.widget.CoordinatorLayout
+                app:layout_scrollFlags="scroll|enterAlways"
+                android:id="@+id/ll1"
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                android:background="#324764"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start|center_vertical"
+                    android:layout_marginTop="2dp"
+                    android:gravity="start"
+                    android:onClick="onClickBack"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp">
+
+                    <ImageView
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_gravity="center_vertical"
+                        android:background="@drawable/ic_left_arrow"
+                        android:backgroundTint="@color/white" />
+
+                    <ImageView
+                        android:id="@+id/img_logo"
+                        android:layout_width="32dp"
+                        android:layout_height="34dp"
+                        android:layout_marginStart="10dp"
+                        android:src="@drawable/qtp_logo_new_1"
+                        android:layout_gravity="center_vertical"
+                        />
+
+                </LinearLayout>
+
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="10dp"
+                    app:fontFamily="@font/montserrat_medium"
+                    android:gravity="center|left"
+                    android:onClick="onClickBack2"
+                    android:text="Products"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_gravity="end|center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/search"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ic_loupe"
+                        app:tint="@color/white"
+                        android:layout_marginHorizontal="10dp"/>
+
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="10dp"
+                        android:onClick="onClickCart">
+
+                        <ImageView
+                            android:id="@+id/hotlist_bell"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_centerVertical="true"
+                            android:layout_marginBottom="15dp"
+                            android:contentDescription="bell"
+                            android:src="@drawable/ic_cart"
+                            app:tint="@color/white" />
+
+                        <TextView
+                            android:id="@+id/cartCount"
+                            android:layout_width="14dp"
+                            android:layout_height="14dp"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="5dp"
+                            android:background="@drawable/xml_budget"
+                            android:gravity="center"
+                            android:padding="1dp"
+                            android:text="99"
+                            android:textColor="#ffffff"
+                            android:textSize="9sp"
+                            android:visibility="visible" />
+
+                    </RelativeLayout>
+
+
+                </LinearLayout>
+
+            </androidx.coordinatorlayout.widget.CoordinatorLayout>
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <RelativeLayout
+            android:id="@+id/rlNoData"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/app_bars"
+            android:visibility="gone">
+
+
+            <RelativeLayout
+                android:id="@+id/rl2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="center"
+                    android:background="@color/white">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+
+                        android:layout_margin="15dp"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="30dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/empty_state_1" />
+
+                        <TextView
+                            android:layout_width="250dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:text="oops!"
+                            android:textColor="@color/color_3"
+                            android:textSize="26sp"
+                            android:visibility="gone"
+                            app:fontFamily="@font/montserrat_bold" />
+
+                        <TextView
+                            android:layout_width="250dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:text="Currently there's No Offer"
+                            android:textColor="@color/text_color"
+                            android:textSize="16sp"
+                            android:visibility="visible"
+                            app:fontFamily="@font/montserrat_bold" />
+
+                        <TextView
+                            android:layout_width="250dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:text="Yallah!"
+                            android:textColor="@color/color_3"
+                            android:textSize="26sp"
+                            android:visibility="visible"
+                            app:fontFamily="@font/montserrat_bold" />
+
+
+                        <Button
+                            android:id="@+id/btnShopNow"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Continue Shopping"
+                            android:textColor="@color/white"
+                            android:background="@drawable/border_rounded"
+                            android:backgroundTint="@color/colorPrimary"
+                            app:fontFamily="@font/montserrat_bold"
+                            android:paddingStart="30dp"
+                            android:paddingEnd="30dp"
+                            android:onClick="shopNow"
+                            android:layout_marginTop="20dp"
+                            android:textSize="17sp"/>
+
+                    </LinearLayout>
+                </RelativeLayout>
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_below="@id/app_bars"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            android:id="@+id/banner_items_rv"/>
+
+        <ProgressBar
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_centerInParent="true"
+            android:id="@+id/banner_item_pb"/>
+
+        <TextView
+            android:id="@+id/no_Data_tv"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="No data found"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:layout_centerInParent="true"/>
+
+        <LinearLayout
+            android:id="@+id/bottom_lay_total"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/colorPrimary"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/total_count"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="start|center_vertical"
+                android:layout_weight="1"
+                android:gravity="start|center_vertical"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/total_price"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="start|center_vertical"
+                android:layout_weight="1"
+                android:gravity="start|center_vertical"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/continue_tocart"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:drawableEnd="@drawable/ic_right_arrow"
+                android:drawableTint="@color/white"
+                android:gravity="center"
+                android:text="Go To Cart"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

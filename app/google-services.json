@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "16882638738",
+    "project_id": "qtpmart",
+    "storage_bucket": "qtpmart.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:16882638738:android:06f6edb4df81c8eddc6b4b",
+        "android_client_info": {
+          "package_name": "com.grocery.QTPmart"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "16882638738-3c8mt36oq72c75mf88bnsi69vodll9rn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC6WI_OxTUti8GIUotMCQwvZXOamhxZMXc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "16882638738-3c8mt36oq72c75mf88bnsi69vodll9rn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

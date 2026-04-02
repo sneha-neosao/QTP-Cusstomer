@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white">
+
+    <!--<LinearLayout
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:visibility="gone"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/ll_saving"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="5dp"
+            android:visibility="visible"
+            android:padding="3dp"
+            android:background="@drawable/solid_bg_aqua"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SAVING"
+                android:layout_gravity="bottom"
+                android:gravity="center"
+                android:textSize="5sp"
+                app:fontFamily="@font/montserrat_semi_bold"
+                android:textColor="@color/white"
+                />
+
+            <TextView
+                android:id="@+id/txt_saving"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="200 AED"
+                android:layout_gravity="bottom"
+                android:gravity="center"
+                android:textSize="8sp"
+                app:fontFamily="@font/montserrat_semi_bold"
+                android:textColor="@color/white"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_unit"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_margin="5dp"
+            android:visibility="visible"
+            android:padding="5dp"
+            android:background="@drawable/outlined_square_grey_1"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txt_unit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1 KG"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textSize="14sp"
+                    app:fontFamily="@font/montserrat_medium"
+                    android:textColor="@color/grey_1"
+                    />
+
+                <TextView
+                    android:id="@+id/txt_unit_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="AED 5.65"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textSize="8sp"
+                    app:fontFamily="@font/montserrat_medium"
+                    android:textColor="@color/grey_1"
+                    />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_discount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/solid_bg_aqua"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="3dp"
+            android:visibility="visible">
+
+            <TextView
+                android:id="@+id/txt_discount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="20% OFF"
+                android:textColor="@color/white"
+                android:textSize="8sp"
+                app:fontFamily="@font/montserrat_semi_bold"
+                />
+
+        </LinearLayout>
+
+
+    </LinearLayout>-->
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="130dp"
+        android:layout_height="95dp">
+
+        <LinearLayout
+            android:id="@+id/ll_saving"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="5dp"
+            android:visibility="visible"
+            android:padding="3dp"
+            android:background="@drawable/solid_bg_aqua"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/ll_unit"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SAVING"
+                android:layout_gravity="bottom"
+                android:gravity="center"
+                android:textSize="8sp"
+                android:layout_marginEnd="2dp"
+                app:fontFamily="@font/montserrat_semi_bold"
+                android:textColor="@color/white"
+                />
+
+            <TextView
+                android:id="@+id/txt_saving"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="200 AED"
+                android:layout_gravity="bottom"
+                android:gravity="center"
+                android:textSize="10sp"
+                app:fontFamily="@font/montserrat_semi_bold"
+                android:textColor="@color/white"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_unit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:visibility="visible"
+            android:padding="5dp"
+            android:background="@drawable/outlined_square_grey_1"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txt_unit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1 KG"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textSize="14sp"
+                    app:fontFamily="@font/montserrat_medium"
+                    android:textColor="@color/grey_1"
+                    />
+
+                <TextView
+                    android:id="@+id/txt_unit_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="AED 5.65"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textSize="8sp"
+                    app:fontFamily="@font/montserrat_medium"
+                    android:textColor="@color/grey_1"
+                    />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_discount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/solid_bg_aqua"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="3dp"
+            app:layout_constraintTop_toBottomOf="@+id/ll_unit"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:visibility="visible">
+
+            <TextView
+                android:id="@+id/txt_discount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="20% OFF"
+                android:textColor="@color/white"
+                android:textSize="10sp"
+                app:fontFamily="@font/montserrat_semi_bold"
+                />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
