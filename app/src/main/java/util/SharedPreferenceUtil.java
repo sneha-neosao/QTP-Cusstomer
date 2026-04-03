@@ -54,30 +54,30 @@ public class SharedPreferenceUtil {
         return this._prefs.getInt(key, defaultvalue);
     }
 
-//    public void setInt(String key, int value) {
-//        if (this._editor == null) {
-//            return;
-//        }
-//        this._editor.putInt(key, value);
-//        _editor.apply();
-//        this._editor.commit();
-//    }
-//    public void clearAll() {
-//        if (this._editor == null) {
-//            return;
-//        }
-//        this._editor.clear().apply();
-//        this._editor.commit();
-//
-//    }
+    public void setInt(String key, int value) {
+        if (this._editor == null) {
+            return;
+        }
+        this._editor.putInt(key, value);
+        _editor.apply();
+        this._editor.commit();
+    }
+    public void clearAll() {
+        if (this._editor == null) {
+            return;
+        }
+        this._editor.clear().apply();
+        this._editor.commit();
 
-//    public void removeOneItem(String key) {
-//        if (this._editor == null) {
-//            return;
-//        }
-//        this._editor.remove(key);
-////        _editor.apply();
-//    }
+    }
+
+    public void removeOneItem(String key) {
+        if (this._editor == null) {
+            return;
+        }
+        this._editor.remove(key);
+//        _editor.apply();
+    }
 
     public void save() {
         if (this._editor == null) {

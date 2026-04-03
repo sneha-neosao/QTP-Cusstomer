@@ -69,6 +69,9 @@
             android:name="activities.ForgotPassOtp"
             android:exported="false" />
         <activity
+            android:name="activities.GetStartedActivity1"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="false" />
         <activity

@@ -45,7 +45,15 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.RetryPolicy;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.Volley;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -59,6 +67,14 @@ import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
 import com.grocery.QTPmart.R;
 import com.qamar.curvedbottomnaviagtion.CurvedBottomNavigation;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import Config.ApiBaseURL;
+import activities.story.StoryView;
+import util.CustomVolleyJsonRequest;
 import util.FragmentClickListner;
 
 import java.text.DecimalFormat;
@@ -74,6 +90,7 @@ import ModelClass.NewPendingDataModel;
 import fragments.HomeFragment;
 import network.ApiInterface;
 import fragments.DashboardFragment;
+import util.NetworkConnection;
 import util.Session_management;
 import xute.storyview.StoryModel;
 
@@ -147,7 +164,7 @@ public class MainDrawerActivity extends AppCompatActivity implements
 
     CoordinatorLayout toolbar_nav;
 
-//    StoryView storyView;
+    StoryView storyView;
 
     RecyclerView recyclerImages;
     ArrayList<HashMap<String, String>> listarray;
@@ -184,11 +201,11 @@ public class MainDrawerActivity extends AppCompatActivity implements
         } catch (IllegalStateException e) {
             Log.e("MainDrawerActivity", "Firebase not initialized", e);
         }
-//        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-//                .requestIdToken(getString(R.string.default_web_client_id))
-//                .requestEmail()
-//                .build();
-//        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build();
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
         initViews();
 
@@ -305,19 +322,19 @@ public class MainDrawerActivity extends AppCompatActivity implements
         notification_iv = findViewById(R.id.notification_iv);
         edt_search = findViewById(R.id.edt_search);
 
-//        storyView = findViewById(R.id.storyView);
-//        storyView.setActivityContext(MainDrawerActivity.this);
-//        storyView.resetStoryVisits();
+        storyView = findViewById(R.id.storyView);
+        storyView.setActivityContext(MainDrawerActivity.this);
+        storyView.resetStoryVisits();
         ArrayList<StoryModel> uris = new ArrayList<>();
         uris.add(new StoryModel("https://picsum.photos/200/300", "", ""));
         uris.add(new StoryModel("https://cdn.pixabay.com/photo/2015/04/19/08/32/marguerite-729510__340.jpg", "", ""));
-//        storyView.setImageUris(uris);
+        storyView.setImageUris(uris);
 
-//        if (NetworkConnection.connectionChecking(this)) {
-//            categoryUrl();
-//        } else {
-//            showToast(getString(R.string.no_internet));
-//        }
+        if (NetworkConnection.connectionChecking(this)) {
+            categoryUrl();
+        } else {
+            showToast(getString(R.string.no_internet));
+        }
 
 
         ll_login_drawer.setOnClickListener(new View.OnClickListener() {
@@ -331,10 +348,10 @@ public class MainDrawerActivity extends AppCompatActivity implements
         ll_dashboard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                bottomNavigation.show(ID_HOME, true);
-//                bottomNavigation.setVisibility(View.VISIBLE);
-//                setToolbarAndLoadFragment("", new DashboardFragment());
-//                viewSelector("Dashboard");
+                bottomNavigation.show(ID_HOME, true);
+                bottomNavigation.setVisibility(View.VISIBLE);
+                setToolbarAndLoadFragment("", new DashboardFragment());
+                viewSelector("Dashboard");
             }
         });
 
@@ -2017,79 +2034,79 @@ public class MainDrawerActivity extends AppCompatActivity implements
 //            mGoogleSignInClient.signOut();
 //    }
 //
-//    private void categoryUrl() {
-//        cateList.clear();
-//        // Tag used to cancel the request
-//        String tag_json_obj = "json_get_address_req";
-//
-//        Map<String, String> params = new HashMap<String, String>();
-//        params.put("parent", "");
-//        //params.put("BranchCode", ApiInterface.branchcode);
-//
-//        CustomVolleyJsonRequest jsonObjReq = new CustomVolleyJsonRequest(Request.Method.GET,
-//                ApiBaseURL.Categories, params, new Response.Listener<JSONObject>() {
-//
-//            @Override
-//            public void onResponse(JSONObject response) {
-//                Log.d("categoryProduct", response.toString());
-//                try {
-//                    if (response != null && response.length() > 0) {
-//                        boolean status = response.getBoolean("status");
-//                        if (status) {
-//                            JSONArray array = response.getJSONArray("result");
-//                            for (int i = 0; i < array.length(); i++) {
-//
-//                                JSONObject object = array.getJSONObject(i);
-//                                Category_model model = new Category_model();
-//
-//
-//                                //model.setDetail(object.getString("description"));
-//                                model.setCat_id(object.getString("categoryId"));
-//                                model.setImage(object.getString("image"));
-//                                model.setTitle(object.getString("categoryName"));
-//                                ;
-//
-//                                //model.setSub_array(object.getJSONArray("subCategories"));
-//                                cateList.add(model);
-//                            }
-//
-//                        }
-//                    } else {
-//                        // Toast.makeText(getActivity(),msg,Toast.LENGTH_SHORT).show();
-//                    }
-//                } catch (JSONException e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//        }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//            }
-//        });
-//
-//        RequestQueue requestQueue = Volley.newRequestQueue(this);
-//        requestQueue.getCache().clear();
-//        jsonObjReq.setRetryPolicy(new RetryPolicy() {
-//            @Override
-//            public int getCurrentTimeout() {
-//                return 60000;
-//            }
-//
-//            @Override
-//            public int getCurrentRetryCount() {
-//                return 0;
-//            }
-//
-//            @Override
-//            public void retry(VolleyError error) throws VolleyError {
-//
-//            }
-//        });
-//        requestQueue.add(jsonObjReq);
-//
-//    }
-//
-//
+    private void categoryUrl() {
+        cateList.clear();
+        // Tag used to cancel the request
+        String tag_json_obj = "json_get_address_req";
+
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("parent", "");
+        //params.put("BranchCode", ApiInterface.branchcode);
+
+        CustomVolleyJsonRequest jsonObjReq = new CustomVolleyJsonRequest(Request.Method.GET,
+                ApiBaseURL.Categories, params, new Response.Listener<JSONObject>() {
+
+            @Override
+            public void onResponse(JSONObject response) {
+                Log.d("categoryProduct", response.toString());
+                try {
+                    if (response != null && response.length() > 0) {
+                        boolean status = response.getBoolean("status");
+                        if (status) {
+                            JSONArray array = response.getJSONArray("result");
+                            for (int i = 0; i < array.length(); i++) {
+
+                                JSONObject object = array.getJSONObject(i);
+                                Category_model model = new Category_model();
+
+
+                                //model.setDetail(object.getString("description"));
+                                model.setCat_id(object.getString("categoryId"));
+                                model.setImage(object.getString("image"));
+                                model.setTitle(object.getString("categoryName"));
+                                ;
+
+                                //model.setSub_array(object.getJSONArray("subCategories"));
+                                cateList.add(model);
+                            }
+
+                        }
+                    } else {
+                        // Toast.makeText(getActivity(),msg,Toast.LENGTH_SHORT).show();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+            }
+        });
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.getCache().clear();
+        jsonObjReq.setRetryPolicy(new RetryPolicy() {
+            @Override
+            public int getCurrentTimeout() {
+                return 60000;
+            }
+
+            @Override
+            public int getCurrentRetryCount() {
+                return 0;
+            }
+
+            @Override
+            public void retry(VolleyError error) throws VolleyError {
+
+            }
+        });
+        requestQueue.add(jsonObjReq);
+
+    }
+
+
 //    public static void updateProfileImage(String getId, ImageView imageView) {
 //        Long time = System.currentTimeMillis();
 //        Picasso.get()
@@ -2098,11 +2115,11 @@ public class MainDrawerActivity extends AppCompatActivity implements
 //                .memoryPolicy(MemoryPolicy.NO_STORE, MemoryPolicy.NO_CACHE)
 //                .into(imageView);
 //    }
-//
-//    private void showToast(String message) {
-//        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
-//    }
-//
+
+    private void showToast(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
 //    @Override
 //    protected void onResume() {
 //        super.onResume();
@@ -2114,8 +2131,8 @@ public class MainDrawerActivity extends AppCompatActivity implements
 //            }
 //        }
 //    }
-//
-//
+
+
 //    private void checkAppUpdate(){
 //        // Creates instance of the manager.
 //        appUpdateManager = AppUpdateManagerFactory.create(this);

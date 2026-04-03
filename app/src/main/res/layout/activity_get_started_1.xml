@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:attrs="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@drawable/bg_light_gray"
+    tools:context="activities.GetStartedActivity1">
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        />
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="10dp"
+        app:tabBackground="@drawable/tab_selector"
+        android:background="@color/transparent_color"
+        android:layout_gravity="bottom|center"
+        android:layout_marginBottom="100dp"
+        app:tabGravity="center"
+        android:visibility="visible"
+        app:tabIndicatorHeight="0dp"/>
+
+
+    <!--<com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_next"
+        android:layout_width="wrap_content"
+        android:layout_height="56dp"
+        android:text="next"
+        android:layout_gravity="right|bottom"
+        android:layout_marginBottom="15dp"
+        android:textSize="12sp"
+        android:fontFamily="@font/montserrat_semi_bold"
+        attrs:cornerRadius="20dp"
+        android:paddingLeft="23dp"
+        android:paddingRight="53dp"
+        android:layout_marginRight="-20dp"
+        android:drawableRight="@drawable/ic_icons_next_light"
+        />-->
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="next"
+        android:visibility="visible"
+        android:layout_gravity="right|bottom"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="50dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:layout_marginBottom="15dp"
+        attrs:cornerRadius="20dp"
+        android:layout_marginRight="-20dp"
+
+        android:drawableRight="@drawable/ic_baseline_arrow_forward_24"
+        android:layout_alignParentRight="true"
+
+        />
+
+
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

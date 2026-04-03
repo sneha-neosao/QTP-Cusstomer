@@ -871,16 +871,16 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center">
 
-<!--                            <com.grocery.QTPmart.Activity.story.StoryView-->
-<!--                                android:id="@+id/storyView"-->
-<!--                                android:layout_width="22dp"-->
-<!--                                android:layout_height="23dp"-->
-<!--                                android:visibility="gone"-->
-<!--                                android:background="@drawable/ic_reload"-->
-<!--                                android:layout_centerInParent="true"-->
-<!--                                app:spaceBetweenImageAndIndicator="1dp"-->
-<!--                                app:storyImageRadius="8dp"-->
-<!--                                app:storyItemIndicatorWidth="1dp" />-->
+                            <activities.story.StoryView
+                                android:id="@+id/storyView"
+                                android:layout_width="22dp"
+                                android:layout_height="23dp"
+                                android:visibility="gone"
+                                android:background="@drawable/ic_reload"
+                                android:layout_centerInParent="true"
+                                app:spaceBetweenImageAndIndicator="1dp"
+                                app:storyImageRadius="8dp"
+                                app:storyItemIndicatorWidth="1dp" />
 
                             <ImageView
                                 android:id="@+id/reel_iv1"

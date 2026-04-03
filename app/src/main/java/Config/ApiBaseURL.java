@@ -28,24 +28,24 @@ public class ApiBaseURL
     public static String forgotPasswort = BASE_URL + "forgotPasswort";
 
     public static String CategoriesWithSubCategories = BASE_URL + "categorywithsubcategory";
-//    public static String Categories = BASE_URL + "category?BranchCode=" + branchcode;
+    public static String Categories = BASE_URL + "category?BranchCode=" + branchcode;
     public static String SubCategories = BASE_URL + "geSubCategories";
-//    public static String AllSubCategories = BASE_URL + "geAllSubCategories" + "?BranchCode=" + branchcode;
+    public static String AllSubCategories = BASE_URL + "geAllSubCategories" + "?BranchCode=" + branchcode;
     public static String BANNER = BASE_URL + "mainBanner?BranchCode=" + branchcode;
     public static String Search = BASE_URL + "v2/searchProducts";
 
-//    public static String FeatureProduct = BASE_URL + "v2/getFeaturedProducts?BranchCode=" + branchcode;
-//
+    public static String FeatureProduct = BASE_URL + "v2/getFeaturedProducts?BranchCode=" + branchcode;
+
     public static String HomeDeal = BASE_URL + "v2/getTopSixDealOfTheDayProducts?BranchCode=" + branchcode;
-//    public static String TopTodayDealAll = BASE_URL + "v2/getAllDealOfTheDayProducts?BranchCode=" + branchcode;
-//
+    public static String TopTodayDealAll = BASE_URL + "v2/getAllDealOfTheDayProducts?BranchCode=" + branchcode;
+
     public static String whatsnew = BASE_URL + "v2/getTopSixWhatsNewProducts?BranchCode=" + branchcode;
-//    public static String whatsnewAll = BASE_URL + "v2/getAllWhatsNewProducts?BranchCode=" + branchcode;
-//
+    public static String whatsnewAll = BASE_URL + "v2/getAllWhatsNewProducts?BranchCode=" + branchcode;
+
     public static String topSelling = BASE_URL + "v2/getTopSixTopSellingProducts?BranchCode=" + branchcode;
-//    public static String topSellingAll = BASE_URL + "v2/getAllTopSellingProducts?BranchCode=" + branchcode;
-//
-//    public static String recommended = BASE_URL + "v2/getRecommendationProducts?BranchCode=" + branchcode;
+    public static String topSellingAll = BASE_URL + "v2/getAllTopSellingProducts?BranchCode=" + branchcode;
+
+    public static String recommended = BASE_URL + "v2/getRecommendationProducts?BranchCode=" + branchcode;
 
     public static String AddToFav = BASE_URL + "addFavourite";
     public static String getAllFav = BASE_URL + "v2/getFavouriteProductList?custId=74&top=4";
@@ -77,7 +77,7 @@ public class ApiBaseURL
     public static String OrderList = BASE_URL + "v2/getOrders";
     public static String checkCoupon = BASE_URL + "checkCoupon";
     public static String firstCoupon = BASE_URL + "firstCoupon";
-//    public static String getOffersActive = BASE_URL + "getOffersActive" + "?BranchCode=" + branchcode;
+    public static String getOffersActive = BASE_URL + "getOffersActive" + "?BranchCode=" + branchcode;
 
     public static String OrderCalculation = BASE_URL + "v2/orderCalculation";
     public static String AlternatProductsByProductId = BASE_URL + "v2/getAlternatProductsByProductId";

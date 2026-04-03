@@ -1,6 +1,8 @@
 package util;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 
 import static Config.BaseURL.APP_OTP_STATUS;
 import static Config.BaseURL.CART_ID_FINAL;
@@ -56,6 +58,9 @@ import static Config.BaseURL.USER_STREET;
 
 import java.util.HashMap;
 
+import Config.BaseURL;
+import activities.MainDrawerActivity;
+
 public class Session_management {
 
 
@@ -86,33 +91,33 @@ public class Session_management {
         pref.setString(KEY_SUPPLIERID, supplierId);
         pref.save();
     }
-//
-//
-//    public void createUpdateProfileSession(String id, String email, String name, String mobile, String address,String role,String supplierId,
-//                                           String country,String state,String city,String landmark,
-//                                           String street,String dob,String pincode,String countryCode) {
-//
-//        pref.setBoolean(IS_LOGIN, true);
-//        pref.setString(KEY_ID, id);
-//        pref.setString(KEY_EMAIL, email);
-//        pref.setString(KEY_NAME, name);
-//        pref.setString(KEY_MOBILE, mobile);
-//        pref.setBoolean(USER_SKIP, false);
-//        pref.setString(ADDRESS, address);
-//        pref.setString(KEY_ROLE, role);
-//        pref.setString(KEY_SUPPLIERID, supplierId);
-//        pref.setString(USER_COUNTRY, country);
-//        pref.setString(USER_CITY, city);
-//        pref.setString(USER_STATE, state);
-//        pref.setString(USER_LANDMARK, landmark);
-//        pref.setString(USER_STREET, street);
-//        pref.setString(USER_DOB, dob);
-//        pref.setString(USER_PINCODE, pincode);
-//        pref.setString(USER_COUNTRY_CODE, countryCode);
-//        pref.save();
-//
-//    }
-//
+
+
+    public void createUpdateProfileSession(String id, String email, String name, String mobile, String address,String role,String supplierId,
+                                           String country,String state,String city,String landmark,
+                                           String street,String dob,String pincode,String countryCode) {
+
+        pref.setBoolean(IS_LOGIN, true);
+        pref.setString(KEY_ID, id);
+        pref.setString(KEY_EMAIL, email);
+        pref.setString(KEY_NAME, name);
+        pref.setString(KEY_MOBILE, mobile);
+        pref.setBoolean(USER_SKIP, false);
+        pref.setString(ADDRESS, address);
+        pref.setString(KEY_ROLE, role);
+        pref.setString(KEY_SUPPLIERID, supplierId);
+        pref.setString(USER_COUNTRY, country);
+        pref.setString(USER_CITY, city);
+        pref.setString(USER_STATE, state);
+        pref.setString(USER_LANDMARK, landmark);
+        pref.setString(USER_STREET, street);
+        pref.setString(USER_DOB, dob);
+        pref.setString(USER_PINCODE, pincode);
+        pref.setString(USER_COUNTRY_CODE, countryCode);
+        pref.save();
+
+    }
+
     public String getUserId()
     {
         return pref.getString(KEY_ID, "");
@@ -157,9 +162,6 @@ public class Session_management {
     {
         return pref.getInt(SHIPPING_ADDRESS_POSITION,0);
     }
-//    public void setShippingAddressPosition(int shippingAddressPosition){
-//        pref.setInt(SHIPPING_ADDRESS_POSITION, shippingAddressPosition);
-//    }
 
     public boolean getIsOrderTabLoaded()
     {
@@ -229,20 +231,20 @@ public class Session_management {
 
 
 
-//    public void createLoginSession(String id, String email, String name, String mobile, String password, boolean skip,String address) {
-//
-//        pref.setBoolean(IS_LOGIN, false);
-//        pref.setString(KEY_ID, id);
-//        pref.setString(KEY_EMAIL, email);
-//        pref.setString(KEY_NAME, name);
-//        pref.setString(KEY_MOBILE, mobile);
-//        pref.setString(KEY_PASSWORD, password);
-//        pref.setBoolean(USER_SKIP, skip);
-//        pref.setString(ADDRESS, address);
-//        pref.setString(KEY_ROLE, "customer");
-//        pref.save();
-//
-//    }
+    public void createLoginSession(String id, String email, String name, String mobile, String password, boolean skip,String address) {
+
+        pref.setBoolean(IS_LOGIN, false);
+        pref.setString(KEY_ID, id);
+        pref.setString(KEY_EMAIL, email);
+        pref.setString(KEY_NAME, name);
+        pref.setString(KEY_MOBILE, mobile);
+        pref.setString(KEY_PASSWORD, password);
+        pref.setBoolean(USER_SKIP, skip);
+        pref.setString(ADDRESS, address);
+        pref.setString(KEY_ROLE, "customer");
+        pref.save();
+
+    }
 
     public void setLocationPref(String lat, String lang) {
         pref.setString(USER_LAT, lat);
@@ -322,29 +324,29 @@ public class Session_management {
         return user;
     }
 
-//    public void logoutSession() {
-//        SharedPreferences preferences =context.getSharedPreferences(BaseURL.MyPrefreance,Context.MODE_PRIVATE);
-//        SharedPreferences.Editor editor = preferences.edit();
-//        editor.clear();
-//        editor.apply();
-//        pref.clearAll();
-//        DatabaseHandler db = new DatabaseHandler(context);
-//        db.clearCart();
-//        db.clearWishlist();
-//
-//        cleardatetime();
-//
-//        Intent logout = new Intent(context, MainDrawerActivity.class);
-//        // Closing all the Activities
-//        logout.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//
-//        // Add new Flag to start new Activity
-//        logout.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//        logout.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-//        logout.putExtra("loadFrag",1);
-//
-//        context.startActivity(logout);
-//    }
+    public void logoutSession() {
+        SharedPreferences preferences =context.getSharedPreferences(BaseURL.MyPrefreance,Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.clear();
+        editor.apply();
+        pref.clearAll();
+        DatabaseHandler db = new DatabaseHandler(context);
+        db.clearCart();
+        db.clearWishlist();
+
+        cleardatetime();
+
+        Intent logout = new Intent(context, MainDrawerActivity.class);
+        // Closing all the Activities
+        logout.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+        // Add new Flag to start new Activity
+        logout.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        logout.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        logout.putExtra("loadFrag",1);
+
+        context.startActivity(logout);
+    }
 
 
     public void cleardatetime() {

@@ -165,7 +165,7 @@ public class SubCategoryActivity extends AppCompatActivity {
                             animationAdapter.setInterpolator(new android.view.animation.OvershootInterpolator());
                             animationAdapter.setFirstOnly(false);
                             recyclerView.setAdapter(animationAdapter);
-                            adapter.notifyDataSetChanged();
+                            animationAdapter.notifyDataSetChanged();
                         }
                     }
                     progressDialog.dismiss();

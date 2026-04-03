@@ -32,6 +32,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.animation.OvershootInterpolator;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -65,13 +66,12 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
+//import activities.DealActivity;
 import activities.MainDrawerActivity;
 import activities.SubCategoryActivity;
 import activities.ViewAll_TopDeals;
 import adapters.BannerAdapter;
 import adapters.FavouriteAdapter;
-import jp.wasabeef.recyclerview.adapters.AlphaInAnimationAdapter;
-import jp.wasabeef.recyclerview.adapters.SlideInBottomAnimationAdapter;
 import adapters.MainScreenAdapter;
 import Config.ApiBaseURL;
 import Config.BaseURL;
@@ -81,9 +81,6 @@ import ModelClass.LabelModel;
 import ModelClass.MainScreenList;
 import ModelClass.NewCartModel;
 import com.grocery.QTPmart.R;
-
-import adapters.BannerAdapter;
-import adapters.MainScreenAdapter;
 import network.ApiInterface;
 import network.Response.ResponseGetAllSubOfSubCategories;
 import network.Response.RestItem;
@@ -122,9 +119,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener  {
     SharedPreferences sharedPreferences;
     ArrayList<String> imageString = new ArrayList<>();
     private RecyclerView recyclerImages;
-    private TextView tvNoBanner;
     private BannerAdapter bannerAdapter;
     private LinearLayout llImageSlider;
+    //private LinearLayout change_loc_lay;
+    //private TextView change_loc;
     private Session_management session_management;
     private FragmentClickListner fragmentClickListner;
     private ViewPager2 viewPager2;
@@ -140,7 +138,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener  {
     private MainScreenAdapter screenAdapter;
     private Context contexts;
 
-   // SubCategory_adapter adapter;
+    // SubCategory_adapter adapter;
     String catId = "001", title = "FOOD";
     //RecyclerView recyclerView;
     final int time = 3000;
@@ -194,6 +192,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener  {
         city = sharedPreferences.getString(CITY, null);
         bannerAdapter = new BannerAdapter(getActivity(), imageString,listarray);
 //        BottomNavigationView navBar = getActivity().findViewById(R.id.nav_view12);
+        // loc.setText(address+", "+city+", "+postalCode);
+        //change_loc_lay = view.findViewById(R.id.change_loc_lay);
+        //change_loc = view.findViewById(R.id.change_loc);
         htab_collapse_toolbar = view.findViewById(R.id.htab_collapse_toolbar);
         htab_appbar = view.findViewById(R.id.htab_appbar);
         rl_fav_list = view.findViewById(R.id.rl_fav_list);
@@ -206,7 +207,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener  {
         viewPager = view.findViewById(R.id.pager_product);
         viewPager2 = view.findViewById(R.id.viewpa_2);
         recyclerImages = view.findViewById(R.id.recycler_image_slider);
-        tvNoBanner = view.findViewById(R.id.tvNoBanner);
 //        llImageSlider = view.findViewById(R.id.llImageSlider);
 
         ivAdd = view.findViewById(R.id.ivAdd);
@@ -218,14 +218,44 @@ public class HomeFragment extends Fragment implements View.OnClickListener  {
         fabfour = view.findViewById(R.id.fabfour);
         parent_lay = view.findViewById(R.id.parent_lay);
 
-         myScroller = view.findViewById(R.id.myScroller);
+        myScroller = view.findViewById(R.id.myScroller);
 
         screenLists.add(new MainScreenList("ALL", topSelling, recentSelling, dealOftheday, whatsNew,SubCategoryActivity.subcateList,labelModelArrayList));
-            rl_fav_list.setVisibility(View.GONE);
-            htab_appbar.setVisibility(VISIBLE);
-            ll_home_bottom.setVisibility(VISIBLE);
-            ll_bottom_2.setVisibility(VISIBLE);
+        /*
+        recyclerView = view.findViewById(R.id.recyclerSubCate);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 3);
 
+
+        ItemOffsetDecoration itemDecoration = new ItemOffsetDecoration(getContext(), R.dimen.item_offset);
+        recyclerView.setLayoutManager(gridLayoutManager);
+        recyclerView.addItemDecoration(itemDecoration);
+        recyclerView.addOnItemTouchListener(new RecyclerTouchListener(contexts, recyclerView, new RecyclerTouchListener.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position)
+            {
+                Intent intent = new Intent(contexts, ProductTabActivity.class);
+                intent.putExtra("cat_id", subcateList.get(position).getId());
+                intent.putExtra("title", subcateList.get(position).getName());
+                startActivityForResult(intent, 24);
+            }
+            @Override
+            public void onLongItemClick(View view, int position)
+            {
+
+            }
+        }));
+*/
+       /* if(session_management.isLoggedIn()){
+            //showFavourites(view);
+        }
+        else {*/
+        rl_fav_list.setVisibility(View.GONE);
+        htab_appbar.setVisibility(VISIBLE);
+        ll_home_bottom.setVisibility(VISIBLE);
+        ll_bottom_2.setVisibility(VISIBLE);
+
+        // screenLists.add(new MainScreenList("ALL", topSelling, recentSelling, dealOftheday, whatsNew,subcateList,labelModelArrayList));
+        /*Main View Pager*/
         screenAdapter = new MainScreenAdapter(getActivity(), screenLists,labelModelArrayList);
         viewPager2.setAdapter(screenAdapter);
 
@@ -234,7 +264,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener  {
         recyclerImages.setLayoutManager(linearLayoutManager);
         recyclerImages.setAdapter(bannerAdapter);
         linearSnapHelper = new LinearSnapHelper();
+        // linearSnapHelper.attachToRecyclerView(recyclerView);
 
+        // change_loc.setOnClickListener(v -> startActivityForResult(new Intent(v.getContext(), AddressLocationActivity.class), 22));
         setTabs();
         if (isOnline()) {
 
@@ -245,11 +277,11 @@ public class HomeFragment extends Fragment implements View.OnClickListener  {
             }else{
                 showToast(getString(R.string.no_internet));
             }
-//            topSelling();
-//            whatsNew();
-//            DealOfTheDay();
-//            recentDeal();
-//            topSelling();
+            //  topSelling();
+            //  whatsNew();
+            //  DealOfTheDay();
+            //  recentDeal();
+            // topSelling();
         }
 
         initFloatActions();
@@ -265,6 +297,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener  {
 
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+//                Log.i("TAG Demo", String.valueOf(position));
                 super.onPageScrolled(position, positionOffset, positionOffsetPixels);
                 Log.e("Scroll","onPageScrolled :"+position+"\n"+positionOffset+"\n"+positionOffsetPixels);
             }
@@ -272,20 +305,21 @@ public class HomeFragment extends Fragment implements View.OnClickListener  {
             @Override
             public void onPageSelected(int position) {
                 Log.e("Pos",position+"");
-                    if(position==0){
-                        viewall_topdeals.setVisibility(View.GONE);
-                        if(tabLayout!=null){
-                            tabLayout.getTabAt(0).setIcon(R.drawable.ic_all);
-                            tabLayout.getTabAt(0).getIcon().setTint(getContext().getResources().getColor(R.color.white));
-                        }
-
-                    }else{
-                       // tabLayout.getTabAt(0).setIcon(R.drawable.ic_all);
+                // if(tabLayout.getVisibility()== VISIBLE){
+                if(position==0){
+                    viewall_topdeals.setVisibility(View.GONE);
+                    if(tabLayout!=null){
                         tabLayout.getTabAt(0).setIcon(R.drawable.ic_all);
-                        tabLayout.getTabAt(0).getIcon().setTint(getContext().getResources().getColor(R.color.black));
-                        viewall_topdeals.setVisibility(VISIBLE);
+                        tabLayout.getTabAt(0).getIcon().setTint(getContext().getResources().getColor(R.color.white));
                     }
-             //   }
+
+                }else{
+                    // tabLayout.getTabAt(0).setIcon(R.drawable.ic_all);
+                    tabLayout.getTabAt(0).setIcon(R.drawable.ic_all);
+                    tabLayout.getTabAt(0).getIcon().setTint(getContext().getResources().getColor(R.color.black));
+                    viewall_topdeals.setVisibility(VISIBLE);
+                }
+                //   }
 
 
             }
@@ -296,14 +330,16 @@ public class HomeFragment extends Fragment implements View.OnClickListener  {
             if (tabLayout.getTabAt(viewPager2.getCurrentItem()).getText().toString().equalsIgnoreCase("TOP SELLING")) {
                 if (topSelling.size() > 0) {
                     intent.putExtra("action_name", "Top_Deals_Fragment");
+                    //startActivityForResult(intent, 56);
                     startActivity(intent);
                 } else
-                    {
+                {
                     Toast.makeText(contexts, "No Order found in your location!", Toast.LENGTH_SHORT).show();
                 }
             } else if (tabLayout.getTabAt(viewPager2.getCurrentItem()).getText().toString().equalsIgnoreCase("RECENT SEARCHES")) {
                 if (recentSelling.size() > 0) {
                     intent.putExtra("action_name", "Recent_Details_Fragment");
+                    //startActivityForResult(intent, 56);
                     startActivity(intent);
                 } else {
                     Toast.makeText(contexts, "No Order found in your location!", Toast.LENGTH_SHORT).show();
@@ -321,6 +357,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener  {
                 if (whatsNew.size() > 0) {
                     intent.putExtra("action_name", "Whats_New_Fragment");
                     startActivity(intent);
+                    //startActivityForResult(intent, 56);
                 } else {
                     Toast.makeText(contexts, "No Order found in your location!", Toast.LENGTH_SHORT).show();
                 }
@@ -345,6 +382,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener  {
     public void init(View view){
 
         MainDrawerActivity.bottomNavigation.setVisibility(VISIBLE);
+        // tabLayout.setVisibility(View.GONE);
         final AppBarLayout mAppBarLayout = view.findViewById(R.id.htab_appbar);
         mAppBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
             private String TAG="Toolbar";
@@ -355,6 +393,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener  {
                 if (verticalOffset == 0) {
                     if (state != State.EXPANDED) {
                         MainDrawerActivity.bottomNavigation.setVisibility(VISIBLE);
+                        //ivAdd.setVisibility(VISIBLE);
                         parent_lay.setVisibility(VISIBLE);
                         ivAdd.setVisibility(View.GONE);
                         MainDrawerActivity.edt_search.setVisibility(View.GONE);
@@ -362,10 +401,17 @@ public class HomeFragment extends Fragment implements View.OnClickListener  {
                         MainDrawerActivity.reelLyt.setVisibility(VISIBLE);
                         MainDrawerActivity.notification_iv.setVisibility(VISIBLE);
                         MainDrawerActivity.search_iv.setVisibility(VISIBLE);
+                        /*TranslateAnimation animate = new TranslateAnimation(0,tabLayout.getWidth(),0,0);
+                        animate.setDuration(2000);
+                        animate.setFillAfter(true);
+                        tabLayout.startAnimation(animate);
+                        tabLayout.setVisibility(View.GONE);*/
+                        //viewGoneAnimator(tabLayout);
                         tabLayout.setVisibility(View.GONE);
                         Log.d(TAG,"Expanded");
                     }
                     state = State.EXPANDED;
+                    // tabLayout.setVisibility(View.GONE);
                 } else if (Math.abs(verticalOffset) >= appBarLayout.getTotalScrollRange()) {
                     if (state != State.COLLAPSED) {
                         MainDrawerActivity.bottomNavigation.setVisibility(View.GONE);
@@ -378,12 +424,15 @@ public class HomeFragment extends Fragment implements View.OnClickListener  {
                         MainDrawerActivity.search_iv.setVisibility(View.GONE);
                         Log.d(TAG,"Collapsed");
                         tabLayout.setVisibility(VISIBLE);
+                        //viewVisibleAnimator(tabLayout);
                     }
                     state = State.COLLAPSED;
+                    //  tabLayout.setVisibility(View.VISIBLE);
                 } else {
                     if (state != State.IDLE)
                     {
                         MainDrawerActivity.bottomNavigation.setVisibility(VISIBLE);
+                        //   ivAdd.setVisibility(VISIBLE);
                         parent_lay.setVisibility(VISIBLE);
                         ivAdd.setVisibility(View.GONE);
                         MainDrawerActivity.edt_search.setVisibility(View.GONE);
@@ -391,9 +440,12 @@ public class HomeFragment extends Fragment implements View.OnClickListener  {
                         MainDrawerActivity.reelLyt.setVisibility(VISIBLE);
                         MainDrawerActivity.notification_iv.setVisibility(VISIBLE);
                         MainDrawerActivity.search_iv.setVisibility(VISIBLE);
+                        //tabLayout.setVisibility(VISIBLE);
                         Log.d(TAG,"Idle");
+                        //viewVisibleAnimator(tabLayout);
                     }
                     state = State.IDLE;
+                    // tabLayout.setVisibility(View.GONE);
                 }
             }
         });
@@ -410,8 +462,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener  {
         TabLayoutMediator tabLayoutMediator = new TabLayoutMediator(tabLayout, viewPager2, (tab, position) -> {
 
             if (position == 0) {
-                    tab.setIcon(R.drawable.ic_all);
-                    tab.getIcon().setTint(getContext().getResources().getColor(R.color.white));
+                tab.setIcon(R.drawable.ic_all);
+                tab.getIcon().setTint(getContext().getResources().getColor(R.color.white));
             }
             else if (position == 1) {
                 if (screenLists.size()>0){
@@ -441,7 +493,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener  {
                 JSONObject jsonObjectResponse = new JSONObject(response);
                 boolean status = jsonObjectResponse.getBoolean("status");
                 if (status) {
-                    setTabs();
+                    // setTabs();
                     JSONArray jsonArray = jsonObjectResponse.getJSONArray("result");
                     List<NewCartModel> listorl = new ArrayList<>();
                     JSONArray jsonArrayLabel = jsonObjectResponse.getJSONArray("labels");
@@ -516,6 +568,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener  {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
+//                params.put("lat", session_management.getLatPref());
+//                params.put("lng", session_management.getLangPref());
+//                params.put("city", session_management.getLocationCity());
                 return params;
             }
         };
@@ -549,7 +604,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener  {
                 JSONObject jsonObjectResponse = new JSONObject(response);
                 boolean status = jsonObjectResponse.getBoolean("status");
                 if (status) {
-                  // setTabs();
+                    // setTabs();
                     JSONArray jsonArray = jsonObjectResponse.getJSONArray("result");
                     List<NewCartModel> listorl=new ArrayList<>();
                     JSONArray jsonArrayLabel = jsonObjectResponse.getJSONArray("labels");
@@ -616,6 +671,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener  {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
+//                params.put("lat", session_management.getLatPref());
+//                params.put("lng", session_management.getLangPref());
+//                params.put("city", session_management.getLocationCity());
                 return params;
             }
         };
@@ -650,7 +708,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener  {
 
                 boolean status = jsonObjectResponse.getBoolean("status");
                 if (status) {
-                    setTabs();
+                    //       setTabs();
                     JSONArray jsonArray = jsonObjectResponse.getJSONArray("result");
                     List<NewCartModel> listorl=new ArrayList<>();
 
@@ -715,6 +773,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener  {
                 e.printStackTrace();
             } finally {
                 progressDialog.dismiss();
+                //ivAdd.setVisibility(VISIBLE);
                 parent_lay.setVisibility(VISIBLE);
                 ivAdd.setVisibility(View.GONE);
             }
@@ -728,6 +787,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener  {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
+//                params.put("lat", session_management.getLatPref());
+//                params.put("lng", session_management.getLangPref());
+//                params.put("city", session_management.getLocationCity());
                 return params;
             }
         };
@@ -766,6 +828,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener  {
 
                 boolean status = jsonObjectResponse.getBoolean("status");
                 if (status) {
+                    //     setTabs();
                     JSONArray jsonArray = jsonObjectResponse.getJSONArray("result");
                     List<NewCartModel> listorl = new ArrayList<>();
 
@@ -820,6 +883,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener  {
                     }
 
 
+                    /*screenLists.set(4,new MainScreenList("RECENT SEARCHES", topSelling,
+                            recentSelling, dealOftheday, whatsNew,SubCategoryActivity.subcateList,labelModelArrayList));
+*/
                     recentSelling.addAll(listorl);
                     labelModelArrayList.addAll(listLabel);
                     screenLists.add(new MainScreenList("RECENT SEARCHES", topSelling,recentSelling, dealOftheday, whatsNew,SubCategoryActivity.subcateList,labelModelArrayList));
@@ -844,6 +910,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener  {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
+//                params.put("lat", session_management.getLatPref());
+//                params.put("lng", session_management.getLangPref());
+//                params.put("city", session_management.getLocationCity());
                 return params;
             }
         };
@@ -893,7 +962,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener  {
                                     JSONArray jsonArray = response.getJSONArray("result");
                                     if (jsonArray.length() <= 0) {
                                         recyclerImages.setVisibility(View.GONE);
-                                        tvNoBanner.setVisibility(View.VISIBLE);
                                     } else {
                                         listarray.clear();
                                         for (int i = 0; i < jsonArray.length(); i++) {
@@ -928,18 +996,40 @@ public class HomeFragment extends Fragment implements View.OnClickListener  {
                                             }
                                         }, 0, time);
 
+
+                                    /*    for (HashMap<String, String> name : listarray) {
+                                            CustomSlider textSliderView = new CustomSlider(getActivity());
+                                            textSliderView.description(name.get("")).image(name.get("banner_image")).setScaleType(BaseSliderView.ScaleType.Fit);
+                                            textSliderView.bundle(new Bundle());
+                                            textSliderView.getBundle().putString("extra", name.get("banner_name"));
+                                            textSliderView.getBundle().putString("extra", name.get("banner_id"));
+        //                                home_list_banner.addSlider(textSliderView);
+                                            //   banner_slider.addSlider(textSliderView);
+                                            final String sub_cat = (String) textSliderView.getBundle().get("extra");
+                                            textSliderView.setOnSliderClickListener(new BaseSliderView.OnSliderClickListener() {
+                                                @Override
+                                                public void onSliderClick(BaseSliderView slider) {
+                                                    //   Toast.makeText(getActivity(), "" + sub_cat, Toast.LENGTH_SHORT).show();
+        //                                        Bundle args = new Bundle();
+        //                                        android.app.Fragment fm = new Product_fragment();
+        //                                        args.putString("id", sub_cat);
+        //                                        fm.setArguments(args);
+        //                                        FragmentManager fragmentManager = getFragmentManager();
+        //                                        fragmentManager.beginTransaction().replace(R.id.contentPanel, fm)
+        //                                                .addToBackStack(null).commit();
+                                                }
+                                            });
+                                        }*/
                                     }
                                 }
                                 else
                                 {
                                     recyclerImages.setVisibility(View.GONE);
-                                    tvNoBanner.setVisibility(View.VISIBLE);
                                 }
                             }
                             else
                             {
                                 recyclerImages.setVisibility(View.GONE);
-                                tvNoBanner.setVisibility(View.VISIBLE);
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -972,74 +1062,79 @@ public class HomeFragment extends Fragment implements View.OnClickListener  {
         params.put("BranchCode", ApiInterface.branchcode);
 
 
-//        CustomVolleyJsonRequest jsonObjReq = new CustomVolleyJsonRequest(Request.Method.GET,
-//                ApiBaseURL.AllSubCategories, params, new Response.Listener<JSONObject>() {
-//
-//            @Override
-//            public void onResponse(JSONObject response) {
-//                Log.e("subcategories", response.toString());
-//                try {
-//                    if (response != null && response.length() > 0) {
-//                        boolean status = response.getBoolean("status");
-//                        if (status) {
-//                            JSONArray array = response.getJSONArray("result");
-//                            SubCategoryActivity.subcateList.clear();
-//                            for (int i = 0; i < array.length(); i++) {
-//
-//                                JSONObject object = array.getJSONObject(i);
-//                                HomeCate model = new HomeCate();
-//
-//                                model.setId(object.getString("item_subCatID"));
-//                                model.setImages(object.getString("image"));
-//                                model.setName(object.getString("item_subCatName"));
-//                                model.setCategoryId(object.getString("categoryId"));
-//                                SubCategoryActivity.subcateList.add(model);
-//                                GetCategories.allSubCategoriesArrayList.add(model);
-//                            }
-//
-//
-//                            screenAdapter.notifyDataSetChanged();
-//                        }
-//                    }
-//                    topSelling();
-//                } catch (JSONException e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//        }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//                topSelling();
-//            }
-//        }) {
-//            @Override
-//            protected Map<String, String> getParams() throws AuthFailureError {
-//                HashMap<String, String> param = new HashMap<>();
-//                param.put("categoryId", catId);
-//                Log.e("param",param.toString());
-//                return param;
-//            }
-//        };
+        CustomVolleyJsonRequest jsonObjReq = new CustomVolleyJsonRequest(Request.Method.GET,
+                ApiBaseURL.AllSubCategories, params, new Response.Listener<JSONObject>() {
+
+            @Override
+            public void onResponse(JSONObject response) {
+                // progressDialog.dismiss();
+                Log.e("subcategories", response.toString());
+                try {
+                    if (response != null && response.length() > 0) {
+                        boolean status = response.getBoolean("status");
+                        if (status) {
+                            //  setTabs();
+                            JSONArray array = response.getJSONArray("result");
+                            SubCategoryActivity.subcateList.clear();
+                            for (int i = 0; i < array.length(); i++) {
+
+                                JSONObject object = array.getJSONObject(i);
+                                HomeCate model = new HomeCate();
+
+                                model.setId(object.getString("item_subCatID"));
+                                model.setImages(object.getString("image"));
+                                model.setName(object.getString("item_subCatName"));
+                                model.setCategoryId(object.getString("categoryId"));
+                                SubCategoryActivity.subcateList.add(model);
+                                GetCategories.allSubCategoriesArrayList.add(model);
+                            }
+
+                            // screenLists.add(0,new MainScreenList("ALL", topSelling,recentSelling, dealOftheday, whatsNew,subcateList, labelModelArrayList));
+
+                            screenAdapter.notifyDataSetChanged();
+                        }
+                    }
+                    topSelling();
+                    //    progressDialog.dismiss();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                // progressDialog.dismiss();
+                topSelling();
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                HashMap<String, String> param = new HashMap<>();
+                param.put("categoryId", catId);
+                Log.e("param",param.toString());
+                return param;
+            }
+        };
 
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
         requestQueue.getCache().clear();
-//        jsonObjReq.setRetryPolicy(new RetryPolicy() {
-//            @Override
-//            public int getCurrentTimeout() {
-//                return 60000;
-//            }
-//
-//            @Override
-//            public int getCurrentRetryCount() {
-//                return 0;
-//            }
-//
-//            @Override
-//            public void retry(VolleyError error) throws VolleyError {
-//
-//            }
-//        });
-//        requestQueue.add(jsonObjReq);
+        jsonObjReq.setRetryPolicy(new RetryPolicy() {
+            @Override
+            public int getCurrentTimeout() {
+                return 60000;
+            }
+
+            @Override
+            public int getCurrentRetryCount() {
+                return 0;
+            }
+
+            @Override
+            public void retry(VolleyError error) throws VolleyError {
+
+            }
+        });
+        requestQueue.add(jsonObjReq);
     }
 
     @Override
@@ -1230,7 +1325,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener  {
 
     public boolean isPermissionGranted() {
         if (Build.VERSION.SDK_INT >= 23) {
-            if (getActivity().checkSelfPermission(Manifest.permission.CALL_PHONE)
+            if (getActivity().checkSelfPermission(android.Manifest.permission.CALL_PHONE)
                     == PackageManager.PERMISSION_GRANTED) {
                 Log.v("TAG", "Permission is granted");
                 return true;
@@ -1280,6 +1375,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener  {
     @Override
     public void onResume() {
         super.onResume();
+//        if(adapter!=null){
+//           adapter.notifyDataSetChanged();
+//        }
 
     }
 
@@ -1290,8 +1388,11 @@ public class HomeFragment extends Fragment implements View.OnClickListener  {
                 if(response.isSuccessful()){
                     if(response.body().isStatus()){
                         if(response.body().getAllSubOfSubCategories()!=null){
+                            //ArrayList<ResponseGetAllSubOfSubCategories.AllSubOfSubCategories> subOfSubCategoriesList = new ArrayList<>();
+                            //Log.e("subCatList",response.body().getAllSubOfSubCategories().toString());
                             GetCategories.allSubOfSubCategoriesArrayList=response.body().getAllSubOfSubCategories();
-                       }
+                            //GetCategories.setAllSubOfSubCategoriesArrayList(subOfSubCategoriesList);
+                        }
                     }else{
 
                     }
@@ -1314,6 +1415,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener  {
     private void showFavourites() {
 
         Dialog dialog=new Dialog(getContext());
+        dialog.setContentView(R.layout.layout_popup_fav);
 
         int width = (int)(getResources().getDisplayMetrics().widthPixels*0.90);
         int height = (int)(getResources().getDisplayMetrics().heightPixels*0.90);
@@ -1321,6 +1423,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener  {
         dialog.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT,height);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
 
+        // dialog.show();
 
         RecyclerView recyclerView = dialog.findViewById(R.id.recyclerCart);
 
@@ -1336,6 +1439,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener  {
                             if (response.body().isStatus()) {
 
                                 dialog.show();
+                                /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                                    nav_view.getForeground().setAlpha(150);
+                                }*/
                                 ArrayList<ItemModel> tempArrayList=response.body().getResult();
                                 ArrayList<ItemModel> itemModelArrayList=new ArrayList<>();
                                 Log.e("tempArrayList",String.valueOf(tempArrayList.size()));
@@ -1371,9 +1477,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener  {
 
                                 }
                                 FavouriteAdapter favouriteAdapter = new FavouriteAdapter(getContext(), itemModelArrayList,recyclerView);
-                                SlideInBottomAnimationAdapter slideInBottomAnimationAdapter = new SlideInBottomAnimationAdapter(favouriteAdapter);
-                                slideInBottomAnimationAdapter.setDuration(1000);
-                                recyclerView.setAdapter(new AlphaInAnimationAdapter(slideInBottomAnimationAdapter));
+
+                                recyclerView.setAdapter(favouriteAdapter);
                             }
                             // dialog.dismiss();
 
@@ -1386,21 +1491,93 @@ public class HomeFragment extends Fragment implements View.OnClickListener  {
                     }
                 }
         );
+        // recyclerView.setAdapter(new FavouriteAdapter(this, map, null,recyclerView));
 
-//        TextView txtViewAll = dialog.findViewById(R.id.txtViewAll);
-//        txtViewAll.setOnClickListener(new View.OnClickListener() {
-//            @RequiresApi(api = Build.VERSION_CODES.M)
-//            @Override
-//            public void onClick(View view) {
-//
-//                new MainDrawerActivity().selectedId=4;
-//                MainDrawerActivity.bottomNavigation.show(4,true);
+        // Button viewAll = dialog.findViewById(R.id.viewAll);
+        TextView txtViewAll = dialog.findViewById(R.id.txtViewAll);
+        txtViewAll.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.M)
+            @Override
+            public void onClick(View view) {
+
+                //bottomNavigation.show(ID_FAVOURITE, true);
+                //loadFragment(new FavouriteFragment());
+                //  drawer.getForeground().setAlpha(0);
+                new MainDrawerActivity().selectedId=4;
+                MainDrawerActivity.bottomNavigation.show(4,true);
 //                loadFragment(new OrderFragment());
-//                dialog.dismiss();
-//
-//            }
-//        });
+                dialog.dismiss();
 
+            }
+        });
+
+
+        /*recyclerView.setAdapter(new BaseAdapter() {
+            @Override
+            public int getCount() {
+                return map.size();
+            }
+
+            @Override
+            public Object getItem(int i) {
+                return map.get(i);
+            }
+
+            @Override
+            public long getItemId(int i) {
+                return 0;
+            }
+
+            @Override
+            public View getView(int i, View view, ViewGroup viewGroup) {
+
+                view = inflater.inflate(R.layout.favourite_layout_item, null);
+
+                view.findViewById(R.id.txt_close).setVisibility(View.GONE);
+                view.findViewById(R.id.quantityLayout).setVisibility(View.GONE);
+
+                HashMap<String, String> item = map.get(i);
+
+                ((TextView) view.findViewById(R.id.currency_indicator)).setText(sessionManagement.getCurrency());
+
+                Picasso.with(MainActivity.this)
+                        .load(ApiBaseURL.IMG_URL + item.get("product_image"))
+                        .into((ImageView)view.findViewById(R.id.prodImage));
+
+                ((TextView) view.findViewById(R.id.txt_pName)).setText(item.get("product_name"));
+
+                double sprice = Double.parseDouble(item.get("price"));
+                String p = String.format("%.2f",sprice);
+
+                ((TextView)view.findViewById(R.id.txt_Pprice1)).setText(p.substring(0, p.length()-3));
+                ((TextView)view.findViewById(R.id.txt_Pprice2)).setText(p.substring(p.length()-3));
+
+                view.setOnClickListener(new View.OnClickListener() {
+                    @SuppressLint("NewApi")
+                    @Override
+                    public void onClick(View view) {
+
+                        fragmentClickListner.loadFavourites();
+                        popupWindow.dismiss();
+                        drawer.getForeground().setAlpha(0);
+                    }
+                });
+
+                return view;
+            }
+        });*/
+
+//        new Handler().postDelayed(new Runnable() {
+//            @SuppressLint("NewApi")
+//            @Override
+//            public void run() {
+//
+//                if (fav.size() > 0) {
+//                    popupWindow.showAtLocation(drawer, Gravity.CENTER, 0, 0);
+//                    drawer.getForeground().setAlpha(150);
+//                }
+//            }
+//        }, 1000);
 
         close.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("NewApi")
@@ -1408,6 +1585,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener  {
             public void onClick(View view) {
 
                 dialog.dismiss();
+                //drawer.getForeground().setAlpha(0);
             }
         });
     }

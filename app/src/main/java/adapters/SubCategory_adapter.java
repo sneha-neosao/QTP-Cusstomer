@@ -35,7 +35,7 @@ public class SubCategory_adapter extends RecyclerView.Adapter<SubCategory_adapte
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView title;
         public ImageView image;
-        LinearLayout linearLayout ;
+        RelativeLayout linearLayout ;
         CardView cardview1;
 
         public MyViewHolder(View view) {
@@ -96,4 +96,3 @@ public class SubCategory_adapter extends RecyclerView.Adapter<SubCategory_adapte
     }
 
 }
-
