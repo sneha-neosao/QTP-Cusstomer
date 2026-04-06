@@ -1,0 +1,484 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context="activities.AddNewAddressActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/img_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_arrow_back_black_24dp"
+                app:tint="@color/black"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginBottom="10dp"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Where's your place located?"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    style="@style/semiboldFont"
+                    />
+
+                <TextView
+                    android:id="@+id/txt_currentLocation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Use current location"
+                    android:textSize="14sp"
+                    android:visibility="gone"
+                    android:padding="7dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:background="@drawable/outlined_square_aqua"
+                    android:textColor="@color/aqua"
+                    />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:visibility="gone"
+                    android:orientation="horizontal">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_weight="2"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="5dp"
+                        android:background="@color/mediumGrey"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/hintColor"
+                        android:text="or enter your address"
+                        android:layout_gravity="center"
+                        android:layout_weight="2"
+                        android:gravity="center"
+                        android:textSize="10sp"
+                        />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_weight="2"
+                        android:layout_marginLeft="5dp"
+                        android:layout_gravity="center"
+                        android:background="@color/mediumGrey"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Address Type"
+                        android:textSize="14sp"
+                        android:textColor="@color/black"
+                        style="@style/semiboldFont"
+                        />
+
+                    <EditText
+                        android:id="@+id/edt_address_type"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:background="@android:color/transparent"
+                        android:hint="Home"
+                        android:drawableRight="@drawable/ic_arrow_drop_down_black_24dp"
+                        android:inputType="textVisiblePassword"
+                        android:textSize="14sp"
+                        android:focusable="false"
+                        android:textColor="@color/black"
+                        />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/lightGrey"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Country"
+                        android:textSize="14sp"
+                        android:textColor="@color/black"
+                        style="@style/semiboldFont"
+                        />
+
+                    <AutoCompleteTextView
+                        android:id="@+id/edt_country"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:background="@android:color/transparent"
+                        android:hint="Select Country"
+                        android:drawableRight="@drawable/ic_arrow_drop_down_black_24dp"
+                        android:inputType="textVisiblePassword"
+                        android:textSize="14sp"
+                        android:textColor="@color/black"
+                        android:clickable="true"
+                        android:text="United Arab Emirates"
+                        />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/lightGrey"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="State / Emirate"
+                        android:textSize="14sp"
+                        android:textColor="@color/black"
+                        style="@style/semiboldFont"
+                        />
+
+                    <AutoCompleteTextView
+                        android:id="@+id/edt_state"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:background="@android:color/transparent"
+                        android:hint="Select Emirate"
+                        android:drawableRight="@drawable/ic_arrow_drop_down_black_24dp"
+                        android:inputType="textVisiblePassword"
+                        android:textSize="14sp"
+                        android:textColor="@color/black"
+                        android:clickable="true"
+                        android:text="Abu Dhabi"
+                        />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/lightGrey"/>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="City / Province"
+                        android:textSize="14sp"
+                        android:textColor="@color/black"
+                        style="@style/semiboldFont"
+                        />
+
+                    <AutoCompleteTextView
+                        android:id="@+id/edt_city"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:background="@android:color/transparent"
+                        android:hint="Select City/Province"
+                        android:drawableRight="@drawable/ic_arrow_drop_down_black_24dp"
+                        android:inputType="textVisiblePassword"
+                        android:textSize="14sp"
+                        android:textColor="@color/black"
+                        android:text="Al Ain"
+                        android:clickable="true"
+                        />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/lightGrey"/>
+
+                </LinearLayout>
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Landmark / Flat / Building No."
+                        android:textSize="14sp"
+                        android:textColor="@color/black"
+                        style="@style/semiboldFont"
+                        />
+
+                    <EditText
+                        android:id="@+id/edt_landmark"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:background="@android:color/transparent"
+                        android:hint="e.g Near Al Jimi Mall, Villa# 02"
+                        android:inputType="textVisiblePassword"
+                        android:textSize="14sp"
+                        android:textColor="@color/black"
+                        />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/lightGrey"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Street "
+                        android:textSize="14sp"
+                        android:textColor="@color/black"
+                        style="@style/semiboldFont"
+                        />
+
+                    <EditText
+                        android:id="@+id/edt_street"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:background="@android:color/transparent"
+                        android:hint="e.g Khalifa Bin Zayed St"
+                        android:inputType="textVisiblePassword"
+                        android:textSize="14sp"
+                        android:textColor="@color/black"
+                        />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/lightGrey"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Area "
+                        android:textSize="14sp"
+                        android:textColor="@color/black"
+                        style="@style/semiboldFont"
+                        />
+
+                    <EditText
+                        android:id="@+id/edt_area"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:background="@android:color/transparent"
+                        android:hint="e.g Khalifa Bin Zayed St"
+                        android:inputType="textVisiblePassword"
+                        android:textSize="14sp"
+                        android:textColor="@color/black"
+                        />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/lightGrey"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Postcode"
+                        android:textSize="14sp"
+                        android:textColor="@color/black"
+                        style="@style/semiboldFont"
+                        />
+
+                    <EditText
+                        android:id="@+id/edt_zipcode"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:background="@android:color/transparent"
+                        android:hint="e.g 21341"
+                        android:inputType="textVisiblePassword"
+                        android:textSize="14sp"
+                        android:textColor="@color/black"
+                        />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/lightGrey"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Address"
+                        android:textSize="14sp"
+                        android:textColor="@color/black"
+                        style="@style/semiboldFont"
+                        />
+
+                    <AutoCompleteTextView
+                        android:id="@+id/edt_address"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:background="@android:color/transparent"
+                        android:hint="e.g 107004 saudi arabia"
+                        android:inputType="textVisiblePassword"
+                        android:textSize="14sp"
+                        android:textColor="@color/black"
+                        />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/lightGrey"/>
+
+                </LinearLayout>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="30dp"
+                    android:background="@color/white"
+                    app:cardBackgroundColor="@color/white"
+                    android:visibility="gone"
+                    app:cardCornerRadius="20dp">
+
+                    <LinearLayout
+                        android:id="@+id/linearLatlang"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="45dp"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="17dp"
+                            android:layout_height="17dp"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="15dp"
+                            android:background="@drawable/location_pin"
+                            android:backgroundTint="@color/colorPrimary" />
+
+                        <TextView
+                            android:singleLine="true"
+                            android:id="@+id/tv_latlang"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:background="@android:color/transparent"
+                            android:fontFamily="@font/montserrat_semibold"
+                            android:gravity="center|left"
+                            android:text="Need exact delivery location ? select pickup location *"
+                            android:paddingLeft="5dp"
+                            android:textColor="@color/black"
+                            android:textColorHint="@color/hintColor"
+                            android:textSize="12sp" />
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+        <Button
+            android:id="@+id/btn_next"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="bottom"
+            android:text="Next"
+            android:textAllCaps="false"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:gravity="center"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/colorPrimary"
+            />
+    </LinearLayout>
+
+
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

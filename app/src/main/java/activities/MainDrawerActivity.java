@@ -252,7 +252,7 @@ public class MainDrawerActivity extends AppCompatActivity implements
         db = new DatabaseHandler(this);
         sessionManagement = new Session_management(MainDrawerActivity.this);
         pref = getSharedPreferences("GOGrocer", Context.MODE_PRIVATE);
-//        pref.registerOnSharedPreferenceChangeListener(this);
+        pref.registerOnSharedPreferenceChangeListener(this);
         dbcart = new DatabaseHandler(this);
 
         tvUserName = (TextView) findViewById(R.id.tv_user_name);

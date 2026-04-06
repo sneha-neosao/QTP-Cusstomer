@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="8dp"
+            android:layout_margin="15dp"
+            app:cardElevation="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+               android:layout_margin="5dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/img_cod"/>
+
+                <CheckedTextView
+                    android:id="@+id/id_cod"
+                    android:layout_width="match_parent"
+                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
+                    android:textSize="14sp"
+                    android:gravity="center_vertical"
+                    android:checkMark="@null"
+                    android:text="Cash On Delivery(COD)"
+                    android:textStyle="bold"
+                    android:drawableRight="?android:attr/listChoiceIndicatorSingle"
+                    android:paddingStart="?android:attr/listPreferredItemPaddingStart"
+                    android:paddingEnd="?android:attr/listPreferredItemPaddingEnd"
+                    android:paddingLeft="?android:attr/listPreferredItemPaddingLeft"
+                    android:paddingRight="?android:attr/listPreferredItemPaddingRight" />
+
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="8dp"
+            android:layout_margin="15dp"
+            app:cardElevation="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/img_ol_payment"/>
+
+                <CheckedTextView
+                    android:id="@+id/id_ol"
+                    android:layout_width="match_parent"
+                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
+                    android:textSize="14sp"
+                    android:gravity="center_vertical"
+                    android:checkMark="@null"
+                    android:text="Online Payment"
+                    android:textStyle="bold"
+                    android:drawableRight="?android:attr/listChoiceIndicatorSingle"
+                    android:paddingStart="?android:attr/listPreferredItemPaddingStart"
+                    android:paddingEnd="?android:attr/listPreferredItemPaddingEnd"
+                    android:paddingLeft="?android:attr/listPreferredItemPaddingLeft"
+                    android:paddingRight="?android:attr/listPreferredItemPaddingRight" />
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cvCreditFaciltiy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="8dp"
+            android:layout_margin="15dp"
+            app:cardElevation="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/img_credit_facility"/>
+
+                <CheckedTextView
+
+                    android:id="@+id/id_credit"
+                    android:layout_width="match_parent"
+                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
+                    android:gravity="center_vertical"
+                    android:text="Credit Facility"
+                    android:textStyle="bold"
+                    android:textSize="14sp"
+                    android:drawableRight="?android:attr/listChoiceIndicatorSingle"
+                    android:paddingStart="?android:attr/listPreferredItemPaddingStart"
+                    android:paddingEnd="?android:attr/listPreferredItemPaddingEnd"
+                    android:paddingLeft="?android:attr/listPreferredItemPaddingLeft"
+                    android:paddingRight="?android:attr/listPreferredItemPaddingRight" />
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cvBringTerminal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="8dp"
+            android:layout_margin="15dp"
+            app:cardElevation="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/img_debit"/>
+
+                <CheckedTextView
+                    android:id="@+id/id_terminal"
+                    android:layout_width="match_parent"
+                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
+                    android:textSize="14sp"
+                    android:gravity="center_vertical"
+                    android:checkMark="@null"
+                    android:text="Bring Terminal"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorPrimary"
+                    android:drawableRight="?android:attr/listChoiceIndicatorSingle"
+                    android:paddingStart="?android:attr/listPreferredItemPaddingStart"
+                    android:paddingEnd="?android:attr/listPreferredItemPaddingEnd"
+                    android:paddingLeft="?android:attr/listPreferredItemPaddingLeft"
+                    android:paddingRight="?android:attr/listPreferredItemPaddingRight" />
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+
+    <com.ncorti.slidetoact.SlideToActView
+        android:id="@+id/btn_payment_slide"
+        android:layout_width="180dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center|bottom"
+        android:elevation="6dp"
+        app:area_margin="5dp"
+        android:visibility="gone"
+        app:slider_icon="@drawable/pay_"
+        app:icon_margin="4dp"
+        app:animation_duration="250"
+        app:outer_color="#324764"
+        app:inner_color="@color/white"
+        app:text="Swipe to confirm"
+        app:text_size="15sp"
+        android:layout_margin="20dp"
+        app:slider_height="30dp"
+        app:slider_locked="false" />
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/cl_payment_slide"
+        android:layout_width="165dp"
+        android:layout_height="30dp"
+        android:layout_margin="10dp"
+        android:layout_gravity="bottom|center"
+        android:visibility="visible"
+        android:background="@drawable/shape_bg_darkbutton">
+
+
+            <ImageView
+                android:layout_width="23dp"
+                android:layout_height="23dp"
+                android:src="@drawable/pay_"
+                app:tint="#324764"
+                android:layout_gravity="start|center"
+                android:layout_marginStart="4dp"
+                android:background="@drawable/shape_bg_darkbutton"
+                android:backgroundTint="@color/white"
+                android:padding="3dp"
+                />
+            <TextView
+                android:id="@+id/tvPayment"
+                android:visibility="visible"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Select Payment"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="13sp"
+                android:gravity="center"
+                android:layout_gravity="center"
+                />
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

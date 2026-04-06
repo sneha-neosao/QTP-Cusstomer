@@ -92,7 +92,7 @@ public class ProfileViewFragment extends Fragment {
             Fragment profileEditNewFragment = new ProfileEditNewFragment();
             FragmentTransaction fragmentManager =getActivity().getSupportFragmentManager().beginTransaction();
             fragmentManager.replace(R.id.nav_supplier_fragment, profileEditNewFragment);
-            //fragmentManager.addToBackStack(null);
+            fragmentManager.addToBackStack(null);
             fragmentManager.commit();
         });
 

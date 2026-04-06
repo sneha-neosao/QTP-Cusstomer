@@ -17,4 +17,5 @@
     <dimen name="triple_and_half_margin">56dp</dimen>
     <dimen name="triple_and_half_margin_1">20dp</dimen>
     <dimen name="text_size_large">18sp</dimen>
+    <dimen name="reward_point_size">14sp</dimen>
 </resources>

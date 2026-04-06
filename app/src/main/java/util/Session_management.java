@@ -22,6 +22,18 @@ import static Config.BaseURL.KEY_PASSWORD;
 import static Config.BaseURL.PAYMENT_PAYPAL;
 import static Config.BaseURL.PAYMENT_RAZORPZY;
 import static Config.BaseURL.SHIPPING_ADDRESS_POSITION;
+import static Config.BaseURL.SHIPPING_Address;
+import static Config.BaseURL.SHIPPING_Address1;
+import static Config.BaseURL.SHIPPING_AddressType;
+import static Config.BaseURL.SHIPPING_CUSTOMER_Email;
+import static Config.BaseURL.SHIPPING_CUSTOMER_Id;
+import static Config.BaseURL.SHIPPING_CUSTOMER_Mobile;
+import static Config.BaseURL.SHIPPING_City;
+import static Config.BaseURL.SHIPPING_Country;
+import static Config.BaseURL.SHIPPING_Latitude;
+import static Config.BaseURL.SHIPPING_Longitude;
+import static Config.BaseURL.SHIPPING_Province;
+import static Config.BaseURL.SHIPPING_State;
 import static Config.BaseURL.StreetArea;
 import static Config.BaseURL.USER_CITY;
 import static Config.BaseURL.USER_COUNTRY;
@@ -543,53 +555,53 @@ public class Session_management {
         pref.setBoolean("categoryPopUp1", cartPopUp);
     }
 
-//    public void saveShippingAddress(
-//            String shippingCustomerId,
-//            String shippingAddress,
-//            String shippingAddress1,
-//            String shippingCity,
-//            String shippingState,
-//            String shippingCountry,
-//            String shippingLatitude,
-//            String shippingLongitude,
-//            String shippingCustomerMobile,
-//            String shippingCustomerEmail,
-//            String shippingProvince,
-//            String shippingAddressType
-//    )
-//    {
-//        pref.setString(SHIPPING_CUSTOMER_Id,shippingCustomerId);
-//        pref.setString(SHIPPING_Address,shippingAddress);
-//        pref.setString(SHIPPING_Address1,shippingAddress1);
-//        pref.setString(SHIPPING_City,shippingCity);
-//        pref.setString(SHIPPING_State,shippingState);
-//        pref.setString(SHIPPING_Country,shippingCountry);
-//        pref.setString(SHIPPING_Latitude,shippingLatitude);
-//        pref.setString(SHIPPING_Longitude,shippingLongitude);
-//        pref.setString(SHIPPING_CUSTOMER_Mobile,shippingCustomerMobile);
-//        pref.setString(SHIPPING_CUSTOMER_Email,shippingCustomerEmail);
-//        pref.setString(SHIPPING_Province,shippingProvince);
-//        pref.setString(SHIPPING_AddressType,shippingAddressType);
-//        pref.save();
-//
-//    }
-//
-//    public HashMap<String, String> getShippingAddress() {
-//        HashMap<String, String> shipping = new HashMap<String, String>();
-//        shipping.put(SHIPPING_CUSTOMER_Id,pref.getString(SHIPPING_CUSTOMER_Id,""));
-//        shipping.put(SHIPPING_Address,pref.getString(SHIPPING_Address,""));
-//        shipping.put(SHIPPING_Address1,pref.getString(SHIPPING_Address1,""));
-//        shipping.put(SHIPPING_City,pref.getString(SHIPPING_City,""));
-//        shipping.put(SHIPPING_State,pref.getString(SHIPPING_State,""));
-//        shipping.put(SHIPPING_Country,pref.getString(SHIPPING_Country,""));
-//        shipping.put(SHIPPING_Latitude,pref.getString(SHIPPING_Latitude,""));
-//        shipping.put(SHIPPING_Longitude,pref.getString(SHIPPING_Longitude,""));
-//        shipping.put(SHIPPING_CUSTOMER_Mobile,pref.getString(SHIPPING_CUSTOMER_Mobile,""));
-//        shipping.put(SHIPPING_CUSTOMER_Email,pref.getString(SHIPPING_CUSTOMER_Email,""));
-//        shipping.put(SHIPPING_Province,pref.getString(SHIPPING_Province,""));
-//        shipping.put(SHIPPING_AddressType,pref.getString(SHIPPING_AddressType,""));
-//        return shipping;
-//    }
+    public void saveShippingAddress(
+            String shippingCustomerId,
+            String shippingAddress,
+            String shippingAddress1,
+            String shippingCity,
+            String shippingState,
+            String shippingCountry,
+            String shippingLatitude,
+            String shippingLongitude,
+            String shippingCustomerMobile,
+            String shippingCustomerEmail,
+            String shippingProvince,
+            String shippingAddressType
+    )
+    {
+        pref.setString(SHIPPING_CUSTOMER_Id,shippingCustomerId);
+        pref.setString(SHIPPING_Address,shippingAddress);
+        pref.setString(SHIPPING_Address1,shippingAddress1);
+        pref.setString(SHIPPING_City,shippingCity);
+        pref.setString(SHIPPING_State,shippingState);
+        pref.setString(SHIPPING_Country,shippingCountry);
+        pref.setString(SHIPPING_Latitude,shippingLatitude);
+        pref.setString(SHIPPING_Longitude,shippingLongitude);
+        pref.setString(SHIPPING_CUSTOMER_Mobile,shippingCustomerMobile);
+        pref.setString(SHIPPING_CUSTOMER_Email,shippingCustomerEmail);
+        pref.setString(SHIPPING_Province,shippingProvince);
+        pref.setString(SHIPPING_AddressType,shippingAddressType);
+        pref.save();
+
+    }
+
+    public HashMap<String, String> getShippingAddress() {
+        HashMap<String, String> shipping = new HashMap<String, String>();
+        shipping.put(SHIPPING_CUSTOMER_Id,pref.getString(SHIPPING_CUSTOMER_Id,""));
+        shipping.put(SHIPPING_Address,pref.getString(SHIPPING_Address,""));
+        shipping.put(SHIPPING_Address1,pref.getString(SHIPPING_Address1,""));
+        shipping.put(SHIPPING_City,pref.getString(SHIPPING_City,""));
+        shipping.put(SHIPPING_State,pref.getString(SHIPPING_State,""));
+        shipping.put(SHIPPING_Country,pref.getString(SHIPPING_Country,""));
+        shipping.put(SHIPPING_Latitude,pref.getString(SHIPPING_Latitude,""));
+        shipping.put(SHIPPING_Longitude,pref.getString(SHIPPING_Longitude,""));
+        shipping.put(SHIPPING_CUSTOMER_Mobile,pref.getString(SHIPPING_CUSTOMER_Mobile,""));
+        shipping.put(SHIPPING_CUSTOMER_Email,pref.getString(SHIPPING_CUSTOMER_Email,""));
+        shipping.put(SHIPPING_Province,pref.getString(SHIPPING_Province,""));
+        shipping.put(SHIPPING_AddressType,pref.getString(SHIPPING_AddressType,""));
+        return shipping;
+    }
 
 
 }

@@ -61,6 +61,7 @@
  <color name="grey_60">#6B000000</color>
 
  <color name="transparent_color">#00000000</color>
+ <color name="transparent">#00000000</color>
  <color name="emoji_default_color">#272525</color>
 
  <color name="rvshrget_bg">#E9E3E3</color>

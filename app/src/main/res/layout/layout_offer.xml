@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="8dp"
+            app:cardCornerRadius="4dp"
+            android:layout_margin="10dp"
+            android:id="@+id/cvCouponLayout"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/llApplyCoupon"
+                android:visibility="visible"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:src="@drawable/apply_coupon_new"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Apply Coupon"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:layout_margin="10dp"
+                    />
+                <ImageView
+                    android:id="@+id/img_applyCoupon_arrow"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_right_arrow"
+                    android:tint="@color/darkGrey"
+                    />
+
+                <TextView
+                    android:id="@+id/txt_apply"
+                    android:layout_width="60dp"
+                    android:layout_height="18dp"
+                    android:text="Apply"
+                    android:textColor="@color/white"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:textSize="8sp"
+                    android:visibility="gone"
+                    android:gravity="center"
+                    android:background="@drawable/apply_button_bg"
+                    app:fontFamily="@font/montserrat_medium"
+                    android:layout_margin="10dp"
+                    android:layout_gravity="center"
+                    />
+
+            </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llVoucherApplied"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:visibility="gone"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="42dp"
+                        android:layout_height="42dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_marginLeft="15dp"
+                        android:src="@drawable/apply_coupon_new"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Voucher applied"
+                        android:layout_weight="1"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:layout_marginStart="10dp"
+                        />
+
+                        <TextView
+                            android:id="@+id/tvCouponDescription"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Coupon applied"
+                            android:layout_weight="1"
+                            android:textColor="@color/hintColor"
+                            android:fontFamily="@font/montserrat_regular"
+                            android:textSize="14sp"
+                            android:layout_marginStart="10dp"
+                            />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_apply_coupon"
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:background="@drawable/outlined_square_gray"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.textfield.TextInputLayout
+
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:padding="0dp"
+                        android:layout_height="wrap_content"
+                        >
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edt_mobile_login"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint=""
+                            android:padding="2dp"
+                            android:textSize="14sp"
+                            android:inputType="textVisiblePassword"
+                            android:background="@android:color/transparent"
+                            android:singleLine="true"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/llVoucherLimit"
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="42dp"
+                        android:layout_height="42dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_marginLeft="15dp"
+                        android:src="@drawable/apply_coupon_new"
+                        />
+
+                    <TextView
+                        android:id="@+id/tvVoucherLimit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Apply Coupon"
+                        android:layout_weight="1"
+                        android:textColor="@color/red"
+                        android:textSize="16sp"
+                        android:layout_margin="10dp"
+                        />
+                    <ImageView
+                        android:id="@+id/ivClose"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_baseline_close_24"
+                        android:tint="@color/darkGrey"
+                        />
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+       <!-- <include layout="@layout/item_layout_offers_new"/>
+        <include layout="@layout/item_layout_offers_new"/>-->
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:nestedScrollingEnabled="true"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:id="@+id/offers_rv"/>
+
+    </LinearLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_next_offer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:elevation="8dp"
+        android:text="Next"
+        android:textColor="@color/white"
+        android:textAllCaps="false"
+        android:layout_alignParentBottom="true"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        />
+
+    <com.ncorti.slidetoact.SlideToActView
+        android:id="@+id/btn_next_offer_slide1"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:elevation="6dp"
+        app:area_margin="5dp"
+        android:visibility="gone"
+        app:slider_icon="@drawable/shopping_bag"
+        app:icon_margin="4dp"
+        app:animation_duration="250"
+        app:outer_color="#324764"
+        app:inner_color="@color/white"
+        app:text="Next"
+        app:text_size="18sp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="10dp"
+        app:slider_height="40dp"
+        app:slider_locked="false" />
+
+    </LinearLayout>
+
+</RelativeLayout>

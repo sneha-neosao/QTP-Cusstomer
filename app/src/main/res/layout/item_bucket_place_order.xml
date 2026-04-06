@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    >
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="7dp"
+        android:layout_margin="7dp"
+        android:id="@+id/cvItem"
+        app:cardBackgroundColor="@color/white">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="5dp"
+            android:layout_weight="2"
+            android:weightSum="2">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center|top"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/prodImage"
+                    android:layout_width="70dp"
+                    android:layout_height="65dp"
+                    android:layout_gravity="center"
+                    android:elevation="0dp"
+                    android:src="@drawable/noimageavailable"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="3dp"
+                android:layout_marginLeft="22dp"
+                android:layout_marginRight="3dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/txt_pName"
+                        android:layout_weight="1"
+                        style="@style/boldFont"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:gravity="center|left"
+                        android:text="Product Name"
+                        android:textColor="#000000"
+                        app:fontFamily="@font/montserrat_semi_bold"
+                        android:textSize="13sp"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/txt_pInfo"
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_marginTop="2dp"
+                    android:maxLines="3"
+                    app:fontFamily="@font/montserrat_regular"
+                    android:gravity="center|left"
+                    android:textColor="@color/hintColor"
+                    android:textSize="13sp"/>
+
+                <TextView
+                    android:id="@+id/txt_unitvalue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_toRightOf="@+id/txt_unit"
+                    android:gravity="center|left"
+                    android:paddingLeft="1dp"
+                    android:text="kg"
+                    android:textColor="#96000000"
+                    app:fontFamily="@font/montserrat_medium"
+                    android:textSize="13sp"
+                    android:layout_marginTop="10dp"
+                    />
+
+                <RelativeLayout
+                    android:layout_width="100dp"
+                    android:layout_height="30dp"
+                    android:paddingLeft="10dp"
+                    android:visibility="gone"
+                    android:paddingRight="10dp"
+                    android:layout_gravity="center|left"
+                    android:layout_marginTop="5dp">
+
+                    <TextView
+                        android:id="@+id/txt_unit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:paddingLeft="1dp"
+                        android:gravity="center|left"
+                        android:textColor="@color/darkGrey"
+                        android:textSize="14sp"/>
+                    <!--                <ImageView-->
+                    <!--                    android:id="@+id/dropdown"-->
+                    <!--                    android:layout_width="10dp"-->
+                    <!--                    android:layout_height="10dp"-->
+                    <!--                    android:layout_marginTop="8dp"-->
+                    <!--                    android:background="@drawable/ic_down_arrow"-->
+                    <!--                    android:layout_alignParentRight="true"/>-->
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="2dp"
+                    android:layout_weight="2"
+                    android:weightSum="2">
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="bottom">
+                            <TextView
+                                android:id="@+id/currency_indicator"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:paddingRight="2dp"
+                                android:text="@string/currency"
+                                app:fontFamily="@font/montserrat_bold"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="13sp"/>
+
+                            <TextView
+                                android:id="@+id/txt_Pprice"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                style="@style/boldFont"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="14sp"/>
+
+                            <TextView
+                                android:id="@+id/txt_Pprice1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=""
+                                style="@style/boldFont"
+                                android:textColor="@color/colorPrimary"
+                                app:fontFamily="@font/montserrat_bold"
+                                android:textSize="13sp" />
+
+                            <TextView
+                                android:id="@+id/txt_Pprice2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=""
+                                android:textColor="@color/colorPrimary"
+                                app:fontFamily="@font/montserrat_bold"
+                                android:textSize="8sp" />
+
+                            <TextView
+                                android:visibility="gone"
+                                android:id="@+id/txt_Mrp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_gravity="center"
+                                android:gravity="center|left"
+                                android:text="Rs. 45"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="11sp"/>
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>
+

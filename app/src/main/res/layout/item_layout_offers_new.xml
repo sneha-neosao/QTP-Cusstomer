@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="3dp"
+    app:cardCornerRadius="5dp"
+    app:cardElevation="2dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/imageOffers"
+                android:layout_width="100dp"
+                android:background="@color/white"
+                android:layout_gravity="center"
+                android:layout_height="100dp"
+                android:scaleType="fitCenter" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:orientation="vertical"
+              >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/titleOffer"
+                        android:layout_weight="1"
+                        android:textColor="@color/colorPrimary"
+                        style="@style/boldFont"
+                        android:layout_marginTop="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Offer Title"
+                        android:textStyle="bold" />
+
+                    <RelativeLayout
+                        android:id="@+id/rl_checked"
+                        android:visibility="gone"
+                        android:layout_weight="2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/checked"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginRight="16dp"
+                            />
+                    </RelativeLayout>
+
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/descOffer1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="descOffer1"
+                    style="@style/boldFont"
+                    android:layout_marginTop="10dp"
+                    android:drawableStart="@drawable/offer_name"
+                    android:drawablePadding="8dp"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/smallTxt" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="5dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/dash_bg"/>
+
+                <TextView
+                    android:id="@+id/descOffer2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:drawablePadding="5dp"
+                    style="@style/boldFont"
+                    android:textColor="@color/colorPrimary"
+                    android:drawableStart="@drawable/offer_1"
+                    android:textSize="@dimen/smallTxt" />
+
+                <TextView
+                    android:id="@+id/amount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/hintColor"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="5dp"
+                    android:textSize="@dimen/smallTxt" />
+
+                <TextView
+                    android:id="@+id/minAmount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/smallTxt"
+                    android:textColor="@color/mediumGrey"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="5dp"
+                    android:visibility="gone" />
+
+
+
+                <RelativeLayout
+                    android:id="@+id/rl"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/showDetails"
+                        android:visibility="gone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="5dp"
+                        android:paddingLeft="25dp"
+                        android:text="Show Details"
+                        android:textColor="#283593"
+                        android:textSize="14sp" />
+                    <TextView
+                        android:id="@+id/hideDetails"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:paddingLeft="25dp"
+                        android:visibility="gone"
+                        android:text="Hide Details"
+                        android:textColor="#283593"
+                        android:textSize="14sp" />
+
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:src="@drawable/ic_lock"
+                        android:visibility="gone"
+                        app:tint="@color/colorPrimary"
+                        android:id="@+id/lock"/>
+
+                    <TextView
+                        android:id="@+id/proceed"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:background="@color/aqua"
+                        android:text="Proceed"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="8dp"
+                        android:textSize="12sp"
+                        android:layout_marginTop="10dp"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white" />
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <TableLayout
+            android:id="@+id/detailsTable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/couponLayout"
+            android:layout_margin="10dp"
+            android:background="@drawable/coupentext"
+            android:backgroundTint="@color/color_home_background"
+            android:padding="10dp"
+            android:stretchColumns="0"
+            android:visibility="gone">
+
+            <TableRow>
+
+                <TextView
+                    android:text="Sub Total"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/smallTxt" />
+
+                <TextView
+                    android:text=""
+                    android:textSize="@dimen/smallTxt" />
+
+                <TextView
+                    android:id="@+id/subTotalAmount"
+                    android:gravity="right"
+                    android:text="AED 120"
+                    android:textSize="@dimen/smallTxt" />
+
+            </TableRow>
+
+            <TableRow android:id="@+id/rowCoupon">
+
+                <TextView
+                    android:id="@+id/couponPer"
+                    android:text="Coupon 10%"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/smallTxt" />
+
+                <TextView
+                    android:text="-"
+                    android:textColor="@android:color/holo_red_dark"
+                    android:textSize="@dimen/smallTxt" />
+
+                <TextView
+                    android:id="@+id/couponApplied"
+                    android:gravity="right"
+                    android:text="AED 120"
+                    android:textSize="@dimen/smallTxt" />
+
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:text="Total"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/smallTxt" />
+
+                <TextView android:text="" />
+
+                <TextView
+                    android:id="@+id/total"
+                    android:gravity="right"
+                    android:text="AED 120"
+                    android:textSize="@dimen/smallTxt" />
+
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/vatPercent"
+                    android:text="VAT 5%"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/smallTxt" />
+
+                <TextView
+                    android:text="+"
+                    android:textSize="@dimen/smallTxt" />
+
+                <TextView
+                    android:id="@+id/vatPercentAmount"
+                    android:gravity="right"
+                    android:text="AED 120"
+                    android:textSize="@dimen/smallTxt" />
+
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:text="Shipping Charges"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/smallTxt" />
+
+                <TextView
+                    android:text="+"
+                    android:textSize="@dimen/smallTxt" />
+
+                <TextView
+                    android:id="@+id/shippingCharges"
+                    android:gravity="right"
+                    android:text="AED 120"
+                    android:textSize="@dimen/smallTxt" />
+
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:text="Grand Total"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/smallTxt" />
+
+                <TextView android:text="" />
+
+                <TextView
+                    android:id="@+id/grandTotalAmount"
+                    android:gravity="right"
+                    android:text="AED 120"
+                    android:textSize="@dimen/smallTxt" />
+
+            </TableRow>
+
+        </TableLayout>
+
+
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

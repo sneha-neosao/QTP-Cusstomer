@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/coupentext"
+        android:backgroundTint="@color/color_home_background"
+        android:padding="10dp"
+        android:stretchColumns="0">
+
+        <TableRow>
+
+            <TextView
+                android:text="Sub Total"
+                android:textColor="@android:color/black" />
+
+            <TextView android:text="" />
+
+            <TextView
+                android:id="@+id/subTotalAmountf"
+                android:gravity="right"
+                android:text="AED 120" />
+
+        </TableRow>
+
+        <TableRow android:id="@+id/rowCouponf">
+
+            <TextView
+                android:id="@+id/couponPerf"
+                android:text="Coupon 10%"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:text="-"
+                android:textColor="@android:color/holo_red_dark" />
+
+            <TextView
+                android:id="@+id/couponAppliedf"
+                android:gravity="right"
+                android:text="AED 120" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/totalRowf">
+
+            <TextView
+                android:text="Total"
+                android:textColor="@android:color/black" />
+
+            <TextView android:text="" />
+
+            <TextView
+                android:id="@+id/totalf"
+                android:gravity="right"
+                android:text="AED 120" />
+
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/vatPercentf"
+                android:text="VAT 5%"
+                android:textColor="@android:color/black" />
+
+            <TextView android:text="+" />
+
+            <TextView
+                android:id="@+id/vatPercentAmountf"
+                android:gravity="right"
+                android:text="AED 120" />
+
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:text="Shipping Charges"
+                android:textColor="@android:color/black" />
+
+            <TextView android:text="+" />
+
+            <TextView
+                android:id="@+id/shippingChargesf"
+                android:gravity="right"
+                android:text="AED 120" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/grandTotalRowf">
+
+            <TextView
+                android:text="Grand Total"
+                android:textColor="@android:color/black" />
+
+            <TextView android:text="" />
+
+            <TextView
+                android:id="@+id/grandTotalAmountf"
+                android:gravity="right"
+                android:text="AED 120" />
+
+        </TableRow>
+
+    </TableLayout>
+

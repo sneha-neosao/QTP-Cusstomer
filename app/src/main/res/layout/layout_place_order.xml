@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+   <ScrollView
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       >
+
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:layout_margin="5dp"
+           android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txtTotalItems"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    app:fontFamily="@font/montserrat_medium"
+                    android:textColor="#324763"
+                    android:layout_marginLeft="22dp"
+                    android:text="Basket Items(2)"
+                    />
+
+           <androidx.recyclerview.widget.RecyclerView
+               android:id="@+id/recycler_itemsList"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_margin="5dp" />
+
+           <LinearLayout
+               android:visibility="gone"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_margin="10dp"
+               android:orientation="vertical">
+
+               <include layout="@layout/item_bucket_place_order"/>
+               <include layout="@layout/item_bucket_place_order"/>
+
+
+           </LinearLayout>
+
+           <com.google.android.material.card.MaterialCardView
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               app:cardCornerRadius="5dp"
+               android:layout_margin="10dp"
+               app:cardElevation="8dp">
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:orientation="vertical"
+               android:layout_marginTop="17dp"
+               android:layout_marginBottom="24dp"
+               >
+               <LinearLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_marginStart="18dp"
+                   android:layout_marginEnd="20dp"
+                   android:orientation="vertical">
+
+                   <LinearLayout
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:orientation="horizontal">
+
+                       <TextView
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:layout_weight="1"
+                           android:text="Sub-total"
+                           android:textColor="#9D9EA3"
+                           android:textSize="16sp"
+                           app:fontFamily="@font/montserrat_medium"
+                           />
+
+                       <TextView
+                           android:id="@+id/txt_order_subtotal"
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:layout_weight="1"
+                           android:text="123"
+                           android:layout_gravity="end"
+                           android:gravity="end"
+                           android:textColor="@color/black"
+                           android:textSize="14sp"
+                           app:fontFamily="@font/montserrat_medium"
+                           />
+
+                   </LinearLayout>
+
+                   <!--Coupon-->
+                   <LinearLayout
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:orientation="horizontal"
+                       android:layout_marginTop="17dp"
+                       android:id="@+id/llCoupon">
+
+                       <TextView
+                           android:id="@+id/txt_order_coupon_percentage"
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:layout_weight="1"
+                           android:text="Coupon"
+                           android:textColor="#9D9EA3"
+                           android:textSize="16sp"
+                           app:fontFamily="@font/montserrat_medium"
+                           />
+
+                       <TextView
+                           android:id="@+id/txt_order_coupon"
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:layout_weight="1"
+                           android:text="123"
+                           app:fontFamily="@font/montserrat_medium"
+                           android:layout_gravity="end"
+                           android:gravity="end"
+                           android:textColor="@color/black"
+                           android:textSize="14sp"
+                           />
+
+                   </LinearLayout>
+
+                   <!--Total-->
+                   <LinearLayout
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:orientation="horizontal"
+                       android:layout_marginTop="17dp"
+                       android:id="@+id/llOrderTotal">
+
+                       <TextView
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:layout_weight="1"
+                           android:text="Total"
+                           android:textColor="#9D9EA3"
+                           android:textSize="14sp"
+                           app:fontFamily="@font/montserrat_medium"
+                           />
+
+                       <TextView
+                           android:id="@+id/txt_order_total"
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:layout_weight="1"
+                           android:text="123"
+                           android:layout_gravity="end"
+                           android:gravity="end"
+                           android:textColor="@color/black"
+                           android:textSize="16sp"
+                           app:fontFamily="@font/montserrat_medium"
+                           />
+
+                   </LinearLayout>
+
+                   <LinearLayout
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:layout_marginTop="17dp"
+                       android:orientation="horizontal">
+
+                       <TextView
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:layout_weight="1"
+                           android:text="Shipping"
+                           android:textColor="#9D9EA3"
+                           android:textSize="16sp"
+                           app:fontFamily="@font/montserrat_medium"
+                           />
+
+                       <TextView
+                           android:id="@+id/txt_order_shipping"
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:layout_weight="1"
+                           android:text="free"
+                           android:layout_gravity="end"
+                           android:gravity="end"
+                           app:fontFamily="@font/montserrat_medium"
+                           android:textColor="@color/black"
+                           android:textSize="14sp"
+                           />
+
+                   </LinearLayout>
+
+                   <LinearLayout
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:layout_marginTop="17dp"
+                       android:orientation="horizontal">
+
+                       <TextView
+                           android:id="@+id/txt_sales_tax_percentage"
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:layout_weight="1"
+                           android:text="Sale tax"
+                           android:textColor="#9D9EA3"
+                           android:textSize="16sp"
+                           app:fontFamily="@font/montserrat_medium"
+                           />
+
+                       <TextView
+                           android:id="@+id/txt_vatRate"
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:layout_weight="1"
+                           android:text="7.2"
+                           android:layout_gravity="end"
+                           android:gravity="end"
+                           app:fontFamily="@font/montserrat_medium"
+                           android:textColor="@color/black"
+                           android:textSize="14sp"
+                           />
+
+                   </LinearLayout>
+
+               </LinearLayout>
+
+                   <View android:layout_width="match_parent"
+                       android:layout_height="0.8dp"
+                       android:background="@color/grey"
+                       android:layout_marginTop="17dp"
+                       />
+
+                   <LinearLayout
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:layout_marginTop="18dp"
+                       android:layout_marginStart="18dp"
+                       android:layout_marginEnd="20dp"
+                       android:orientation="horizontal">
+
+                       <TextView
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:layout_weight="1"
+                           android:text="Total to Pay"
+                           android:textColor="@color/black"
+                           android:textSize="18sp"
+                           app:fontFamily="@font/montserrat_semi_bold"
+                           />
+
+                       <TextView
+                           android:id="@+id/txt_grand_total"
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:layout_weight="1"
+                           android:text="7782"
+                           android:layout_gravity="end"
+                           android:gravity="end"
+                           android:textStyle="bold"
+                           android:textColor="@color/aqua"
+                           android:textSize="16sp"
+                           app:fontFamily="@font/montserrat_semi_bold"
+                           />
+
+                   </LinearLayout>
+
+
+
+
+           </LinearLayout>
+
+           </com.google.android.material.card.MaterialCardView>
+
+       <com.google.android.material.card.MaterialCardView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           app:cardCornerRadius="4dp"
+           android:layout_margin="10dp"
+           app:cardElevation="8dp">
+
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="vertical">
+
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_weight="1"
+               android:text="Shipping Address"
+               android:textColor="#272422"
+               android:layout_marginStart="14dp"
+               android:layout_marginTop="17dp"
+               android:layout_marginBottom="17dp"
+               android:textSize="14sp"
+               app:fontFamily="@font/montserrat_medium"
+               />
+
+           <View android:layout_width="match_parent"
+               android:layout_height="0.8dp"
+               android:background="@color/grey"
+               />
+
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginStart="15dp"
+               android:layout_marginTop="17dp"
+               android:layout_marginBottom="16dp"
+               android:orientation="vertical">
+           <TextView
+               android:id="@+id/txt_custName"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:text="name"
+               android:textColor="#272422"
+               app:fontFamily="@font/montserrat_medium"
+               android:textSize="12sp"
+               />
+
+           <TextView
+               android:id="@+id/txt_order_address"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginTop="10dp"
+               android:text="address"
+               android:textColor="#272422"
+               app:fontFamily="@font/montserrat_medium"
+               android:textSize="12sp"
+               />
+
+           <TextView
+               android:id="@+id/txt_cust_mobile"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginTop="10dp"
+               android:text="contact"
+               android:textColor="#272422"
+               app:fontFamily="@font/montserrat_medium"
+               android:textSize="12sp"
+               />
+           </LinearLayout>
+
+       </LinearLayout>
+
+       </com.google.android.material.card.MaterialCardView>
+
+           <com.google.android.material.card.MaterialCardView
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               app:cardCornerRadius="8dp"
+               android:layout_margin="10dp"
+               app:cardElevation="8dp">
+
+               <LinearLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_margin="5dp"
+                   android:orientation="horizontal">
+
+                   <ImageView
+                       android:layout_width="22dp"
+                       android:layout_height="22dp"
+                       android:layout_marginLeft="10dp"
+                       android:layout_gravity="center"
+                       android:src="@drawable/img_cod"/>
+
+                   <CheckedTextView
+                       android:id="@+id/txt_selected_payment"
+                       android:layout_width="match_parent"
+                       android:layout_height="?android:attr/listPreferredItemHeightSmall"
+                       app:fontFamily="@font/montserrat_semi_bold"
+                       android:textSize="16sp"
+                       android:gravity="center_vertical"
+                       android:checked="true"
+                       android:text="Cash On Delivery(COD)"
+                       android:textStyle="bold"
+                       android:drawableRight="?android:attr/listChoiceIndicatorSingle"
+                       android:paddingStart="?android:attr/listPreferredItemPaddingStart"
+                       android:paddingEnd="?android:attr/listPreferredItemPaddingEnd"
+                       android:paddingLeft="?android:attr/listPreferredItemPaddingLeft"
+                       android:paddingRight="?android:attr/listPreferredItemPaddingRight" />
+
+
+               </LinearLayout>
+
+           </com.google.android.material.card.MaterialCardView>
+
+
+
+
+       </LinearLayout>
+
+   </ScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
