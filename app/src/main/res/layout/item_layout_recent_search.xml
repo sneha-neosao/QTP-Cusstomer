@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:id="@+id/ll_nav_title"
+        android:visibility="visible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="7dp"
+        android:background="@drawable/solid_bg_gray"
+        android:padding="8dp"
+        >
+
+        <TextView
+            android:id="@+id/txt_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pizza"
+            android:drawablePadding="10dp"
+            android:background="@android:color/transparent"
+            android:textColor="#324763"
+            android:drawableLeft="@drawable/ic_icon_feather_search__2"
+            android:textSize="10sp"
+            app:fontFamily="@font/montserrat_medium"
+            />
+
+
+
+        <ImageView
+            android:layout_width="13dp"
+            android:layout_height="13dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginStart="5dp"
+            android:id="@+id/close1"
+            android:visibility="gone"
+            android:layout_gravity="center"
+            app:tint="@color/black"
+            android:src="@drawable/ic_baseline_close_24"/>
+
+    </LinearLayout>
+
+    <com.google.android.material.card.MaterialCardView
+        android:visibility="visible"
+        android:id="@+id/cvDeleteRecentSearch"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_gravity="end"
+        android:layout_marginStart="5dp"
+        android:elevation="8dp"
+        app:cardCornerRadius="15dp">
+
+        <ImageView
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:id="@+id/close"
+            android:layout_margin="5dp"
+            android:layout_gravity="center"
+            app:tint="@color/black"
+            android:src="@drawable/ic_baseline_close_24"/>
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

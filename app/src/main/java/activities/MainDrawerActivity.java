@@ -67,6 +67,8 @@ import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
 import com.grocery.QTPmart.R;
 import com.qamar.curvedbottomnaviagtion.CurvedBottomNavigation;
+import com.squareup.picasso.MemoryPolicy;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -74,7 +76,14 @@ import org.json.JSONObject;
 
 import Config.ApiBaseURL;
 import activities.story.StoryView;
+import adapters.BannerAdapter;
+import adapters.BannerAdapter1;
+import fragments.NewNotificationFragment;
+import fragments.NewSearchFragment;
+import fragments.ProfileViewFragment;
 import util.CustomVolleyJsonRequest;
+import util.DatabaseHandler;
+import util.FetchAddressTask;
 import util.FragmentClickListner;
 
 import java.text.DecimalFormat;
@@ -92,13 +101,14 @@ import network.ApiInterface;
 import fragments.DashboardFragment;
 import util.NetworkConnection;
 import util.Session_management;
+import util.WSCallerVersionListener;
 import xute.storyview.StoryModel;
 
 public class MainDrawerActivity extends AppCompatActivity implements
         GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener,
-        LocationListener/*, *//*FetchAddressTask.OnTaskCompleted,
+        LocationListener, FetchAddressTask.OnTaskCompleted,
         SharedPreferences.OnSharedPreferenceChangeListener,View.OnClickListener,
-        WSCallerVersionListener */{
+        WSCallerVersionListener {
     private static final String TAG = MainDrawerActivity.class.getName();
     private static final int REQUEST_LOCATION_PERMISSION = 100;
     private static final long MIN_DISTANCE_CHANGE_FOR_UPDATES = 0;
@@ -123,12 +133,12 @@ public class MainDrawerActivity extends AppCompatActivity implements
     private LocationManager locationManager;
     private boolean isGPSEnabled = false;
     private boolean isNetworkEnabled = false;
-//    private DatabaseHandler dbcart;
+    private DatabaseHandler dbcart;
     private Session_management sessionManagement;
     private TextView addres;
     String returnTo = "";
     String id;
-//    private DatabaseHandler db;
+    private DatabaseHandler db;
 
     public static LinearLayout ll_nav_title;
     public static ImageView imageView_admin;
@@ -169,7 +179,7 @@ public class MainDrawerActivity extends AppCompatActivity implements
     RecyclerView recyclerImages;
     ArrayList<HashMap<String, String>> listarray;
     ArrayList<String> imageString = new ArrayList<>();
-//    private BannerAdapter1 bannerAdapter;
+    private BannerAdapter1 bannerAdapter;
     LinearLayoutManager linearLayoutManager;
     final int time = 3000;
 
@@ -239,11 +249,11 @@ public class MainDrawerActivity extends AppCompatActivity implements
         tv_settings_drawer = findViewById(R.id.tv_settings_drawer);
         // tv_toolbar_title = (TextView) findViewById(R.id.tv_toolbar_title);
 
-//        db = new DatabaseHandler(this);
+        db = new DatabaseHandler(this);
         sessionManagement = new Session_management(MainDrawerActivity.this);
         pref = getSharedPreferences("GOGrocer", Context.MODE_PRIVATE);
 //        pref.registerOnSharedPreferenceChangeListener(this);
-//        dbcart = new DatabaseHandler(this);
+        dbcart = new DatabaseHandler(this);
 
         tvUserName = (TextView) findViewById(R.id.tv_user_name);
         tvUserContact = (TextView) findViewById(R.id.tv_user_contact);
@@ -253,20 +263,20 @@ public class MainDrawerActivity extends AppCompatActivity implements
         img_logo = findViewById(R.id.img_logo);
         reelCount = findViewById(R.id.reelCount);
 
-        /*listarray = new ArrayList<>();
-        bannerAdapter = new BannerAdapter(this, imageString,listarray);
-        linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);*/
+        listarray = new ArrayList<>();
+//        bannerAdapter = new BannerAdapter(this, imageString,listarray);
+        linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
 
-        // dbcart.clearCart();
+         dbcart.clearCart();
 
         /*Load Profile Image*/
         String getId = sessionManagement.getUserDetails().get(BaseURL.KEY_ID);
-//        updateProfileImage(getId, imageView_admin);
-        /*Picasso.get()
+        updateProfileImage(getId, imageView_admin);
+        Picasso.get()
                 .load(ApiBaseURL.IMG_URL_NEW+"profile_" +getId+ ".png")
                 .placeholder(R.drawable.toy_face)
                 .memoryPolicy(MemoryPolicy.NO_STORE, MemoryPolicy.NO_CACHE)
-                .into(imageView_admin);*/
+                .into(imageView_admin);
 
 
         imageView_admin.setOnClickListener(new View.OnClickListener() {
@@ -280,8 +290,8 @@ public class MainDrawerActivity extends AppCompatActivity implements
                     }
                     MainDrawerActivity menuDrawerBack2 = MainDrawerActivity.this;
                     menuDrawerBack2.hideMenu(menuDrawerBack2.content_view, menuDrawerBack2.content_view1);
-//                    loadFragment(new ProfileViewFragment());
-//                    bottomNavigation.setVisibility(View.GONE);
+                    loadFragment(new ProfileViewFragment());
+                    bottomNavigation.setVisibility(View.GONE);
                 }
             }
 
@@ -298,8 +308,8 @@ public class MainDrawerActivity extends AppCompatActivity implements
                     }
                     MainDrawerActivity menuDrawerBack2 = MainDrawerActivity.this;
                     menuDrawerBack2.hideMenu(menuDrawerBack2.content_view, menuDrawerBack2.content_view1);
-//                    loadFragment(new ProfileViewFragment());
-//                    bottomNavigation.setVisibility(View.GONE);
+                    loadFragment(new ProfileViewFragment());
+                    bottomNavigation.setVisibility(View.GONE);
                 }
 
             }
@@ -358,16 +368,16 @@ public class MainDrawerActivity extends AppCompatActivity implements
         notification_iv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                loadFragment(new NewNotificationFragment());
-//                viewSelector("Notification");
+                loadFragment(new NewNotificationFragment());
+                viewSelector("Notification");
             }
         });
 
         ll_notification.setOnClickListener(view -> {
-//            bottomNavigation.show(ID_HOME, true);
-//            bottomNavigation.setVisibility(View.VISIBLE);
-//            setToolbarAndLoadFragment("", new NewNotificationFragment());
-//            viewSelector("Notification");
+            bottomNavigation.show(ID_HOME, true);
+            bottomNavigation.setVisibility(View.VISIBLE);
+            setToolbarAndLoadFragment("", new NewNotificationFragment());
+            viewSelector("Notification");
         });
 
         ll_recently_viewed.setOnClickListener(view -> {
@@ -459,15 +469,15 @@ public class MainDrawerActivity extends AppCompatActivity implements
         search_iv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //loadFragment(new NewSearchFragment());
-//                startActivity(new Intent(MainDrawerActivity.this, NewSeearchActivity.class)
-//                        .putExtra("fromIntent", 0));
-                //bottomNavigation.setVisibility(View.VISIBLE);
-                //edt_search.setVisibility(View.GONE);
-                //ll_nav_title.setVisibility(View.GONE);
-                //reel_iv.setVisibility(View.VISIBLE);
-                //notification_iv.setVisibility(View.VISIBLE);
-                //search_iv.setVisibility(View.VISIBLE);
+                loadFragment(new NewSearchFragment());
+                startActivity(new Intent(MainDrawerActivity.this, NewSeearchActivity.class)
+                        .putExtra("fromIntent", 0));
+                bottomNavigation.setVisibility(View.VISIBLE);
+                edt_search.setVisibility(View.GONE);
+                ll_nav_title.setVisibility(View.GONE);
+                reel_iv.setVisibility(View.VISIBLE);
+                notification_iv.setVisibility(View.VISIBLE);
+                search_iv.setVisibility(View.VISIBLE);
             }
         });
 
@@ -2107,17 +2117,32 @@ public class MainDrawerActivity extends AppCompatActivity implements
     }
 
 
-//    public static void updateProfileImage(String getId, ImageView imageView) {
-//        Long time = System.currentTimeMillis();
-//        Picasso.get()
-//                .load(ApiBaseURL.IMG_URL_NEW + "profile_" + getId + ".png" + "?" + time)
-//                .placeholder(R.drawable.toy_face)
-//                .memoryPolicy(MemoryPolicy.NO_STORE, MemoryPolicy.NO_CACHE)
-//                .into(imageView);
-//    }
+    public static void updateProfileImage(String getId, ImageView imageView) {
+        Long time = System.currentTimeMillis();
+        Picasso.get()
+                .load(ApiBaseURL.IMG_URL_NEW + "profile_" + getId + ".png" + "?" + time)
+                .placeholder(R.drawable.toy_face)
+                .memoryPolicy(MemoryPolicy.NO_STORE, MemoryPolicy.NO_CACHE)
+                .into(imageView);
+    }
 
     private void showToast(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onClick(View v) {
+
+    }
+
+    @Override
+    public void onTaskCompleted(String result) {
+
+    }
+
+    @Override
+    public void onGetResponse(boolean isUpdateAvailable) {
+
     }
 
 //    @Override

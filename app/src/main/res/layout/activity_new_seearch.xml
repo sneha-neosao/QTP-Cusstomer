@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context="activities.NewSeearchActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:visibility="visible"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginRight="5dp"
+            >
+            <LinearLayout
+                android:id="@+id/ll_nav_title"
+                android:visibility="visible"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="5dp"
+                android:background="@drawable/solid_bg_gray"
+                >
+
+                <EditText
+                    android:id="@+id/edt_search"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:layout_weight="1"
+                    android:padding="5dp"
+                    android:drawablePadding="5dp"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:background="@android:color/transparent"
+                    android:textColorHint="@color/darkGrey"
+                    android:hint="What are you looking for?"
+                    android:drawableTint="@color/darkGrey"
+                    android:drawableLeft="@drawable/ic_baseline_search_24"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:singleLine="true"
+                    android:inputType="text"
+                    />
+
+                <ImageView
+                    android:id="@+id/img_search_close"
+                    android:visibility="gone"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_gravity="center_vertical"
+                    app:tint="@color/mediumGrey"
+                    android:layout_marginRight="5dp"
+                    android:src="@drawable/ic_baseline_cancel_24"
+                    />
+
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/txt_cancel_search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cancel"
+                android:layout_gravity="center"
+                android:textStyle="bold"
+                android:textSize="12sp"
+                android:fontFamily="@font/montserrat_regular"
+                android:textColor="@color/hintColor"
+
+                />
+
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerSearch"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:layout_height="wrap_content"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerSearch_product"
+            android:layout_margin="5dp"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:visibility="gone"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:layout_height="wrap_content"/>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/svSearch">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+            <!--Recent Search-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/llRecentSearch"
+                android:visibility="gone"
+                android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Recent Searches"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            app:fontFamily="@font/montserrat_semi_bold"
+            android:textSize="14sp"
+            android:textColor="@color/black"
+
+            />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="22dp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:nestedScrollingEnabled="false"
+            android:id="@+id/recyclerRecentSearch"
+            android:layout_margin="20dp"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+            <!--Recommended-->
+            <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            android:layout_marginTop="34dp"
+            android:id="@+id/llRecommendations">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="200dp"
+                    android:backgroundTint="@color/aqua"
+                    android:background="@drawable/solid_bg_half_rounded"
+                    android:textSize="16sp"
+                    android:gravity="center"
+                    android:text="                "
+                    android:layout_marginLeft="-20dp"
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/black"
+
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="180dp"
+                    android:layout_centerInParent="true"
+                    android:layout_marginLeft="-150dp"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:rotation="-90"
+                    android:text="*  Recommended  *"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    app:fontFamily="@font/montserrat_semi_bold"
+                    tools:ignore="HardcodedText" />
+            </RelativeLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_recommended"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal"
+                />
+
+        </LinearLayout>
+
+            <!--Feature Products-->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cvFeatureProducts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="10dp"
+            android:elevation="8dp"
+            app:cardElevation="8dp"
+            android:visibility="gone"
+            app:cardCornerRadius="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Feature Products"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginTop="17dp"
+                    android:layout_marginBottom="16dp"
+                    app:fontFamily="@font/montserrat_semi_bold"
+                    android:textSize="14sp"
+                    android:textColor="@color/black"
+
+                    />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal"
+                    android:background="@color/white"
+                    android:layout_marginBottom="20dp"
+                    android:gravity="center">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recycler_image_slider"
+                        android:layout_width="match_parent"
+                        android:layout_height="190dp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+
+        </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+        </ScrollView>
+
+
+    </LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

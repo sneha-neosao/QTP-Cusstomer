@@ -1503,7 +1503,22 @@ public class HomeFragment extends Fragment implements View.OnClickListener  {
                 //bottomNavigation.show(ID_FAVOURITE, true);
                 //loadFragment(new FavouriteFragment());
                 //  drawer.getForeground().setAlpha(0);
-                new MainDrawerActivity().selectedId=4;
+                new MainDrawerActivity() {
+                    @Override
+                    public void onGetResponse(boolean isUpdateAvailable) {
+
+                    }
+
+                    @Override
+                    public void onTaskCompleted(String result) {
+
+                    }
+
+                    @Override
+                    public void onClick(View v) {
+
+                    }
+                }.selectedId=4;
                 MainDrawerActivity.bottomNavigation.show(4,true);
 //                loadFragment(new OrderFragment());
                 dialog.dismiss();
