@@ -105,8 +105,8 @@ public class ProductTabActivity extends AppCompatActivity implements SharedPrefe
 
         initBadges();
 
-//        viewPager = (ViewPager) findViewById(R.id.viewpager);
-//        viewPager1 = (ViewPager) findViewById(R.id.viewpager1);
+        viewPager = (ViewPager) findViewById(R.id.viewpager);
+        viewPager1 = (ViewPager) findViewById(R.id.viewpager1);
         img_tapView =findViewById(R.id.img_tapView);
         img_logo =findViewById(R.id.img_logo);
 
@@ -137,9 +137,9 @@ public class ProductTabActivity extends AppCompatActivity implements SharedPrefe
         }
 
         getSectorlist3();
-        if(session_management.getIsFirstTime().isEmpty()){
+        /*if(session_management.getIsFirstTime().isEmpty()){
             getProductsBySubofSubcategory(cat_id,"All","");
-        }
+        }*/
 
 
         img_logo.setOnClickListener(new View.OnClickListener() {
@@ -495,9 +495,9 @@ public class ProductTabActivity extends AppCompatActivity implements SharedPrefe
             productSectorList.add(sector);
             Log.e("productSectorListID","+"+sector.getProduct_sector_id());
         }
-        tabAdapter = new TabAdapter(getSupportFragmentManager(), productSectorList);
+        /*tabAdapter = new TabAdapter(getSupportFragmentManager(), productSectorList, tabindex);
         viewPager.setAdapter(tabAdapter);
-        tabLayout.setupWithViewPager(viewPager);
+        tabLayout.setupWithViewPager(viewPager);*/
         setTabData3();
     }
 
@@ -518,10 +518,12 @@ public class ProductTabActivity extends AppCompatActivity implements SharedPrefe
 
 
                         Log.e("tabIndex","+"+tabindex);
-                        /*tabAdapter = new TabAdapter(getSupportFragmentManager(), productSectorList,tabindex);
+                        tabAdapter = new TabAdapter(getSupportFragmentManager(), productSectorList,tabindex);
                         viewPager.setAdapter(tabAdapter);
-                        tabLayout.setupWithViewPager(viewPager);*/
-                        tabLayout.getTabAt(tabindex).select();
+                        tabLayout.setupWithViewPager(viewPager);
+                        if (tabLayout.getTabAt(tabindex) != null) {
+                            tabLayout.getTabAt(tabindex).select();
+                        }
                     }
                 }, 100);
     }

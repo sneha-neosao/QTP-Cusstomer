@@ -2,15 +2,11 @@ package fragments;
 
 import static android.view.View.VISIBLE;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.res.ColorStateList;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -19,7 +15,6 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
 import android.view.Window;
 import android.view.animation.TranslateAnimation;
 import android.widget.Button;
@@ -32,7 +27,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -48,20 +42,21 @@ import com.android.volley.VolleyLog;
 import com.bumptech.glide.Glide;
 import com.cooltechworks.views.shimmer.ShimmerRecyclerView;
 
+import ModelClass.NewCategoryShowList;
 import activities.BannerItemsActivity;
+import activities.CartActivity;
 import adapters.CategoryGridAdapter;
 import adapters.SubOfSubCategoryAdapter;
 //import Categorygridquantity;
 import Config.ApiBaseURL;
-import ModelClass.HomeCate;
 import ModelClass.LabelModel;
 import ModelClass.NewCategoryDataModel;
 import ModelClass.NewCategoryVarientList;
 import ModelClass.ProductSector;
+
+import com.grocery.QTPmart.Categorygridquantity;
 import com.grocery.QTPmart.R;
 import network.Response.ResponseGetAllSubOfSubCategories;
-import network.Response.ResponseMainPopUp;
-import network.ServiceGenrator;
 import util.AppController;
 import util.CustomVolleyJsonRequest;
 import util.DatabaseHandler;
@@ -79,10 +74,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.http.GET;
 
 public class ProductFragment extends Fragment implements SubOfSubCategoryAdapter.ItemOnClickListener{
 
@@ -121,9 +112,9 @@ public class ProductFragment extends Fragment implements SubOfSubCategoryAdapter
 
     int tvPosition=0;
 
-//    public ProductFragment(int position) {
-//        // Required empty public constructor
-//    }
+    public ProductFragment() {
+        // Required empty public constructor
+    }
     public static ProductFragment getInstance(ProductSector sector) {
         Bundle bundle = new Bundle();
         bundle.putString("cat_id", sector.getProduct_sector_id());
@@ -163,20 +154,22 @@ public class ProductFragment extends Fragment implements SubOfSubCategoryAdapter
         ivAll = view.findViewById(R.id.ivAll);
         llTab = view.findViewById(R.id.llTab);
 
-        //cat_id = getArguments().getString("cat_id");
-        //categoryId = getArguments().getString("sub_cat_id");
-        //subCategoryId = getArguments().getString("sub_sub_cat_id");
-        //subCategoryId = getArguments().getString("subCategoryId");
-        //Log.e("cat_id",cat_id.toString());
-       // title = getArguments().getString("title");
-        //Log.e("title",title.toString());
+        cat_id = getArguments().getString("cat_id");
+        categoryId = getArguments().getString("sub_cat_id");
+        subCategoryId = getArguments().getString("sub_sub_cat_id");
+        subCategoryId = getArguments().getString("subCategoryId");
+        Log.e("cat_id",cat_id.toString());
+        title = getArguments().getString("title");
+        Log.e("title",title.toString());
 
         cat_id = getArguments().getString("cat_id");
         Log.e("cat_id",cat_id.toString());
         title = getArguments().getString("title");
         dbcart = new DatabaseHandler(getContext());
 
-        progressDialog = new ProgressDialog(container.getContext());
+        if (progressDialog == null) {
+            progressDialog = new ProgressDialog(container.getContext());
+        }
         progressDialog.setMessage("Loading...Products");
         progressDialog.setCancelable(false);
 
@@ -213,38 +206,26 @@ public class ProductFragment extends Fragment implements SubOfSubCategoryAdapter
                     public void onCheckedChanged(RadioGroup radioGroup, int i) {
                         dialog.dismiss();
                         RadioButton checkedRadioButton = (RadioButton) radioGroup.findViewById(i);
-                        switch (i) {
-//                            case R.id.rb_popular:
-//                                rb_popular.setChecked(true);
-//                                sort="popular";
-//                                //product(categoryId,subCategoryId, "popular");
-//                                filter1 = "popular";
-//                                getProductsBySubofSubcategory(cat_id,subOfSubCategoryId,filter1);
-//
-//                                break;
-//                            case R.id.rb_alphabet:
-//                                rb_alphabet.setChecked(true);
-//                                sort="alphabet";
-//                                filter1 = "alphabet";
-//                                //product(categoryId,subCategoryId, "alphabet");
-//                                getProductsBySubofSubcategory(cat_id,subOfSubCategoryId,filter1);
-//                                break;
-//
-//                            case R.id.rb_lowHigh:
-//                                rb_lowHigh.setChecked(true);
-//                                sort="lowhigh";
-//                                filter1 = "lowhigh";
-//                                //product(categoryId,subCategoryId, "lowhigh");
-//                                getProductsBySubofSubcategory(cat_id,subOfSubCategoryId,filter1);
-//                                break;
-//
-//                            case R.id.rb_highLow:
-//                                rb_highLow.setChecked(true);
-//                                sort="highlow";
-//                                filter1 = "highlow";
-//                                //product(categoryId,subCategoryId, "highlow");
-//                                getProductsBySubofSubcategory(cat_id,subOfSubCategoryId,filter1);
-//                                break;
+                        if (i == R.id.rb_popular) {
+                            rb_popular.setChecked(true);
+                            sort = "popular";
+                            filter1 = "popular";
+                            getProductsBySubofSubcategory(cat_id, subOfSubCategoryId, filter1);
+                        } else if (i == R.id.rb_alphabet) {
+                            rb_alphabet.setChecked(true);
+                            sort = "alphabet";
+                            filter1 = "alphabet";
+                            getProductsBySubofSubcategory(cat_id, subOfSubCategoryId, filter1);
+                        } else if (i == R.id.rb_lowHigh) {
+                            rb_lowHigh.setChecked(true);
+                            sort = "lowhigh";
+                            filter1 = "lowhigh";
+                            getProductsBySubofSubcategory(cat_id, subOfSubCategoryId, filter1);
+                        } else if (i == R.id.rb_highLow) {
+                            rb_highLow.setChecked(true);
+                            sort = "highlow";
+                            filter1 = "highlow";
+                            getProductsBySubofSubcategory(cat_id, subOfSubCategoryId, filter1);
                         }
                         // This puts the value (true/false) into the variable
                         boolean isChecked = checkedRadioButton.isChecked();
@@ -263,60 +244,60 @@ public class ProductFragment extends Fragment implements SubOfSubCategoryAdapter
         });
 
 
-//        Categorygridquantity categorygridquantity = new Categorygridquantity() {
-//            @Override
-//            public void onClick(View view, int position, String ccId, String id) {
-//                varientProducts.clear();
-//            }
-//
-//            @Override
-//            public void onCartItemAddOrMinus() {
-//                if (dbcart.getCartCount() > 0) {
-//
-//                    slideUp(bottom_lay_total);
-//                    total_price.setText(session_management.getCurrency() + " " + dbcart.getTotalAmount());
-//                    total_count.setText("Total Items " + dbcart.getCartCount());
-//
-//                    new Handler().postDelayed(new Runnable() {
-//                        @Override
-//                        public void run() {
-//
-//                            //bottom_lay_total.setVisibility(View.GONE);
-//                            slideDown(bottom_lay_total);
-//                        }
-//                    }, 4000);
-//                } else {
-//                    bottom_lay_total.setVisibility(View.GONE);
-//                }
-//            }
-//        };
+        Categorygridquantity categorygridquantity = new Categorygridquantity() {
+            @Override
+            public void onClick(View view, int position, String ccId, String id) {
+                varientProducts.clear();
+            }
+
+            @Override
+            public void onCartItemAddOrMinus() {
+                if (dbcart.getCartCount() > 0) {
+
+                    slideUp(bottom_lay_total);
+                    total_price.setText(session_management.getCurrency() + " " + dbcart.getTotalAmount());
+                    total_count.setText("Total Items " + dbcart.getCartCount());
+
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+
+                            //bottom_lay_total.setVisibility(View.GONE);
+                            slideDown(bottom_lay_total);
+                        }
+                    }, 4000);
+                } else {
+                    bottom_lay_total.setVisibility(View.GONE);
+                }
+            }
+        };
 
         recycler_product.setLayoutManager(new GridLayoutManager(getContext(), 2));
-        adapter = new CategoryGridAdapter(newCategoryDataModel, labelModelArrayList, getActivity(), recycler_product);
+        adapter = new CategoryGridAdapter(newCategoryDataModel, labelModelArrayList, getActivity(), categorygridquantity, recycler_product);
         SlideInBottomAnimationAdapter slideInBottomAnimationAdapter = new SlideInBottomAnimationAdapter(adapter);
         slideInBottomAnimationAdapter.setDuration(1000); // Optional: Adjust duration
         recycler_product.setAdapter(new AlphaInAnimationAdapter(slideInBottomAnimationAdapter));
 
 
-//        continue_tocart.setOnClickListener(v -> {
-//            startActivity(new Intent(getContext(), CartActivity.class));
-//        });
+        continue_tocart.setOnClickListener(v -> {
+            startActivity(new Intent(getContext(), CartActivity.class));
+        });
 
         subOfSubCategoryAdapter = new SubOfSubCategoryAdapter(getActivity(),new ArrayList(), ProductFragment.this);
         rvSubOfSubCat.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false));
         rvSubOfSubCat.setAdapter(subOfSubCategoryAdapter);
-        //product(categoryId,subCategoryId,"");
-        //getProductsBySubofSubcategory(categoryId,subCategoryId,"");
-        //subOfSubCategoriesList = GetCategories.getSubOfSubCategoriesBySubCategory(subCategoryId);
+        product(categoryId,subCategoryId,"");
+        getProductsBySubofSubcategory(categoryId,subCategoryId,"");
+        subOfSubCategoriesList = GetCategories.getSubOfSubCategoriesBySubCategory(subCategoryId);
         subOfSubCategoriesList.clear();
-       /* ivAll.setVisibility(View.VISIBLE);
+        ivAll.setVisibility(View.VISIBLE);
         rvSubOfSubCat.setVisibility(View.VISIBLE);
         llTab.setVisibility(View.VISIBLE);
         subOfSubCategoriesList = GetCategories.getSubOfSubCategoriesBySubCategory(cat_id);
         rvSubOfSubCat.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false));
         SubOfSubCategoryAdapter subOfSubCategoryAdapter = new SubOfSubCategoryAdapter(getActivity(), subOfSubCategoriesList, ProductFragment.this);
         rvSubOfSubCat.setAdapter(subOfSubCategoryAdapter);
-        subOfSubCategoryAdapter.notifyDataSetChanged();*/
+        subOfSubCategoryAdapter.notifyDataSetChanged();
         Log.e("listCatSubID",String.valueOf(GetCategories.getSubOfSubCategoriesBySubCategory(cat_id)));
         if(!GetCategories.getSubOfSubCategoriesBySubCategory(cat_id).isEmpty()) {
             subOfSubCategoriesList.clear();
@@ -397,7 +378,7 @@ public class ProductFragment extends Fragment implements SubOfSubCategoryAdapter
                 try {
                     boolean status = response.getBoolean("status");
 
-//                    String message = response.getString("message");
+                    String message = response.getString("message");
 
                     if (status) {
                         progressDialog.dismiss();
@@ -475,13 +456,13 @@ public class ProductFragment extends Fragment implements SubOfSubCategoryAdapter
                         newCategoryDataModel.addAll(listorl);
                         labelModelArrayList.addAll(listLabel);
 
-//                        for (int i = 0; i < listorl.size(); i++) {
-//                            List<NewCategoryVarientList> listddd = listorl.get(i).getVarients();
-//                            for (int j = 0; j < listddd.size(); j++) {
-//                                NewCategoryShowList newCategoryShowList = new NewCategoryShowList(listorl.get(i).getProduct_id(), listorl.get(i).getProduct_name(), listorl.get(i).getProduct_image(), listddd.get(j));
+                        for (int i = 0; i < listorl.size(); i++) {
+                            List<NewCategoryVarientList> listddd = listorl.get(i).getVarients();
+                            for (int j = 0; j < listddd.size(); j++) {
+                                NewCategoryShowList newCategoryShowList = new NewCategoryShowList(listorl.get(i).getProduct_id(), listorl.get(i).getProduct_name(), listorl.get(i).getProduct_image(), listddd.get(j));
 //                                newModelList.add(newCategoryShowList);
-//                            }
-//                        }
+                            }
+                        }
 
                         adapter.notifyDataSetChanged();
                     }
@@ -493,6 +474,9 @@ public class ProductFragment extends Fragment implements SubOfSubCategoryAdapter
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
+                    if (progressDialog != null && progressDialog.isShowing()) {
+                        progressDialog.dismiss();
+                    }
                 }
 
 
@@ -500,7 +484,9 @@ public class ProductFragment extends Fragment implements SubOfSubCategoryAdapter
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                progressDialog.dismiss();
+                if (progressDialog != null && progressDialog.isShowing()) {
+                    progressDialog.dismiss();
+                }
                 error.printStackTrace();
                 VolleyLog.d("", "Error: " + error.getMessage());
                 if (error instanceof TimeoutError || error instanceof NoConnectionError) {
@@ -566,7 +552,9 @@ public class ProductFragment extends Fragment implements SubOfSubCategoryAdapter
     }
 
     private void getProductsBySubofSubcategory(String sub_cat_id,String sub_sub_cat_id,String filter){
-        progressDialog.show();
+        if (getUserVisibleHint() && progressDialog != null && !progressDialog.isShowing()) {
+            progressDialog.show();
+        }
         newCategoryDataModel.clear();
         labelModelArrayList.clear();
         // Tag used to cancel the request
@@ -691,6 +679,9 @@ public class ProductFragment extends Fragment implements SubOfSubCategoryAdapter
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
+                    if (progressDialog != null && progressDialog.isShowing()) {
+                        progressDialog.dismiss();
+                    }
                 }
 
 
@@ -698,7 +689,9 @@ public class ProductFragment extends Fragment implements SubOfSubCategoryAdapter
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                progressDialog.dismiss();
+                if (progressDialog != null && progressDialog.isShowing()) {
+                    progressDialog.dismiss();
+                }
                 error.printStackTrace();
                 VolleyLog.d("", "Error: " + error.getMessage());
                 if (error instanceof TimeoutError || error instanceof NoConnectionError) {

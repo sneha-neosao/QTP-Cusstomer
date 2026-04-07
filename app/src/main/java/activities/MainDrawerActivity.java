@@ -96,13 +96,18 @@ import java.util.Map;
 import Config.BaseURL;
 import ModelClass.Category_model;
 import ModelClass.NewPendingDataModel;
+import fragments.CartFragment;
+import fragments.CategoryFragment;
+import fragments.FavouriteFragment;
 import fragments.HomeFragment;
 import network.ApiInterface;
 import fragments.DashboardFragment;
+import fragments.OrderFragment;
 import util.NetworkConnection;
 import util.Session_management;
 import util.WSCallerVersionListener;
 import xute.storyview.StoryModel;
+import com.google.android.gms.maps.model.LatLng;
 
 public class MainDrawerActivity extends AppCompatActivity implements
         GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener,
@@ -282,17 +287,21 @@ public class MainDrawerActivity extends AppCompatActivity implements
         imageView_admin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (sessionManagement.isLoggedIn()) {
-                    if (isHide) {
-                        MainDrawerActivity menuDrawerBack = MainDrawerActivity.this;
-                        menuDrawerBack.showMenu(menuDrawerBack.content_view, menuDrawerBack.content_view1);
-                        return;
-                    }
-                    MainDrawerActivity menuDrawerBack2 = MainDrawerActivity.this;
-                    menuDrawerBack2.hideMenu(menuDrawerBack2.content_view, menuDrawerBack2.content_view1);
-                    loadFragment(new ProfileViewFragment());
-                    bottomNavigation.setVisibility(View.GONE);
-                }
+                MainDrawerActivity menuDrawerBack2 = MainDrawerActivity.this;
+                menuDrawerBack2.hideMenu(menuDrawerBack2.content_view, menuDrawerBack2.content_view1);
+                loadFragment(new ProfileViewFragment());
+                bottomNavigation.setVisibility(View.GONE);
+//                if (sessionManagement.isLoggedIn()) {
+//                    if (isHide) {
+//                        MainDrawerActivity menuDrawerBack = MainDrawerActivity.this;
+//                        menuDrawerBack.showMenu(menuDrawerBack.content_view, menuDrawerBack.content_view1);
+//                        return;
+//                    }
+//                    MainDrawerActivity menuDrawerBack2 = MainDrawerActivity.this;
+//                    menuDrawerBack2.hideMenu(menuDrawerBack2.content_view, menuDrawerBack2.content_view1);
+//                    loadFragment(new ProfileViewFragment());
+//                    bottomNavigation.setVisibility(View.GONE);
+//                }
             }
 
         });
@@ -300,17 +309,21 @@ public class MainDrawerActivity extends AppCompatActivity implements
         tv_settings_drawer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (sessionManagement.isLoggedIn()) {
-                    if (isHide) {
-                        MainDrawerActivity menuDrawerBack = MainDrawerActivity.this;
-                        menuDrawerBack.showMenu(menuDrawerBack.content_view, menuDrawerBack.content_view1);
-                        return;
-                    }
-                    MainDrawerActivity menuDrawerBack2 = MainDrawerActivity.this;
-                    menuDrawerBack2.hideMenu(menuDrawerBack2.content_view, menuDrawerBack2.content_view1);
-                    loadFragment(new ProfileViewFragment());
-                    bottomNavigation.setVisibility(View.GONE);
-                }
+                MainDrawerActivity menuDrawerBack2 = MainDrawerActivity.this;
+                menuDrawerBack2.hideMenu(menuDrawerBack2.content_view, menuDrawerBack2.content_view1);
+                loadFragment(new ProfileViewFragment());
+                bottomNavigation.setVisibility(View.GONE);
+//                if (sessionManagement.isLoggedIn()) {
+//                    if (isHide) {
+//                        MainDrawerActivity menuDrawerBack = MainDrawerActivity.this;
+//                        menuDrawerBack.showMenu(menuDrawerBack.content_view, menuDrawerBack.content_view1);
+//                        return;
+//                    }
+//                    MainDrawerActivity menuDrawerBack2 = MainDrawerActivity.this;
+//                    menuDrawerBack2.hideMenu(menuDrawerBack2.content_view, menuDrawerBack2.content_view1);
+//                    loadFragment(new ProfileViewFragment());
+//                    bottomNavigation.setVisibility(View.GONE);
+//                }
 
             }
         });
@@ -563,47 +576,47 @@ public class MainDrawerActivity extends AppCompatActivity implements
             }
         });
 
-//        fragmentClickListner = new FragmentClickListner() {
-//            @Override
-//            public void onFragmentClick(boolean open) {
-//                if (open) {
-//                    bottomNavigation.show(ID_HOME, true);
-//                    loadFragment(new CartFragment());
-//                }
-//            }
-//
-//            public void loadFavourites() {
-//
-//                bottomNavigation.show(ID_FAVOURITE, true);
-//                loadFragment(new FavouriteFragment());
-//            }
-//
-//            @Override
-//            public void onChangeHome(boolean open) {
-//                DecimalFormat dFormat = new DecimalFormat("##.#######");
-//                LatLng latLng = new LatLng(Double.parseDouble(sessionManagement.getLatPref()), Double.parseDouble(sessionManagement.getLangPref()));
-//                double latitude = Double.valueOf(dFormat.format(latLng.latitude));
-//                double longitude = Double.valueOf(dFormat.format(latLng.longitude));
-//                //location.setLatitude(latitude);
-//                //  location.setLongitude(longitude);
-//                // getAddress();
-//                bottomNavigation.show(ID_HOME, true);
-//                loadFragment(new HomeFragment(fragmentClickListner));
-//            }
-//        };
+        fragmentClickListner = new FragmentClickListner() {
+            @Override
+            public void onFragmentClick(boolean open) {
+                if (open) {
+                    bottomNavigation.show(ID_HOME, true);
+                    loadFragment(new CartFragment());
+                }
+            }
+
+            public void loadFavourites() {
+
+                bottomNavigation.show(ID_FAVOURITE, true);
+                loadFragment(new FavouriteFragment());
+            }
+
+            @Override
+            public void onChangeHome(boolean open) {
+                DecimalFormat dFormat = new DecimalFormat("##.#######");
+                LatLng latLng = new LatLng(Double.parseDouble(sessionManagement.getLatPref()), Double.parseDouble(sessionManagement.getLangPref()));
+                double latitude = Double.valueOf(dFormat.format(latLng.latitude));
+                double longitude = Double.valueOf(dFormat.format(latLng.longitude));
+                //location.setLatitude(latitude);
+                //  location.setLongitude(longitude);
+                // getAddress();
+                bottomNavigation.show(ID_HOME, true);
+                loadFragment(new HomeFragment(fragmentClickListner));
+            }
+        };
 
         img_logo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                bottomNavigation.show(ID_HOME, true);
-//                setToolbarAndLoadFragment("", new HomeFragment(fragmentClickListner));
+                bottomNavigation.show(ID_HOME, true);
+                setToolbarAndLoadFragment("", new HomeFragment(fragmentClickListner));
             }
         });
 
         if (getIntent().getIntExtra("loadFrag", 0) == 2) {
-//            bottomNavigation.show(ID_MY_ORDERS, true);
-//            sessionManagement.setBookOrder("1");
-//            setToolbarAndLoadOrderFragment("", new OrderFragment());
+            bottomNavigation.show(ID_MY_ORDERS, true);
+            sessionManagement.setBookOrder("1");
+            setToolbarAndLoadOrderFragment("", new OrderFragment());
         } else {
             bottomNavigation.show(ID_HOME, true);
             setToolbarAndLoadFragment("", new HomeFragment(fragmentClickListner));
@@ -734,19 +747,19 @@ public class MainDrawerActivity extends AppCompatActivity implements
                     selectedId = ID_HOME;
                     break;
                 case ID_MY_ORDERS:
-                    // loadFragment(new OrderFragment());
+                    loadFragment(new OrderFragment());
                     selectedId = ID_MY_ORDERS;
                     break;
                 case ID_SEARCH:
-                    // loadFragment(new NewSearchFragment());
+                    loadFragment(new NewSearchFragment());
                     selectedId = ID_SEARCH;
                     break;
                 case ID_FAVOURITE:
-                    // loadFragment(new FavouriteFragment());
+                    loadFragment(new FavouriteFragment());
                     selectedId = ID_FAVOURITE;
                     break;
                 case ID_CATEGORY:
-                    // loadFragment(new CategoryFragment(fragmentClickListner));
+                    loadFragment(new CategoryFragment(fragmentClickListner));
                     selectedId = ID_CATEGORY;
                     break;
             }

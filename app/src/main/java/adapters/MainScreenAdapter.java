@@ -29,6 +29,7 @@ import ModelClass.LabelModel;
 import ModelClass.MainScreenList;
 import com.grocery.QTPmart.R;
 
+import activities.ProductTabActivity;
 import util.ItemOffsetDecoration;
 
 import java.util.List;
@@ -94,12 +95,12 @@ public class MainScreenAdapter extends RecyclerView.Adapter {
                 topSelling1.allCategory.addOnItemTouchListener(new RecyclerTouchListener(context, topSelling1.allCategory, new RecyclerTouchListener.OnItemClickListener() {
                     @Override
                     public void onItemClick(View view, int position) {
-//                        Intent intent = new Intent(context, ProductTabActivity.class);
-//                        intent.putExtra("cat_id", subcateList.get(position).getId());
-//                        intent.putExtra("title", subcateList.get(position).getName());
-//                        intent.putExtra("main_cat", subcateList.get(position).getCategoryId());
-//                        context.startActivity(intent);
-                       // context.startActivityForResult(intent, 24);
+                        Intent intent = new Intent(context, ProductTabActivity.class);
+                        intent.putExtra("cat_id", subcateList.get(position).getId());
+                        intent.putExtra("title", subcateList.get(position).getName());
+                        intent.putExtra("main_cat", subcateList.get(position).getCategoryId());
+                        context.startActivity(intent);
+                        context.startActivityForResult(intent, 24);
                     }
                     @Override
                     public void onLongItemClick(View view, int position) {

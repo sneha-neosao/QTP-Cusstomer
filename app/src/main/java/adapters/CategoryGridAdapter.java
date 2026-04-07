@@ -36,6 +36,7 @@ import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 //import activities.AlternativeProductsActivity;
+import activities.AlternativeProductsActivity;
 import activities.LoginActivity;
 import activities.MainDrawerActivity;
 import activities.ProductDetailActivity;
@@ -46,6 +47,8 @@ import Config.BaseURL;
 import ModelClass.LabelModel;
 import ModelClass.NewCategoryDataModel;
 import ModelClass.varient_product;
+
+import com.grocery.QTPmart.Categorygridquantity;
 import com.grocery.QTPmart.R;
 import network.Response.ResponseGetCounts;
 import network.ServiceGenrator;
@@ -75,7 +78,7 @@ public class CategoryGridAdapter extends RecyclerView.Adapter<CategoryGridAdapte
     Context context;
     RecyclerView recyler_popup;
     LinearLayout cancl;
-//    Categorygridquantity categorygridquantity;
+    Categorygridquantity categorygridquantity;
     private List<NewCategoryDataModel> CategoryGridList;
     private List<LabelModel> labelModels;
     private DatabaseHandler dbcart;
@@ -85,12 +88,12 @@ public class CategoryGridAdapter extends RecyclerView.Adapter<CategoryGridAdapte
     // SpringyAdapterAnimator springyAdapterAnimator;
 
     public CategoryGridAdapter(List<NewCategoryDataModel> categoryGridList, List<LabelModel> labelModels,
-                               Context contexts, /*Categorygridquantity categorygridquantity,*/RecyclerView recyclerView) {
+                               Context contexts, Categorygridquantity categorygridquantity,RecyclerView recyclerView) {
         this.CategoryGridList = categoryGridList;
         this.context = contexts;
         this.dbcart = new DatabaseHandler(context);
         this.session_management = new Session_management(context);
-//        this.categorygridquantity = categorygridquantity;
+        this.categorygridquantity = categorygridquantity;
 //        this.recyclerView = recyclerView;
         this.labelModels = labelModels;
         dbcart = new DatabaseHandler(context);
@@ -139,8 +142,8 @@ public class CategoryGridAdapter extends RecyclerView.Adapter<CategoryGridAdapte
             @Override
             public void onClick(View v) {
                 if (session_management.isLoggedIn()) {
-//                    AddRecentViewApis api = new AddRecentViewApis(context);
-//                    api.addToRecent1(CategoryGridList.get(holder.getAdapterPosition()).getProduct_id());
+                    AddRecentViewApis api = new AddRecentViewApis(context);
+                    api.addToRecent1(CategoryGridList.get(holder.getAdapterPosition()).getProduct_id());
                 }
                 Intent intent = new Intent(context, ProductDetailActivity.class);
                 intent.putExtra("itemID", cc.getProduct_id());
@@ -160,8 +163,8 @@ public class CategoryGridAdapter extends RecyclerView.Adapter<CategoryGridAdapte
                 @Override
                 public void onClick(View view) {
                     Log.e("productIdProd",cc.getProduct_id());
-//                    context.startActivity(new Intent(context, AlternativeProductsActivity.class)
-//                            .putExtra("productId",cc.getProduct_id()));
+                    context.startActivity(new Intent(context, AlternativeProductsActivity.class)
+                            .putExtra("productId",cc.getProduct_id()));
                 }
             });
         }else{
@@ -333,8 +336,8 @@ public class CategoryGridAdapter extends RecyclerView.Adapter<CategoryGridAdapte
             @Override
             public boolean onLongClick(View v) {
                 if (session_management.isLoggedIn()) {
-//                    AddRecentViewApis api = new AddRecentViewApis(context);
-//                    api.addToRecent1(CategoryGridList.get(holder.getAdapterPosition()).getProduct_id());
+                    AddRecentViewApis api = new AddRecentViewApis(context);
+                    api.addToRecent1(CategoryGridList.get(holder.getAdapterPosition()).getProduct_id());
                 }
                 Intent intent = new Intent(context, ProductDetailActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -496,9 +499,11 @@ public class CategoryGridAdapter extends RecyclerView.Adapter<CategoryGridAdapte
     {
         try {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-//                SharedPreferences preferences = context.getSharedPreferences("GOGrocer", Context.MODE_PRIVATE);
-//                preferences.edit().putInt("cardqnty", dbcart.getCartCount()).apply();
-//                categorygridquantity.onCartItemAddOrMinus();
+                SharedPreferences preferences = context.getSharedPreferences("GOGrocer", Context.MODE_PRIVATE);
+                preferences.edit().putInt("cardqnty", dbcart.getCartCount()).apply();
+                if(categorygridquantity!=null) {
+                    categorygridquantity.onCartItemAddOrMinus();
+                }
             }
         } catch (IndexOutOfBoundsException e) {
             Log.d("qwer", e.toString());

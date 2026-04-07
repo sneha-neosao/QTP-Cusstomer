@@ -14,6 +14,10 @@ import com.android.volley.VolleyLog;
 //import com.grocery.QTPmart.network.Response.ResponseAddRecentViews;
 //import com.grocery.QTPmart.network.ServiceGenrator;
 //import com.grocery.QTPmart.util.AppController;
+import network.Response.ResponseAddRecentViews;
+import network.ServiceGenrator;
+import util.AppController;
+import util.CustomVolleyJsonRequest;
 import util.Session_management;
 import util.CustomVolleyJsonArrayRequest;
 
@@ -45,74 +49,74 @@ public class AddRecentViewApis
             params.put("CustId", custID);
             params.put("ItemId",intemId);
 
-//            CustomVolleyJsonRequest jsonObjReq = new CustomVolleyJsonRequest(Request.Method.POST,
-//                    ApiBaseURL.AddToRecentViews, params, new Response.Listener<JSONObject>() {
-//                @Override
-//                public void onResponse(JSONObject response) {
-//                    Log.d("CheckAddRecentView", response.toString());
-//                    try {
-//                        boolean status = response.getBoolean("status");
-//                        if (status) {
-//
-//                        }
-//
-//                       // Toast.makeText(context, ""+response.getString("message"), Toast.LENGTH_SHORT).show();
-//                    } catch (JSONException e) {
-//                        e.printStackTrace();
-//                    }
-//
-//
-//                }
-//            }, new Response.ErrorListener() {
-//                @Override
-//                public void onErrorResponse(VolleyError error) {
-//                    error.printStackTrace();
-//                    VolleyLog.d("", "Error: " + error.getMessage());
-//                    if (error instanceof TimeoutError || error instanceof NoConnectionError) {
-//                    }
-//                }
-//            });
+            CustomVolleyJsonRequest jsonObjReq = new CustomVolleyJsonRequest(Request.Method.POST,
+                    ApiBaseURL.AddToRecentViews, params, new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+                    Log.d("CheckAddRecentView", response.toString());
+                    try {
+                        boolean status = response.getBoolean("status");
+                        if (status) {
+
+                        }
+
+                       // Toast.makeText(context, ""+response.getString("message"), Toast.LENGTH_SHORT).show();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    error.printStackTrace();
+                    VolleyLog.d("", "Error: " + error.getMessage());
+                    if (error instanceof TimeoutError || error instanceof NoConnectionError) {
+                    }
+                }
+            });
 
             // Adding request to request queue
-//            jsonObjReq.setRetryPolicy(new RetryPolicy() {
-//                @Override
-//                public int getCurrentTimeout() {
-//                    return 60000;
-//                }
-//
-//                @Override
-//                public int getCurrentRetryCount() {
-//                    return 0;
-//                }
-//
-//                @Override
-//                public void retry(VolleyError error) throws VolleyError {
-//
-//                }
-//            });
-//            AppController.getInstance().addToRequestQueue(jsonObjReq, tag_json_obj);
+            jsonObjReq.setRetryPolicy(new RetryPolicy() {
+                @Override
+                public int getCurrentTimeout() {
+                    return 60000;
+                }
+
+                @Override
+                public int getCurrentRetryCount() {
+                    return 0;
+                }
+
+                @Override
+                public void retry(VolleyError error) throws VolleyError {
+
+                }
+            });
+            AppController.getInstance().addToRequestQueue(jsonObjReq, tag_json_obj);
 
     }
 
-//    public void addToRecent1(String itemId) {
-//       ServiceGenrator.getApiInterface().addRecentViews(session_management.getUserDetails().get(BaseURL.KEY_ID),itemId).enqueue(new Callback<ResponseAddRecentViews>() {
-//           @Override
-//           public void onResponse(Call<ResponseAddRecentViews> call, retrofit2.Response<ResponseAddRecentViews> response) {
-//               if(response.isSuccessful()){
-//                   if(response.body().isStatus()){
-//                       Log.e("addToRecent1",response.body().getMessage());
-//                   }else{
-//                       Log.e("addToRecent2",response.body().getMessage());
-//                   }
-//               }
-//           }
-//
-//           @Override
-//           public void onFailure(Call<ResponseAddRecentViews> call, Throwable t) {
-//
-//           }
-//       });
-//    }
+    public void addToRecent1(String itemId) {
+       ServiceGenrator.getApiInterface().addRecentViews(session_management.getUserDetails().get(BaseURL.KEY_ID),itemId).enqueue(new Callback<ResponseAddRecentViews>() {
+           @Override
+           public void onResponse(Call<ResponseAddRecentViews> call, retrofit2.Response<ResponseAddRecentViews> response) {
+               if(response.isSuccessful()){
+                   if(response.body().isStatus()){
+                       Log.e("addToRecent1",response.body().getMessage());
+                   }else{
+                       Log.e("addToRecent2",response.body().getMessage());
+                   }
+               }
+           }
+
+           @Override
+           public void onFailure(Call<ResponseAddRecentViews> call, Throwable t) {
+
+           }
+       });
+    }
 
 
 }

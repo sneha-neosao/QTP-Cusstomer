@@ -506,41 +506,48 @@
 
 
                             <!--Info-->
-                            <LinearLayout
-                                android:id="@+id/img_info"
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/constraintLayout"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="5dp"
                                 android:layout_gravity="right"
-                                android:visibility="gone"
-                                >
+                                android:visibility="gone">
 
-                                <TextView
-                                    android:id="@+id/txt_info"
-                                    android:visibility="gone"
+                                <LinearLayout
+                                    android:id="@+id/img_info"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="17dp"
-                                    android:text="Details"
-                                    android:layout_gravity="center"
-                                    android:gravity="center"
-                                    android:paddingRight="0dp"
-                                    android:paddingLeft="3dp"
-                                    android:textSize="11sp"
-                                    android:textColor="@color/colorPrimary"
-                                    android:background="@drawable/singlesideborder"
-                                    />
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent">
 
-                                <ImageView
-                                    android:layout_width="17dp"
-                                    android:layout_height="17dp"
-                                    android:layout_gravity="right"
-                                    android:src="@drawable/i_icon_2"
-                                    android:visibility="visible" />
+                                    <TextView
+                                        android:id="@+id/txt_info"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="17dp"
+                                        android:layout_gravity="center"
+                                        android:background="@drawable/singlesideborder"
+                                        android:gravity="center"
+                                        android:paddingLeft="3dp"
+                                        android:paddingRight="0dp"
+                                        android:text="Details"
+                                        android:textColor="@color/colorPrimary"
+                                        android:textSize="11sp"
+                                        android:visibility="gone" />
 
+                                    <ImageView
+                                        android:layout_width="17dp"
+                                        android:layout_height="17dp"
+                                        android:layout_gravity="right"
+                                        android:src="@drawable/i_icon_2"
+                                        android:visibility="visible" />
 
+                                </LinearLayout>
 
-
-                            </LinearLayout>
+                            </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 

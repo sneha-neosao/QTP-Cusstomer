@@ -39,6 +39,8 @@ import ModelClass.LabelModel;
 import ModelClass.NewCategoryDataModel;
 import ModelClass.NewCategoryVarientList;
 import ModelClass.ProductSector;
+
+import com.grocery.QTPmart.Categorygridquantity;
 import com.grocery.QTPmart.R;
 import util.AppController;
 import util.CustomVolleyJsonRequest;
@@ -163,30 +165,22 @@ public class ProductFragment2 extends Fragment {
                     public void onCheckedChanged(RadioGroup radioGroup, int i) {
                         dialog.dismiss();
                         RadioButton checkedRadioButton = (RadioButton) radioGroup.findViewById(i);
-                        switch (i) {
-//                            case R.id.rb_popular:
-//                                rb_popular.setChecked(true);
-//                                sort="popular";
-//                                product(categoryId,subCategoryId, "popular");
-//
-//                                break;
-//                            case R.id.rb_alphabet:
-//                                rb_alphabet.setChecked(true);
-//                                sort="alphabet";
-//                                product(categoryId,subCategoryId, "alphabet");
-//                                break;
-//
-//                            case R.id.rb_lowHigh:
-//                                rb_lowHigh.setChecked(true);
-//                                sort="lowhigh";
-//                                product(categoryId,subCategoryId, "lowhigh");
-//                                break;
-//
-//                            case R.id.rb_highLow:
-//                                rb_highLow.setChecked(true);
-//                                sort="highlow";
-//                                product(categoryId,subCategoryId, "highlow");
-//                                break;
+                        if (i == R.id.rb_popular) {
+                            rb_popular.setChecked(true);
+                            sort = "popular";
+                            product(cat_id, subCategoryId, "popular");
+                        } else if (i == R.id.rb_alphabet) {
+                            rb_alphabet.setChecked(true);
+                            sort = "alphabet";
+                            product(cat_id, subCategoryId, "alphabet");
+                        } else if (i == R.id.rb_lowHigh) {
+                            rb_lowHigh.setChecked(true);
+                            sort = "lowhigh";
+                            product(cat_id, subCategoryId, "lowhigh");
+                        } else if (i == R.id.rb_highLow) {
+                            rb_highLow.setChecked(true);
+                            sort = "highlow";
+                            product(cat_id, subCategoryId, "highlow");
                         }
                         // This puts the value (true/false) into the variable
                         boolean isChecked = checkedRadioButton.isChecked();
@@ -205,36 +199,36 @@ public class ProductFragment2 extends Fragment {
         });
 
 
-//        Categorygridquantity categorygridquantity = new Categorygridquantity() {
-//            @Override
-//            public void onClick(View view, int position, String ccId, String id) {
-//                varientProducts.clear();
-//            }
-//
-//            @Override
-//            public void onCartItemAddOrMinus() {
-//                if (dbcart.getCartCount() > 0) {
-//
-//                    slideUp(bottom_lay_total);
-//                    total_price.setText(session_management.getCurrency() + " " + dbcart.getTotalAmount());
-//                    total_count.setText("Total Items " + dbcart.getCartCount());
-//
-//                    new Handler().postDelayed(new Runnable() {
-//                        @Override
-//                        public void run() {
-//
-//                            //bottom_lay_total.setVisibility(View.GONE);
-//                            slideDown(bottom_lay_total);
-//                        }
-//                    }, 4000);
-//                } else {
-//                    bottom_lay_total.setVisibility(View.GONE);
-//                }
-//            }
-//        };
+        Categorygridquantity categorygridquantity = new Categorygridquantity() {
+            @Override
+            public void onClick(View view, int position, String ccId, String id) {
+                varientProducts.clear();
+            }
+
+            @Override
+            public void onCartItemAddOrMinus() {
+                if (dbcart.getCartCount() > 0) {
+
+                    slideUp(bottom_lay_total);
+                    total_price.setText(session_management.getCurrency() + " " + dbcart.getTotalAmount());
+                    total_count.setText("Total Items " + dbcart.getCartCount());
+
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+
+                            //bottom_lay_total.setVisibility(View.GONE);
+                            slideDown(bottom_lay_total);
+                        }
+                    }, 4000);
+                } else {
+                    bottom_lay_total.setVisibility(View.GONE);
+                }
+            }
+        };
 
         recycler_product.setLayoutManager(new GridLayoutManager(getContext(), 2));
-        adapter = new CategoryGridAdapter(newCategoryDataModel, labelModelArrayList, getActivity(), recycler_product);
+        adapter = new CategoryGridAdapter(newCategoryDataModel, labelModelArrayList, getActivity(), categorygridquantity, recycler_product);
         SlideInBottomAnimationAdapter slideInBottomAnimationAdapter = new SlideInBottomAnimationAdapter(adapter);
         slideInBottomAnimationAdapter.setDuration(1000);
         recycler_product.setAdapter(new AlphaInAnimationAdapter(slideInBottomAnimationAdapter));

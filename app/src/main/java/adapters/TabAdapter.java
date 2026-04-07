@@ -23,7 +23,7 @@ public class TabAdapter extends FragmentPagerAdapter {
     ArrayList<ProductSector> sectorList;
     //int pos;
 
-    public TabAdapter(FragmentManager childFragmentManager, ArrayList<ProductSector> sectorList) {
+    public TabAdapter(FragmentManager childFragmentManager, ArrayList<ProductSector> sectorList, int tabindex) {
         super(childFragmentManager);
         this.sectorList=sectorList;
         //this.pos=pos;
