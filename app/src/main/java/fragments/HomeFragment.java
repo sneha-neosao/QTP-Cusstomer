@@ -1520,7 +1520,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener  {
                     }
                 }.selectedId=4;
                 MainDrawerActivity.bottomNavigation.show(4,true);
-//                loadFragment(new OrderFragment());
+                loadFragment(new OrderFragment());
                 dialog.dismiss();
 
             }

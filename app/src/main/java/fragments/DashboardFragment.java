@@ -112,9 +112,9 @@ public class DashboardFragment extends Fragment implements MomentzCallback {
         cvOrders.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                new MainDrawerActivity().selectedId=2;
-//                MainDrawerActivity.bottomNavigation.show(2,true);
-//                loadFragment(new OrderFragment());
+                new MainDrawerActivity().selectedId=2;
+                MainDrawerActivity.bottomNavigation.show(2,true);
+                loadFragment(new OrderFragment());
             }
         });
 
@@ -122,9 +122,9 @@ public class DashboardFragment extends Fragment implements MomentzCallback {
         cvFavouriteList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                new MainDrawerActivity().selectedId=4;
-//                MainDrawerActivity.bottomNavigation.show(4,false);
-//                loadFragment(new FavouriteFragment());
+                new MainDrawerActivity().selectedId=4;
+                MainDrawerActivity.bottomNavigation.show(4,false);
+                loadFragment(new FavouriteFragment());
             }
         });
 

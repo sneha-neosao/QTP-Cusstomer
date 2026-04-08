@@ -58,6 +58,8 @@ import ModelClass.AddressModel;
 import ModelClass.LifetimeOffer;
 import ModelClass.OrderCalculationModel;
 import com.grocery.QTPmart.R;
+
+import fragments.OrderFragment;
 import network.ApiInterface;
 import network.Response.ResAddress;
 import network.Response.ResponseCoupon;
@@ -591,13 +593,13 @@ public class ShippingDetailActivity extends AppCompatActivity implements Address
 
         cl_confirmOrder_slide.setOnClickListener(view -> {
 
-            //new MainDrawerActivity().loadFragment(new OrderFragment());
+            new MainDrawerActivity().loadFragment(new OrderFragment());
 
             int totalQuantity = db.getCartCount();
             if(OrderTransactionType.equals("CC"))
             {
                 callNetworkActivity(totalQuantity);
-                /*Intent intent=new Intent(ShippingDetailActivity.this,NetworkPaymentActivity.class);
+                Intent intent=new Intent(ShippingDetailActivity.this,NetworkPaymentActivity.class);
                 intent.putExtra("SubTotal",subTotal);//double
                 intent.putExtra("discountInAmount",discountInAmount);//double
                 intent.putExtra("OrderStatus",totalQuantity);
@@ -618,7 +620,7 @@ public class ShippingDetailActivity extends AppCompatActivity implements Address
                 intent.putExtra("isCouponApplied",isCouponApplied);
                 intent.putExtra("cartID",session_management.getCartId());
                 startActivity(intent);
-                finish();*/
+                finish();
             }
             else {
                 continueUrl(totalQuantity, couponType,OrderTransactionType);

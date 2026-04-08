@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:fillViewport="true"
+    android:background="#FAFAFA"
+    android:orientation="vertical">
+<!--<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    tools:context=".Fragments.OrderStatusFragments.AllOrdersFragment">-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/assign_recy"
+        android:visibility="visible"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:listitem="@layout/item_layout_myorder_new_1"
+        android:nestedScrollingEnabled="true"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
+        <include layout="@layout/item_layout_myorder_new"
+            android:visibility="gone"/>
+
+        <RelativeLayout
+            android:id="@+id/noData"
+            android:visibility="gone"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="100dp"
+            android:layout_below="@+id/ll1"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:nestedScrollingEnabled="false"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_centerHorizontal="true"
+                android:id="@+id/imageView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/hintColor"
+                android:background="@drawable/ic_not_found" />
+
+            <TextView
+                android:text="Oops! No Data Found.."
+                android:layout_marginTop="10dp"
+                android:id="@+id/dataText_vehical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imageView5"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+<!--</androidx.coordinatorlayout.widget.CoordinatorLayout>-->
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

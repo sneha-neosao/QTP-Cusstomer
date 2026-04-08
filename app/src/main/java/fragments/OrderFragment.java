@@ -27,16 +27,17 @@ import com.google.android.material.tabs.TabLayout;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import activities.MainDrawerActivity;
-//import adapters.OrderTabAdapter;
+import adapters.OrderTabAdapter;
 import Config.ApiBaseURL;
 import Config.BaseURL;
 import ModelClass.Counts;
 import ModelClass.NewGetOrderModel;
 import com.grocery.QTPmart.R;
+
+import adapters.OrderTabAdapter;
 import network.ApiInterface;
 import util.Session_management;
-//import com.rahimlis.badgedtablayout.BadgedTabLayout;
-
+import com.google.android.material.tabs.TabLayout;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -53,11 +54,11 @@ import static Config.BaseURL.KEY_ID;
 public class OrderFragment extends Fragment{
 
    public static TabLayout tab_order_status;
-   //public static BadgedTabLayout tabLayout;
+   public static TabLayout tabLayout;
     ViewPager viewPager;
     HashMap<String,String> userDetails;
     Session_management session_management;
-//    OrderTabAdapter tabAdapter;
+    OrderTabAdapter tabAdapter;
     public static String allCount="0",pendingCount="0",acceptedCount="0",
             onTheWayCount="0",deliveredCount="0",canceledCount="0";
     public static TextView tvAllCount,tvPendingCount,tvAcceptedCount,tvOnTheWayCount,tvDeliveredCount,tvCanceledCount;
@@ -68,7 +69,7 @@ public class OrderFragment extends Fragment{
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_orders, container, false);
 
-      //  tab_order_status=view.findViewById(R.id.tab_order_status);
+        tab_order_status=view.findViewById(R.id.tab_order_status);
         viewPager=view.findViewById(R.id.order_tab_pager);
 
         MainDrawerActivity.reelLyt.setVisibility(View.GONE);
@@ -80,14 +81,14 @@ public class OrderFragment extends Fragment{
 
         session_management = new Session_management(getContext().getApplicationContext());
         userDetails=session_management.getUserDetails();
-     //  tabLayout = (BadgedTabLayout) view.findViewById(R.id.tab_order_status);
+       tabLayout = (TabLayout) view.findViewById(R.id.tab_order_status);
 
         tab_order_status =  view.findViewById(R.id.tab_order_status);
 
 
 
-//        viewPager.setAdapter(tabAdapter = new OrderTabAdapter(getChildFragmentManager(), 6));
-        //tab_order_status.setupWithViewPager(viewPager);
+        viewPager.setAdapter(tabAdapter = new OrderTabAdapter(getChildFragmentManager(), 6));
+        tab_order_status.setupWithViewPager(viewPager);
         tab_order_status.setupWithViewPager(viewPager);
 
        /* if(!session_management.getIsOrderTabLoaded()){
