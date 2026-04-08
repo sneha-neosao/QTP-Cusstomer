@@ -397,7 +397,7 @@ public class BannerItemsActivity extends AppCompatActivity implements SharedPref
 
     public void onClickCart(View view) {
 
-//        startActivity(new Intent(BannerItemsActivity.this, CartActivity.class));
+        startActivity(new Intent(BannerItemsActivity.this, CartActivity.class));
     }
 
     public void shopNow(View view) {

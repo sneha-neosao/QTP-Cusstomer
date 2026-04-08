@@ -209,11 +209,11 @@ public class MainActivity extends AppCompatActivity implements
         cartLyt.setOnClickListener(v->{
             startActivity(new Intent(MainActivity.this, CartActivity.class));
         });
-//        cart.setOnClickListener(v -> {
-//
-//            startActivity(new Intent(MainActivity.this, CartActivity.class));
-//
-//        });
+        cart.setOnClickListener(v -> {
+
+            startActivity(new Intent(MainActivity.this, CartActivity.class));
+
+        });
 
         fragmentClickListner = new FragmentClickListner() {
             @Override

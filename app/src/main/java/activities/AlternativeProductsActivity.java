@@ -267,9 +267,9 @@ public class AlternativeProductsActivity extends AppCompatActivity implements Sh
         });
     }
 
-//    public void onClickCart(View view) {
-//        startActivity(new Intent(this, CartActivity.class));
-//    }
+    public void onClickCart(View view) {
+        startActivity(new Intent(this, CartActivity.class));
+    }
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String s) {

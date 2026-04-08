@@ -32,6 +32,7 @@ import com.android.volley.VolleyLog;
 import com.bumptech.glide.Glide;
 import com.cooltechworks.views.shimmer.ShimmerRecyclerView;
 //import activities.CartActivity;
+import activities.CartActivity;
 import adapters.CategoryGridAdapter;
 //import com.grocery.QTPmart.Categorygridquantity;
 import Config.ApiBaseURL;
@@ -234,12 +235,12 @@ public class ProductFragment2 extends Fragment {
         recycler_product.setAdapter(new AlphaInAnimationAdapter(slideInBottomAnimationAdapter));
 
 
-//        continue_tocart.setOnClickListener(v -> {
-//            startActivity(new Intent(getContext(), CartActivity.class));
-//        });
+        continue_tocart.setOnClickListener(v -> {
+            startActivity(new Intent(getContext(), CartActivity.class));
+        });
 
-        //product(categoryId,subCategoryId,"");
-       // getProductsBySubofSubcategory(categoryId,subCategoryId,"");
+        product(categoryId,subCategoryId,"");
+        getProductsBySubofSubcategory(categoryId,subCategoryId,"");
 
         return view;
     }
@@ -270,7 +271,7 @@ public class ProductFragment2 extends Fragment {
                 try {
                     boolean status = response.getBoolean("status");
 
-//                    String message = response.getString("message");
+                    String message = response.getString("message");
 
                     if (status) {
                         progressDialog.dismiss();

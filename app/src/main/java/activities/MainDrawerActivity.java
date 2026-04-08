@@ -692,7 +692,7 @@ public class MainDrawerActivity extends AppCompatActivity implements
         cartCount = findViewById(R.id.cartCount);
 
         cartLyt.setOnClickListener(v -> {
-//            startActivity(new Intent(MainDrawerActivity.this, CartActivity.class));
+            startActivity(new Intent(MainDrawerActivity.this, CartActivity.class));
         });
 
     }

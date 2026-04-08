@@ -1233,66 +1233,57 @@ public class HomeFragment extends Fragment implements View.OnClickListener  {
     @SuppressLint("RestrictedApi")
     @Override
     public void onClick(View view) {
-        switch (view.getId()) {
-//            case R.id.fabMain:
-//
-//                Log.i(TAG, "onClick: fab main");
-//                if (isMenuOpen) {
-//                    fabOne.setVisibility(View.GONE);
-//                    fabTwo.setVisibility(View.GONE);
-//                    fabThree.setVisibility(View.GONE);
-//                    fabfour.setVisibility(View.GONE);
-//                    closeMenu();
-//                } else {
-//                    fabOne.setVisibility(View.VISIBLE);
-//                    fabTwo.setVisibility(View.VISIBLE);
-//                    fabThree.setVisibility(View.VISIBLE);
-//                    fabfour.setVisibility(View.VISIBLE);
-//                    openMenu();
-//                }
-//                break;
-//            case R.id.fabOne:
-//                Intent sendIntent1 = new Intent();
-//                sendIntent1.setAction(Intent.ACTION_SEND);
-//                sendIntent1.putExtra(Intent.EXTRA_TEXT, "Hi friends i am using ." + " http://play.google.com/store/apps/details?id=" + getContext().getPackageName() + " APP");
-//                sendIntent1.setType("text/plain");
-//                startActivity(sendIntent1);
-//
-//                Log.i(TAG, "onClick: fab one");
-//                handleFabOne();
-//                if (isMenuOpen) {
-//                    closeMenu();
-//                } else {
-//                    openMenu();
-//                }
-//                break;
-//            case R.id.fabTwo:
-//                Uri uri = Uri.parse("market://details?id=" + getContext().getPackageName());
-//                Intent goToMarket = new Intent(Intent.ACTION_VIEW, uri);
-//                goToMarket.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY |
-//                        Intent.FLAG_ACTIVITY_NEW_DOCUMENT |
-//                        Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
-//                try {
-//                    startActivity(goToMarket);
-//                } catch (ActivityNotFoundException e) {
-//                    startActivity(new Intent(Intent.ACTION_VIEW,
-//                            Uri.parse("http://play.google.com/store/apps/details?id=" + getContext().getPackageName())));
-//                }
-//                break;
-//            case R.id.fabThree:
-//                String smsNumber = "971504413221";
-//                openWhatsApp(smsNumber);
-//                break;
-//
-//
-//            case R.id.fabfour:
-//
-//                if (isPermissionGranted()) {
-//                    call_action();
-//                }
-//
-//                Log.i(TAG, "onClick: fab four");
-//                break;
+        int id = view.getId();
+        if (id == R.id.fabMain) {
+            Log.i(TAG, "onClick: fab main");
+            if (isMenuOpen) {
+                fabOne.setVisibility(View.GONE);
+                fabTwo.setVisibility(View.GONE);
+                fabThree.setVisibility(View.GONE);
+                fabfour.setVisibility(View.GONE);
+                closeMenu();
+            } else {
+                fabOne.setVisibility(View.VISIBLE);
+                fabTwo.setVisibility(View.VISIBLE);
+                fabThree.setVisibility(View.VISIBLE);
+                fabfour.setVisibility(View.VISIBLE);
+                openMenu();
+            }
+        } else if (id == R.id.fabOne) {
+            Intent sendIntent1 = new Intent();
+            sendIntent1.setAction(Intent.ACTION_SEND);
+            sendIntent1.putExtra(Intent.EXTRA_TEXT, "Hi friends i am using ." + " http://play.google.com/store/apps/details?id=" + getContext().getPackageName() + " APP");
+            sendIntent1.setType("text/plain");
+            startActivity(sendIntent1);
+
+            Log.i(TAG, "onClick: fab one");
+            handleFabOne();
+            if (isMenuOpen) {
+                closeMenu();
+            } else {
+                openMenu();
+            }
+        } else if (id == R.id.fabTwo) {
+            Uri uri = Uri.parse("market://details?id=" + getContext().getPackageName());
+            Intent goToMarket = new Intent(Intent.ACTION_VIEW, uri);
+            goToMarket.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY |
+                    Intent.FLAG_ACTIVITY_NEW_DOCUMENT |
+                    Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
+            try {
+                startActivity(goToMarket);
+            } catch (ActivityNotFoundException e) {
+                startActivity(new Intent(Intent.ACTION_VIEW,
+                        Uri.parse("http://play.google.com/store/apps/details?id=" + getContext().getPackageName())));
+            }
+        } else if (id == R.id.fabThree) {
+            String smsNumber = "971504413221";
+            openWhatsApp(smsNumber);
+        } else if (id == R.id.fabfour) {
+            if (isPermissionGranted()) {
+                call_action();
+            }
+
+            Log.i(TAG, "onClick: fab four");
         }
     }
 

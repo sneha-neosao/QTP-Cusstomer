@@ -151,8 +151,8 @@ public class CartActivity extends AppCompatActivity implements CheckEmptyCartLis
 
         ll_Checkout = findViewById(R.id.ll_Checkout);
         btn_ShopNOw.setOnClickListener(v -> {
-            /*Intent intent=new Intent(CartActivity.this, MainDrawerActivity.class);
-            startActivity(intent);*/
+            Intent intent=new Intent(CartActivity.this, MainDrawerActivity.class);
+            startActivity(intent);
             finish();
         });
 
@@ -194,8 +194,8 @@ public class CartActivity extends AppCompatActivity implements CheckEmptyCartLis
                                 startActivityForResult(intent, 22);
                                 finish();
 
-                               /* Intent intent = new Intent(CartActivity.this, OrderSummary.class);
-                                startActivityForResult(intent,22);*/
+//                                Intent intent = new Intent(CartActivity.this, OrderSummary.class);
+//                                startActivityForResult(intent,22);
                             }
                         }
                     } else {

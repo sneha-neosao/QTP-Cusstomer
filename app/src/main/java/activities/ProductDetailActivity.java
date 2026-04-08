@@ -315,17 +315,17 @@ public class ProductDetailActivity extends AppCompatActivity implements SharedPr
 
         ArrayList<HashMap<String, String>> map = dbHandler.getCartAll();
 
-//        rlCart.setOnClickListener(view -> {
-//            startActivity(new Intent(this, CartActivity.class));
-//        });
+        rlCart.setOnClickListener(view -> {
+            startActivity(new Intent(this, CartActivity.class));
+        });
 
         search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                //startActivity(new Intent(ProductDetailActivity.this, SearchActivity.class));
-//                startActivity(new Intent(ProductDetailActivity.this,NewSeearchActivity.class)
-//                        .putExtra("fromIntent",0));
+//                startActivity(new Intent(ProductDetailActivity.this, SearchActivity.class));
+                startActivity(new Intent(ProductDetailActivity.this,NewSeearchActivity.class)
+                        .putExtra("fromIntent",0));
             }
         });
 
@@ -612,7 +612,7 @@ public class ProductDetailActivity extends AppCompatActivity implements SharedPr
 
 
     public void onClickCart1(View view) {
-//        startActivity(new Intent(this, CartActivity.class));
+        startActivity(new Intent(this, CartActivity.class));
     }
 
     private void initBadges() {

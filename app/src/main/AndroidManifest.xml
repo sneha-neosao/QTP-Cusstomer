@@ -44,6 +44,9 @@
             android:name="activities.MainDrawerActivity"
             android:exported="false" />
         <activity
+            android:name="activities.CartActivity"
+            android:exported="false" />
+        <activity
             android:name="activities.NewSeearchActivity"
             android:exported="false"
             android:screenOrientation="portrait"
