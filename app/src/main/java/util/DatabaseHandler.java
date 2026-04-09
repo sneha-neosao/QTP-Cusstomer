@@ -194,7 +194,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     public boolean isInCart(String id) {
         SQLiteDatabase db = getReadableDatabase();
-        String qry = "Select *  from " + CART_TABLE + " where " + VARIENT_ID + " = " + id;
+        String qry = "SELECT * FROM " + CART_TABLE + " WHERE " + VARIENT_ID + "='" + id + "'";
         Cursor cursor = db.rawQuery(qry, null);
         cursor.moveToFirst();
         //db.close();

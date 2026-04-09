@@ -108,6 +108,9 @@ public class ShippingDetailActivity extends AppCompatActivity implements Address
 {
 
     ImageView img_applyCoupon_arrow;
+
+    private boolean isReceiverRegistered = false;
+
     MaterialButton btn_next,btn_add_new_address,btn_next_offer;
     LinearLayout ll_stage_1,ll_stage_2,ll_stage_3,ll_stage_4,ll_apply_coupon,llBack,llApplyCoupon,llVoucherApplied,llVoucherLimit;
     TextView txt_apply,tvCouponDescription;
@@ -1029,7 +1032,7 @@ public class ShippingDetailActivity extends AppCompatActivity implements Address
         super.onStop();
         if (offersReceivers!= null)
         {
-            unregisterReceiver(offersReceivers);
+//            unregisterReceiver(offersReceivers);
         }
     }
 

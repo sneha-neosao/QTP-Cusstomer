@@ -393,31 +393,26 @@ public class CartActivity extends AppCompatActivity implements CheckEmptyCartLis
                         JSONArray jsonArray = response.getJSONArray("result");
                         stringBuilder=new StringBuilder();
 
-                        for(int i=0;i<jsonArray.length();i++){
+                        for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject object = jsonArray.getJSONObject(i);
-                            if(object.has("supplierID"))
-                            {
-                                stringBuilder.append(object.getString("supplierID"));
-                            }
-                            // abc.substring(0, abc.lastIndexOf(","));
-                            stringBuilder.append(",");
 
-                            if(object.has("vatRate"))
-                            {
-                                if(!object.getString("vatRate").equals("null"))
-                                    vatRate=Double.parseDouble(object.getString("vatRate"));
-                                else
-                                    vatRate=0.0;
-                            }
+                            HashMap<String, String> productMap = new HashMap<>();
+                            productMap.put(DatabaseHandler.VARIENT_ID, object.getString("unitID"));   // maps API unitID → DB varient_id
+                            productMap.put(DatabaseHandler.PRODUCT_ID, object.getString("itemID"));
+                            productMap.put(DatabaseHandler.COLUMN_NAME, object.getString("itemName"));
+                            productMap.put(DatabaseHandler.COLUMN_IMAGE, object.getString("image"));
+                            productMap.put(DatabaseHandler.COLUMN_PRICE, object.getString("itemSellingprice"));
+                            productMap.put(DatabaseHandler.COLUMN_STOCK, object.getString("stockingType")); // must be "Stock"
+                            productMap.put(DatabaseHandler.COLUMN_SUPPLIERID, object.getString("supplierID"));
+                            productMap.put(DatabaseHandler.COLUMN_DESCRIPTION, object.optString("shortDes"));
+                            productMap.put(DatabaseHandler.COLUMN_UNIT_VALUE, object.getString("uom"));
+                            productMap.put(DatabaseHandler.UNIT_ID, object.getString("unitID"));
+                            productMap.put(DatabaseHandler.COLUMN_VATRATE, object.getString("vatRate"));
 
-                            if(object.has("cartID"))
-                            {
-                                if(!object.getString("cartID").equals("null")){
-                                    cartId=object.getString("cartID");
-                                    sessionManagement.setCartID(cartId);
-                                }
-                            }
+                            int qty = object.getInt("quantity");
+                            db.setCart(productMap, qty);   // <-- this actually saves into SQLite
                         }
+
                         Log.e("CartProducts", "vatRate: "+vatRate );
                         supplierID=stringBuilder.toString();
                         // supplierID.substring(0,supplierID.lastIndexOf(","));

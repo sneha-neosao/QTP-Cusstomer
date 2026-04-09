@@ -44,6 +44,15 @@
             android:name="activities.MainDrawerActivity"
             android:exported="false" />
         <activity
+            android:name="activities.ShippingDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name="activities.AddressLocationActivity2"
+            android:exported="false" />
+        <activity
+            android:name="activities.AddNewAddressActivity"
+            android:exported="false" />
+        <activity
             android:name="activities.CartActivity"
             android:exported="false" />
         <activity
@@ -80,6 +89,9 @@
             android:exported="false" />
         <activity
             android:name="activities.ViewProductImageActivity"
+            android:exported="false" />
+        <activity
+            android:name="activities.RedeemVoucherActivity"
             android:exported="false" />
         <activity
             android:name="activities.ForgotPassOtp"

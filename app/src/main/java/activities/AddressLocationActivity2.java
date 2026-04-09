@@ -350,29 +350,45 @@ public class AddressLocationActivity2 extends AppCompatActivity implements OnMap
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-//        LatLng sydney = new LatLng(28.992845, 77.016551);
         mMap.getUiSettings().setCompassEnabled(false);
         mMap.getUiSettings().setMyLocationButtonEnabled(true);
         mMap.getUiSettings().setMapToolbarEnabled(false);
         mMap.setBuildingsEnabled(false);
         mapFragment.mTouchView.setGoogleMap(mMap);
-        if (!session_management.getLatPref().equalsIgnoreCase("") && !session_management.getLangPref().equalsIgnoreCase("")) {
-            LatLng latLng = new LatLng(Double.parseDouble(session_management.getLatPref()), Double.parseDouble(session_management.getLangPref()));
-            mMap.addMarker(new MarkerOptions().position(latLng));
-            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 16.0f));
+
+        String latPref = session_management.getLatPref();
+        String lngPref = session_management.getLangPref();
+
+        if (latPref != null && !latPref.isEmpty() && !latPref.equalsIgnoreCase("null")
+                && lngPref != null && !lngPref.isEmpty() && !lngPref.equalsIgnoreCase("null")) {
+            try {
+                double lat = Double.parseDouble(latPref);
+                double lng = Double.parseDouble(lngPref);
+                LatLng latLng = new LatLng(lat, lng);
+                mMap.addMarker(new MarkerOptions().position(latLng));
+                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 16.0f));
+            } catch (NumberFormatException e) {
+                // fallback if parsing fails
+                LatLngBounds INDIA = new LatLngBounds(new LatLng(7.2, 67.8), new LatLng(36.5, 93.8));
+                mMap.addMarker(new MarkerOptions().position(INDIA.getCenter()));
+                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(INDIA.getCenter(), 16.0f));
+            }
         } else {
+            // fallback to default location
             LatLngBounds INDIA = new LatLngBounds(new LatLng(7.2, 67.8), new LatLng(36.5, 93.8));
             mMap.addMarker(new MarkerOptions().position(INDIA.getCenter()));
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(INDIA.getCenter(), 16.0f));
         }
 
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
+                && ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             return;
         }
         mMap.setMyLocationEnabled(true);
         mMap.setOnCameraMoveStartedListener(this);
         mMap.setOnCameraIdleListener(onCameraIdleListener);
     }
+
 
     @Override
     public void onCameraMoveStarted(int i) {

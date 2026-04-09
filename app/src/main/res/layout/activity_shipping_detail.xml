@@ -410,17 +410,18 @@
 
     </androidx.core.widget.NestedScrollView>
 
-    <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
-        android:id="@+id/btn_id"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:backgroundTint="@color/colorPrimary"
-        android:text="info"
-        android:visibility="gone"
-        android:gravity="center"
-        android:textColor="@color/white"
-        android:background="@drawable/border_rounded" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:backgroundTint="@color/colorPrimary"
+            android:text="Info"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:background="@drawable/border_rounded"
+            android:visibility="gone"/>
+
     <!--app:spinning_bar_width="4dp" &lt;!&ndash; Optional &ndash;&gt;
     app:spinning_bar_color="#FFF" &lt;!&ndash; Optional &ndash;&gt;
     app:spinning_bar_padding="6dp"
