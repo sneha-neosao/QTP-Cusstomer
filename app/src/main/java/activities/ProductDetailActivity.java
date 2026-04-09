@@ -834,12 +834,12 @@ public class ProductDetailActivity extends AppCompatActivity implements SharedPr
         img_zoom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(ProductDetailActivity.this,ViewProductImageActivity.class);
-//                intent.putExtra("imgPath", productDetailModel.getImage());
-//                if (imageModels != null) {
-//                    intent.putExtra("imageList", imageModels);
-//                }
-//                startActivity(intent);
+                Intent intent = new Intent(ProductDetailActivity.this,ViewProductImageActivity.class);
+                intent.putExtra("imgPath", productDetailModel.getImage());
+                if (imageModels != null) {
+                    intent.putExtra("imageList", imageModels);
+                }
+                startActivity(intent);
 
             }
         });

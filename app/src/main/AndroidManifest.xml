@@ -79,6 +79,9 @@
             android:name="activities.LoginActivity"
             android:exported="false" />
         <activity
+            android:name="activities.ViewProductImageActivity"
+            android:exported="false" />
+        <activity
             android:name="activities.ForgotPassOtp"
             android:exported="false" />
         <activity
