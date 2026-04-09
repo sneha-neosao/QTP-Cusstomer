@@ -30,6 +30,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 //import com.getkeepsafe.taptargetview.TapTarget;
 //import com.getkeepsafe.taptargetview.TapTargetSequence;
+import com.getkeepsafe.taptargetview.TapTarget;
+import com.getkeepsafe.taptargetview.TapTargetSequence;
 import com.google.android.material.tabs.TabLayout;
 import adapters.TabAdapter;
 import adapters.TabAdapter2;
@@ -40,6 +42,8 @@ import ModelClass.HomeCate;
 import ModelClass.NewCategoryDataModel;
 import ModelClass.ProductSector;
 import com.grocery.QTPmart.R;
+
+import fragments.ProductFragment;
 import network.Response.ResponseMainPopUp;
 import network.ServiceGenrator;
 import util.AppController;
@@ -72,7 +76,7 @@ public class ProductTabActivity extends AppCompatActivity implements SharedPrefe
     private ArrayList<Category_model> cateList = new ArrayList<>();
     ViewPager viewPager,viewPager1;
     public static  TabLayout tabLayout;
-    //public static  TabLayout tabCategoryLayout;
+    public static  TabLayout tabCategoryLayout;
     public int tabindex = 0,tabindex1 =0;
     String cat_id="",title="",image="",selectedCatId="";
     private SharedPreferences pref;
@@ -137,9 +141,9 @@ public class ProductTabActivity extends AppCompatActivity implements SharedPrefe
         }
 
         getSectorlist3();
-        /*if(session_management.getIsFirstTime().isEmpty()){
+        if(session_management.getIsFirstTime().isEmpty()){
             getProductsBySubofSubcategory(cat_id,"All","");
-        }*/
+        }
 
 
         img_logo.setOnClickListener(new View.OnClickListener() {
@@ -154,9 +158,9 @@ public class ProductTabActivity extends AppCompatActivity implements SharedPrefe
             @Override
             public void onClick(View view) {
 
-                //startActivity(new Intent(ProductTabActivity.this, SearchActivity.class));
-//                startActivity(new Intent(ProductTabActivity.this,NewSeearchActivity.class)
-//                        .putExtra("fromIntent",0));
+//                startActivity(new Intent(ProductTabActivity.this, SearchActivity.class));
+                startActivity(new Intent(ProductTabActivity.this,NewSeearchActivity.class)
+                        .putExtra("fromIntent",0));
             }
         });
 
@@ -164,12 +168,12 @@ public class ProductTabActivity extends AppCompatActivity implements SharedPrefe
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                //subCategoryId=subcateList.get(tab.getPosition()).getItem_subCatID();
-                //loadFragment(new ProductFragment(),subCategoryId);
-                /*cat_id = SubCategoryActivity.subcateList.get(tab.getPosition()).getItem_subCatID();
+//                subCategoryId=subcateList.get(tab.getPosition()).getItem_subCatID();
+//                loadFragment(new ProductFragment(),subCategoryId);
+                cat_id = SubCategoryActivity.subcateList.get(tab.getPosition()).getItem_subCatID();
                 if(cat_id!=null) {
                     Log.e("cat_idTabSlct", cat_id.toString());
-                }*/
+                }
                 //main_cat  = SubCategoryActivity.subcateList.get(tab.getPosition()).getCategoryId();
 
             }
@@ -192,49 +196,49 @@ public class ProductTabActivity extends AppCompatActivity implements SharedPrefe
         if(session_management.getIsFirstTime().isEmpty()){
             session_management.setIsFirstTime("No");
         }
-//        final TapTargetSequence sequence = new TapTargetSequence(this)
-//                .targets(
-//                        // Likewise, this tap target will target the search button
-//                        TapTarget.forView(img_tapView,"Product Detail", "Long press to view more options.")
-//                                .transparentTarget(true)
-//                                .outerCircleColor(R.color.colorAccent)
-//                                .targetCircleColor(R.color.white)
-//                                .cancelable(true)
-//                                .id(1)
-//                )
-//                .listener(new TapTargetSequence.Listener() {
-//                    // This listener will tell us when interesting(tm) events happen in regards
-//                    // to the sequence
-//                    @Override
-//                    public void onSequenceFinish() {
-//                        img_tapView.setVisibility(View.GONE);
-//                        // Executes when sequence of instruction get completes.
-//                    }
-//
-//                    @Override
-//                    public void onSequenceStep(TapTarget lastTarget, boolean targetClicked) {
-//                        Log.d("TapTargetView", "Clicked on " + lastTarget.id());
-//                    }
-//
-//                    @Override
-//                    public void onSequenceCanceled(TapTarget lastTarget) {
-//                        img_tapView.setVisibility(View.GONE);
-//                        /*final AlertDialog dialog = new AlertDialog.Builder(ProductTabActivity.this)
-//                                .setTitle("Uh oh")
-//                                .setMessage("You canceled the sequence")
-//                                .setPositiveButton("OK", null).show();
-//                        TapTargetView.showFor(dialog,
-//                                TapTarget.forView(dialog.getButton(DialogInterface.BUTTON_POSITIVE), "Uh oh!", "You canceled the sequence at step " + lastTarget.id())
-//                                        .cancelable(false)
-//                                        .tintTarget(false), new TapTargetView.Listener() {
-//                                    @Override
-//                                    public void onTargetClick(TapTargetView view) {
-//                                        super.onTargetClick(view);
-//                                        dialog.dismiss();
-//                                    }
-//                                });*/
-//                    }
-//                });
+        final TapTargetSequence sequence = new TapTargetSequence(this)
+                .targets(
+                        // Likewise, this tap target will target the search button
+                        TapTarget.forView(img_tapView,"Product Detail", "Long press to view more options.")
+                                .transparentTarget(true)
+                                .outerCircleColor(R.color.colorAccent)
+                                .targetCircleColor(R.color.white)
+                                .cancelable(true)
+                                .id(1)
+                )
+                .listener(new TapTargetSequence.Listener() {
+                    // This listener will tell us when interesting(tm) events happen in regards
+                    // to the sequence
+                    @Override
+                    public void onSequenceFinish() {
+                        img_tapView.setVisibility(View.GONE);
+                        // Executes when sequence of instruction get completes.
+                    }
+
+                    @Override
+                    public void onSequenceStep(TapTarget lastTarget, boolean targetClicked) {
+                        Log.d("TapTargetView", "Clicked on " + lastTarget.id());
+                    }
+
+                    @Override
+                    public void onSequenceCanceled(TapTarget lastTarget) {
+                        img_tapView.setVisibility(View.GONE);
+                        /*final AlertDialog dialog = new AlertDialog.Builder(ProductTabActivity.this)
+                                .setTitle("Uh oh")
+                                .setMessage("You canceled the sequence")
+                                .setPositiveButton("OK", null).show();
+                        TapTargetView.showFor(dialog,
+                                TapTarget.forView(dialog.getButton(DialogInterface.BUTTON_POSITIVE), "Uh oh!", "You canceled the sequence at step " + lastTarget.id())
+                                        .cancelable(false)
+                                        .tintTarget(false), new TapTargetView.Listener() {
+                                    @Override
+                                    public void onTargetClick(TapTargetView view) {
+                                        super.onTargetClick(view);
+                                        dialog.dismiss();
+                                    }
+                                });*/
+                    }
+                });
 
         Picasso.get()
                 .load(newCategoryDataModel.get(0).getProduct_image())
@@ -301,22 +305,30 @@ public class ProductTabActivity extends AppCompatActivity implements SharedPrefe
 
     public void onClickCart(View view)
     {
-//        startActivity(new Intent(this, CartActivity.class));
+        startActivity(new Intent(this, CartActivity.class));
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        //tabLayout.setVisibility(View.VISIBLE);
-        //tabCategoryLayout.setVisibility(View.VISIBLE);
+        if (tabLayout != null) {
+            tabLayout.setVisibility(View.VISIBLE);
+        }
+        if (tabCategoryLayout != null) {
+            tabCategoryLayout.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
     public void onBackPressed() {
         Log.e("count",getFragmentManager().getBackStackEntryCount()+"");
         if (getFragmentManager().getBackStackEntryCount() > 0) {
-            //tabLayout.setVisibility(View.VISIBLE);
-            //tabCategoryLayout.setVisibility(View.VISIBLE);
+            if (tabLayout != null) {
+                tabLayout.setVisibility(View.VISIBLE);
+            }
+            if (tabCategoryLayout != null) {
+                tabCategoryLayout.setVisibility(View.VISIBLE);
+            }
             getFragmentManager().popBackStack();
         } else {
             super.onBackPressed();

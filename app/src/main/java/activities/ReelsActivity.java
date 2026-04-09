@@ -62,11 +62,11 @@ public class ReelsActivity extends AppCompatActivity implements MomentzCallback 
         imgUrls=new ArrayList<>();
         getReelData();
 
-     /*   ImageView imageView = new ImageView(ReelsActivity.this);
+        ImageView imageView = new ImageView(ReelsActivity.this);
         imageView.setScaleType(ImageView.ScaleType.FIT_XY);
         listOfViews.add(new MomentzView(imageView,5));
         listOfViews.add(new MomentzView(imageView,5));
-        prepareStories();*/
+        prepareStories();
 /*
         if(type.equals("video")){
             VideoView videoView = new VideoView(ReelsActivity.this);

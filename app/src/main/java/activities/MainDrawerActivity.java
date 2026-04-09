@@ -7,6 +7,7 @@ import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -14,6 +15,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.PorterDuff;
+import android.graphics.drawable.ColorDrawable;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
@@ -23,6 +25,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
 import android.widget.EditText;
@@ -69,6 +72,7 @@ import com.grocery.QTPmart.R;
 import com.qamar.curvedbottomnaviagtion.CurvedBottomNavigation;
 import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.Picasso;
+import com.google.android.material.snackbar.Snackbar;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -287,21 +291,23 @@ public class MainDrawerActivity extends AppCompatActivity implements
         imageView_admin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MainDrawerActivity menuDrawerBack2 = MainDrawerActivity.this;
-                menuDrawerBack2.hideMenu(menuDrawerBack2.content_view, menuDrawerBack2.content_view1);
-                loadFragment(new ProfileViewFragment());
-                bottomNavigation.setVisibility(View.GONE);
-//                if (sessionManagement.isLoggedIn()) {
-//                    if (isHide) {
-//                        MainDrawerActivity menuDrawerBack = MainDrawerActivity.this;
-//                        menuDrawerBack.showMenu(menuDrawerBack.content_view, menuDrawerBack.content_view1);
-//                        return;
-//                    }
-//                    MainDrawerActivity menuDrawerBack2 = MainDrawerActivity.this;
-//                    menuDrawerBack2.hideMenu(menuDrawerBack2.content_view, menuDrawerBack2.content_view1);
-//                    loadFragment(new ProfileViewFragment());
-//                    bottomNavigation.setVisibility(View.GONE);
-//                }
+//                MainDrawerActivity menuDrawerBack2 = MainDrawerActivity.this;
+//                menuDrawerBack2.hideMenu(menuDrawerBack2.content_view, menuDrawerBack2.content_view1);
+//                loadFragment(new ProfileViewFragment());
+//                bottomNavigation.setVisibility(View.GONE);
+                if (sessionManagement.isLoggedIn()) {
+                    if (isHide) {
+                        MainDrawerActivity menuDrawerBack = MainDrawerActivity.this;
+                        menuDrawerBack.showMenu(menuDrawerBack.content_view, menuDrawerBack.content_view1);
+                        return;
+                    }
+                    MainDrawerActivity menuDrawerBack2 = MainDrawerActivity.this;
+                    menuDrawerBack2.hideMenu(menuDrawerBack2.content_view, menuDrawerBack2.content_view1);
+                    loadFragment(new ProfileViewFragment());
+                    bottomNavigation.setVisibility(View.GONE);
+                } else {
+                    Snackbar.make(findViewById(android.R.id.content), "Please login first", Snackbar.LENGTH_SHORT).show();
+                }
             }
 
         });
@@ -309,21 +315,23 @@ public class MainDrawerActivity extends AppCompatActivity implements
         tv_settings_drawer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MainDrawerActivity menuDrawerBack2 = MainDrawerActivity.this;
-                menuDrawerBack2.hideMenu(menuDrawerBack2.content_view, menuDrawerBack2.content_view1);
-                loadFragment(new ProfileViewFragment());
-                bottomNavigation.setVisibility(View.GONE);
-//                if (sessionManagement.isLoggedIn()) {
-//                    if (isHide) {
-//                        MainDrawerActivity menuDrawerBack = MainDrawerActivity.this;
-//                        menuDrawerBack.showMenu(menuDrawerBack.content_view, menuDrawerBack.content_view1);
-//                        return;
-//                    }
-//                    MainDrawerActivity menuDrawerBack2 = MainDrawerActivity.this;
-//                    menuDrawerBack2.hideMenu(menuDrawerBack2.content_view, menuDrawerBack2.content_view1);
-//                    loadFragment(new ProfileViewFragment());
-//                    bottomNavigation.setVisibility(View.GONE);
-//                }
+//                MainDrawerActivity menuDrawerBack2 = MainDrawerActivity.this;
+//                menuDrawerBack2.hideMenu(menuDrawerBack2.content_view, menuDrawerBack2.content_view1);
+//                loadFragment(new ProfileViewFragment());
+//                bottomNavigation.setVisibility(View.GONE);
+                if (sessionManagement.isLoggedIn()) {
+                    if (isHide) {
+                        MainDrawerActivity menuDrawerBack = MainDrawerActivity.this;
+                        menuDrawerBack.showMenu(menuDrawerBack.content_view, menuDrawerBack.content_view1);
+                        return;
+                    }
+                    MainDrawerActivity menuDrawerBack2 = MainDrawerActivity.this;
+                    menuDrawerBack2.hideMenu(menuDrawerBack2.content_view, menuDrawerBack2.content_view1);
+                    loadFragment(new ProfileViewFragment());
+                    bottomNavigation.setVisibility(View.GONE);
+                } else {
+                    Snackbar.make(findViewById(android.R.id.content), "Please login first", Snackbar.LENGTH_SHORT).show();
+                }
 
             }
         });
@@ -452,7 +460,7 @@ public class MainDrawerActivity extends AppCompatActivity implements
             @Override
             public void onClick(View v) {
 
-//                startActivity(new Intent(MainDrawerActivity.this, ReelsActivity.class));
+                startActivity(new Intent(MainDrawerActivity.this, ReelsActivity.class));
 
                /* Dialog bottomSheetDialog=new Dialog(MainDrawerActivity.this);
                 bottomSheetDialog.setContentView(R.layout.bottom_layout_order_success);
@@ -469,13 +477,13 @@ public class MainDrawerActivity extends AppCompatActivity implements
         edt_search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                loadFragment(new NewSearchFragment());
-                //bottomNavigation.setVisibility(View.VISIBLE);
-                //edt_search.setVisibility(View.GONE);
-                //ll_nav_title.setVisibility(View.GONE);
-                //reel_iv.setVisibility(View.VISIBLE);
-                //notification_iv.setVisibility(View.VISIBLE);
-                //search_iv.setVisibility(View.VISIBLE);
+                loadFragment(new NewSearchFragment());
+                bottomNavigation.setVisibility(View.VISIBLE);
+                edt_search.setVisibility(View.GONE);
+                ll_nav_title.setVisibility(View.GONE);
+                reel_iv.setVisibility(View.VISIBLE);
+                notification_iv.setVisibility(View.VISIBLE);
+                search_iv.setVisibility(View.VISIBLE);
             }
         });
 
@@ -553,7 +561,7 @@ public class MainDrawerActivity extends AppCompatActivity implements
             cartCount.setVisibility(View.GONE);
         }
 
-       /* int favCount=pref.getInt("favcount",0);
+        int favCount=pref.getInt("favcount",0);
         Log.e("favCount",String.valueOf(favCount));
         if(favCount>0){
             bottomNavigation.setCount(ID_FAVOURITE, String.valueOf(favCount));
@@ -561,17 +569,17 @@ public class MainDrawerActivity extends AppCompatActivity implements
         else
         {
             bottomNavigation.clearCount(ID_FAVOURITE);
-        }*/
+        }
 
         /*Logout*/
         ll_logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // dbcart.clearCart();
-                // sessionManagement.setCurrency("AED ", "AED ");
-                //  dbcart.clearWishlist();
+                 dbcart.clearCart();
+                 sessionManagement.setCurrency("AED ", "AED ");
+                  dbcart.clearWishlist();
 //                logoutAll();
-//                sessionManagement.logoutSession();
+                sessionManagement.logoutSession();
                 finish();
             }
         });
@@ -597,9 +605,9 @@ public class MainDrawerActivity extends AppCompatActivity implements
                 LatLng latLng = new LatLng(Double.parseDouble(sessionManagement.getLatPref()), Double.parseDouble(sessionManagement.getLangPref()));
                 double latitude = Double.valueOf(dFormat.format(latLng.latitude));
                 double longitude = Double.valueOf(dFormat.format(latLng.longitude));
-                //location.setLatitude(latitude);
-                //  location.setLongitude(longitude);
-                // getAddress();
+                location.setLatitude(latitude);
+                  location.setLongitude(longitude);
+                 getAddress();
                 bottomNavigation.show(ID_HOME, true);
                 loadFragment(new HomeFragment(fragmentClickListner));
             }
@@ -629,17 +637,17 @@ public class MainDrawerActivity extends AppCompatActivity implements
 
         if (sessionManagement.isLoggedIn()) {
             /*Dialog for suggestion*/
-           /* if(getIntent().getIntExtra("loadFrag",0)==1){
+            if(getIntent().getIntExtra("loadFrag",0)==1){
                 //showFavourites();
-                showFullScreenDialog();
-            }*/
+//                showFullScreenDialog();
+            }
 
-//            if (NetworkConnection.connectionChecking(MainDrawerActivity.this)) {
+            if (NetworkConnection.connectionChecking(MainDrawerActivity.this)) {
 //                showFavourites();
-//
-//            } else {
-//                showToast(getString(R.string.no_internet));
-//            }
+
+            } else {
+                showToast(getString(R.string.no_internet));
+            }
 
             ll_login_drawer.setVisibility(View.GONE);
             ll_notification.setVisibility(View.VISIBLE);

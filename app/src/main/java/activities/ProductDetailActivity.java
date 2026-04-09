@@ -271,7 +271,11 @@ public class ProductDetailActivity extends AppCompatActivity implements SharedPr
         progressDialog.setMessage("Loading...");
         progressDialog.setCancelable(false);
 
-        registerReceiver(onComplete, new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            registerReceiver(onComplete, new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE), Context.RECEIVER_EXPORTED);
+        } else {
+            registerReceiver(onComplete, new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
+        }
 
         /*if (from == 1) {
             ll_blank.setVisibility(View.VISIBLE);

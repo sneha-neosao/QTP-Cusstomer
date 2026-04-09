@@ -530,14 +530,35 @@
 
                             </LinearLayout>
 
-                            <de.hdodenhof.circleimageview.CircleImageView
-                                android:id="@+id/sign_in_img"
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
-                                android:layout_gravity="right"
-                                android:layout_marginTop="40dp"
-                                android:src="@drawable/next"
-                                />
+<!--                            <de.hdodenhof.circleimageview.CircleImageView-->
+<!--                                android:id="@+id/"-->
+<!--                                android:layout_width="50dp"-->
+<!--                                android:layout_height="50dp"-->
+<!--                                android:layout_gravity="right"-->
+<!--                                android:layout_marginTop="40dp"-->
+<!--                                android:src="@drawable/next"-->
+<!--                                />-->
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="98dp"
+                                android:layout_gravity="bottom|end"
+                                android:layout_marginRight="21dp"
+                                android:layout_marginBottom="5dp"
+                                android:gravity="bottom">
+
+                                <ImageView
+                                    android:id="@+id/sign_in_img"
+                                    android:layout_width="50dp"
+                                    android:layout_height="50dp"
+                                    android:layout_gravity="bottom"
+                                    android:layout_marginBottom="13dp"
+                                    android:background="@drawable/grey_circle"
+                                    android:src="@drawable/next"
+                                    app:tint="@color/white"
+                                    android:scaleType="centerInside" />
+
+
+                            </LinearLayout>
 
                         </LinearLayout>
                     </LinearLayout>

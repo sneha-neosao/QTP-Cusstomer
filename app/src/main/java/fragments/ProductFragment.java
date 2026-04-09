@@ -363,8 +363,8 @@ public class ProductFragment extends Fragment implements SubOfSubCategoryAdapter
         params.put("item_CatID", cat_id);
         //params.put("item_subCatID", sub_cat_id);
         params.put("filter", filter);
-        Log.e("categoryId",cat_id);
-        Log.e("subcategoryId",sub_cat_id);
+        Log.e("categoryId", String.valueOf(cat_id));
+        Log.e("subcategoryId", String.valueOf(sub_cat_id));
 
 
 
