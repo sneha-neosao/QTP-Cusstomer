@@ -143,19 +143,19 @@ public class Cart_adapter extends RecyclerView.Adapter<Cart_adapter.ProductHolde
             holder.txt_close1.setVisibility(View.GONE);
         }
 
-//        holder.tv_add.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                holder.tv_add.setVisibility(View.GONE);
-//                holder.ll_addQuan.setVisibility(View.VISIBLE);
-//
-//                dbHandler.setCart(map, Integer.valueOf(holder.tv_contetiy.getText().toString()));
-//                Double items = Double.parseDouble(dbHandler.getInCartItemQty(map.get("varient_id")));
-//                Double price = Double.parseDouble(map.get("price"));
+        holder.tv_add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                holder.tv_add.setVisibility(View.GONE);
+                holder.ll_addQuan.setVisibility(View.VISIBLE);
+
+                dbHandler.setCart(map, Integer.valueOf(holder.tv_contetiy.getText().toString()));
+                Double items = Double.parseDouble(dbHandler.getInCartItemQty(map.get("varient_id")));
+                Double price = Double.parseDouble(map.get("price"));
 //                holder.pPrice.setText(String.format("%.2f",(price * items)));
-//                updateintent(dbHandler, view.getContext());
-//            }
-//        });
+                updateintent(dbHandler, view.getContext());
+            }
+        });
 
         if(map.get("stock")!=null&&map.get("stock").equals("Stock")) {
             holder.txt_close.setOnClickListener(view -> {

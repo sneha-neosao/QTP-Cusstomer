@@ -51,8 +51,9 @@ import ModelClass.LifetimeOffer;
 import ModelClass.MyCalendarModel;
 import ModelClass.NotifyModelUser;
 import ModelClass.VatResult;
-import com.grocery.QTPmart.R;
+
 import com.grocery.QTPmart.MainActivity;
+import com.grocery.QTPmart.R;
 import network.ApiInterface;
 import network.Request.RequestExtraCharges;
 import network.Response.ResponseCoupon;
@@ -183,7 +184,7 @@ public class OrderSummary extends AppCompatActivity implements ForClicktimings, 
         addressid = getIntent().getStringExtra("dId");
         supplierID=getIntent().getStringExtra("supplierID");
         vatRate=getIntent().getDoubleExtra("vatRate",5);
-        
+
         btn_confirm_slide = findViewById(R.id.btn_confirm_slide);
         couponCode = findViewById(R.id.couponCode);
         btnCoupon = findViewById(R.id.btnCoupon);
@@ -266,8 +267,8 @@ public class OrderSummary extends AppCompatActivity implements ForClicktimings, 
 
         shipping_tv.setVisibility(View.VISIBLE);
         //complete_order_tv.setVisibility(View.INVISIBLE);
-       // offer_tv.setVisibility(View.INVISIBLE);
-      //  plc_order_tv.setVisibility(View.INVISIBLE);
+        // offer_tv.setVisibility(View.INVISIBLE);
+        //  plc_order_tv.setVisibility(View.INVISIBLE);
 
         Log.d(TAG, "init: "+role);
         if(role.equals("supplier")){
@@ -294,7 +295,7 @@ public class OrderSummary extends AppCompatActivity implements ForClicktimings, 
         txt_place_order_completed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               set4Pos();
+                set4Pos();
             }
         });
 
@@ -334,7 +335,7 @@ public class OrderSummary extends AppCompatActivity implements ForClicktimings, 
                 finish();
             }
         });
-      //  btn_confirm_slide.setLocked(true);
+        //  btn_confirm_slide.setLocked(true);
 
         btn_continue_slide.setOnSlideCompleteListener(new SlideToActView.OnSlideCompleteListener() {
             @Override
@@ -365,17 +366,17 @@ public class OrderSummary extends AppCompatActivity implements ForClicktimings, 
                     //shipping_tv.setVisibility(View.INVISIBLE);
                     //complete_order_tv.setVisibility(View.INVISIBLE);
                     offer_tv.setVisibility(View.VISIBLE);
-                   // plc_order_tv.setVisibility(View.INVISIBLE);
+                    // plc_order_tv.setVisibility(View.INVISIBLE);
 
                     tv_shipping.setVisibility(View.GONE);
                     txt_shipping_completed.setVisibility(View.VISIBLE);
                     order_detail_tv.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.buttons)));
-                   // tv_shipping.setBackgroundTintList(null);
+                    // tv_shipping.setBackgroundTintList(null);
                     order_place_tv.setBackgroundTintList(null);
                     coupoun_tv.setBackgroundTintList(null);
 
                     coupoun_tv.setTextColor(getResources().getColor(R.color.grey));
-                   // tv_shipping.setTextColor(getResources().getColor(R.color.grey));
+                    // tv_shipping.setTextColor(getResources().getColor(R.color.grey));
                     order_detail_tv.setTextColor(getResources().getColor(R.color.white));
                     order_place_tv.setTextColor(getResources().getColor(R.color.grey));
 
@@ -383,62 +384,62 @@ public class OrderSummary extends AppCompatActivity implements ForClicktimings, 
             }
         });
 
-          btn_confirm_slide.setOnSlideCompleteListener(new SlideToActView.OnSlideCompleteListener() {
+        btn_confirm_slide.setOnSlideCompleteListener(new SlideToActView.OnSlideCompleteListener() {
             @Override
             public void onSlideComplete(@NotNull SlideToActView slideToActView) {
 
-                    btn_confirm_slide.setLocked(false);
-                    pos=3;
-                    shipping_layout.setVisibility(View.GONE);
-                    order_details_layout.setVisibility(View.GONE);
-                    ll_payment_mode.setVisibility(View.VISIBLE);
-                   // order_place_layout.setVisibility(View.VISIBLE);
-                    offers_layout.setVisibility(View.GONE);
+                btn_confirm_slide.setLocked(false);
+                pos=3;
+                shipping_layout.setVisibility(View.GONE);
+                order_details_layout.setVisibility(View.GONE);
+                ll_payment_mode.setVisibility(View.VISIBLE);
+                // order_place_layout.setVisibility(View.VISIBLE);
+                offers_layout.setVisibility(View.GONE);
 
-                   // shipping_tv.setVisibility(View.INVISIBLE);
-                  //  complete_order_tv.setVisibility(View.INVISIBLE);
-                  //  offer_tv.setVisibility(View.INVISIBLE);
-                    plc_order_tv.setVisibility(View.VISIBLE);
+                // shipping_tv.setVisibility(View.INVISIBLE);
+                //  complete_order_tv.setVisibility(View.INVISIBLE);
+                //  offer_tv.setVisibility(View.INVISIBLE);
+                plc_order_tv.setVisibility(View.VISIBLE);
 
-                    order_detail_tv.setVisibility(View.GONE);
-                    txt_offer_completed.setVisibility(View.VISIBLE);
+                order_detail_tv.setVisibility(View.GONE);
+                txt_offer_completed.setVisibility(View.VISIBLE);
 
 
-                    order_place_tv.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.buttons)));
-                    tv_shipping.setBackgroundTintList(null);
-                  //  order_detail_tv.setBackgroundTintList(null);
-                    coupoun_tv.setBackgroundTintList(null);
+                order_place_tv.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.buttons)));
+                tv_shipping.setBackgroundTintList(null);
+                //  order_detail_tv.setBackgroundTintList(null);
+                coupoun_tv.setBackgroundTintList(null);
 
-                    coupoun_tv.setTextColor(getResources().getColor(R.color.grey));
-                    tv_shipping.setTextColor(getResources().getColor(R.color.grey));
-                    order_detail_tv.setTextColor(getResources().getColor(R.color.grey));
-                    order_place_tv.setTextColor(getResources().getColor(R.color.white));
+                coupoun_tv.setTextColor(getResources().getColor(R.color.grey));
+                tv_shipping.setTextColor(getResources().getColor(R.color.grey));
+                order_detail_tv.setTextColor(getResources().getColor(R.color.grey));
+                order_place_tv.setTextColor(getResources().getColor(R.color.white));
 
             }
 
         });
 
-          btn_pay_slde.setOnSlideCompleteListener(new SlideToActView.OnSlideCompleteListener() {
-              @Override
-              public void onSlideComplete(@NotNull SlideToActView slideToActView) {
-                   if (payment_method.isEmpty())
+        btn_pay_slde.setOnSlideCompleteListener(new SlideToActView.OnSlideCompleteListener() {
+            @Override
+            public void onSlideComplete(@NotNull SlideToActView slideToActView) {
+                if (payment_method.isEmpty())
                 {
                     btn_pay_slde.resetSlider();
                     Toast.makeText(OrderSummary.this, "Please select payment method", Toast.LENGTH_SHORT).show();
                 }
-                   else {
-                       pos=4;
-                       order_place_tv.setVisibility(View.GONE);
-                       txt_place_order_completed.setVisibility(View.VISIBLE);
-                       coupoun_tv.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.buttons)));
-                       shipping_layout.setVisibility(View.GONE);
-                       order_details_layout.setVisibility(View.GONE);
-                       ll_payment_mode.setVisibility(View.GONE);
-                       order_place_layout.setVisibility(View.VISIBLE);
-                       offers_layout.setVisibility(View.GONE);
-                   }
-              }
-          });
+                else {
+                    pos=4;
+                    order_place_tv.setVisibility(View.GONE);
+                    txt_place_order_completed.setVisibility(View.VISIBLE);
+                    coupoun_tv.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.buttons)));
+                    shipping_layout.setVisibility(View.GONE);
+                    order_details_layout.setVisibility(View.GONE);
+                    ll_payment_mode.setVisibility(View.GONE);
+                    order_place_layout.setVisibility(View.VISIBLE);
+                    offers_layout.setVisibility(View.GONE);
+                }
+            }
+        });
 
         btn_proceed_slide.setOnSlideCompleteListener(new SlideToActView.OnSlideCompleteListener() {
             @Override
@@ -479,7 +480,7 @@ public class OrderSummary extends AppCompatActivity implements ForClicktimings, 
                             "nextlimit"+nextlimit+"\n"+
                             "total_atm"+String.valueOf(total_atm));
                     if (!totalAmount.equals("") && totalQuantity > 0) {
-                       // progressDialog.show();
+                        // progressDialog.show();
                         Log.e(TAG, "onSlideComplete: "+OrderTransactionType );
 
                         if(OrderTransactionType.equals("CC"))
@@ -567,118 +568,118 @@ public class OrderSummary extends AppCompatActivity implements ForClicktimings, 
 
 
         radio_grp.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-                                                  @SuppressLint("ResourceAsColor")
-                                                  @Override
-                                                  public void onCheckedChanged(RadioGroup group, int checkedId)
-                                                  {
-                                                      if (checkedId==R.id.cod_rbtn)
-                                                      {
-                                                          payment_method  = "COD";
-                                                          OrderTransactionType="COD";
+                                                 @SuppressLint("ResourceAsColor")
+                                                 @Override
+                                                 public void onCheckedChanged(RadioGroup group, int checkedId)
+                                                 {
+                                                     if (checkedId==R.id.cod_rbtn)
+                                                     {
+                                                         payment_method  = "COD";
+                                                         OrderTransactionType="COD";
 
-                                                          radio_grp.setBackgroundResource(R.drawable.square_bg);
-                                                          online_rbtn.setBackgroundResource(R.color.transparent);
-                                                          online_rbtn.setTextColor(getResources().getColor(R.color.black));
+                                                         radio_grp.setBackgroundResource(R.drawable.square_bg);
+                                                         online_rbtn.setBackgroundResource(R.color.transparent);
+                                                         online_rbtn.setTextColor(getResources().getColor(R.color.black));
 
-                                                          card_rbtn.setBackgroundResource(R.color.transparent);
-                                                          card_rbtn.setTextColor(getResources().getColor(R.color.black));
+                                                         card_rbtn.setBackgroundResource(R.color.transparent);
+                                                         card_rbtn.setTextColor(getResources().getColor(R.color.black));
 
-                                                          bring_rbtn.setBackgroundResource(R.color.transparent);
-                                                          bring_rbtn.setTextColor(getResources().getColor(R.color.black));
+                                                         bring_rbtn.setBackgroundResource(R.color.transparent);
+                                                         bring_rbtn.setTextColor(getResources().getColor(R.color.black));
 
-                                                          cod_rbtn.setBackgroundResource(R.color.buttons);
-                                                          cod_rbtn.setTextColor(getResources().getColor(R.color.white));
+                                                         cod_rbtn.setBackgroundResource(R.color.buttons);
+                                                         cod_rbtn.setTextColor(getResources().getColor(R.color.white));
 
-                                                          payment_info_tvs.setText("Payment Method : COD");
-                                                          btn_Contine.setEnabled(true);
-                                                          if (adapter!= null)
-                                                          {
-                                                              adapter.payment_method= OrderTransactionType;
-                                                          }
-                                                      }
-                                                      else if (checkedId==R.id.online_rbtn)
-                                                      {
-                                                          radio_grp.setBackgroundResource(R.drawable.square_bg);
-                                                          cod_rbtn.setBackgroundResource(R.color.transparent);
-                                                          cod_rbtn.setTextColor(getResources().getColor(R.color.black));
+                                                         payment_info_tvs.setText("Payment Method : COD");
+                                                         btn_Contine.setEnabled(true);
+                                                         if (adapter!= null)
+                                                         {
+                                                             adapter.payment_method= OrderTransactionType;
+                                                         }
+                                                     }
+                                                     else if (checkedId==R.id.online_rbtn)
+                                                     {
+                                                         radio_grp.setBackgroundResource(R.drawable.square_bg);
+                                                         cod_rbtn.setBackgroundResource(R.color.transparent);
+                                                         cod_rbtn.setTextColor(getResources().getColor(R.color.black));
 
-                                                          card_rbtn.setBackgroundResource(R.color.transparent);
-                                                          card_rbtn.setTextColor(getResources().getColor(R.color.black));
+                                                         card_rbtn.setBackgroundResource(R.color.transparent);
+                                                         card_rbtn.setTextColor(getResources().getColor(R.color.black));
 
-                                                          bring_rbtn.setBackgroundResource(R.color.transparent);
-                                                          bring_rbtn.setTextColor(getResources().getColor(R.color.black));
+                                                         bring_rbtn.setBackgroundResource(R.color.transparent);
+                                                         bring_rbtn.setTextColor(getResources().getColor(R.color.black));
 
-                                                          online_rbtn.setBackgroundResource(R.color.buttons);
-                                                          online_rbtn.setTextColor(getResources().getColor(R.color.white));
+                                                         online_rbtn.setBackgroundResource(R.color.buttons);
+                                                         online_rbtn.setTextColor(getResources().getColor(R.color.white));
 
-                                                          payment_method  = "ONLINE";
-                                                          OrderTransactionType="CC";
-                                                          payment_info_tvs.setText("Payment Method : ONLINE");
+                                                         payment_method  = "ONLINE";
+                                                         OrderTransactionType="CC";
+                                                         payment_info_tvs.setText("Payment Method : ONLINE");
                                                          // payment_info_tvs.setText("Payment Method : ONLINE \n Coming soon ");
-                                                          btn_Contine.setEnabled(false);
-                                                          if (adapter!= null)
-                                                          {
-                                                              adapter.payment_method= OrderTransactionType;
-                                                          }
+                                                         btn_Contine.setEnabled(false);
+                                                         if (adapter!= null)
+                                                         {
+                                                             adapter.payment_method= OrderTransactionType;
+                                                         }
 
-                                                      }
-                                                      else if (checkedId==R.id.card_rbtn)
-                                                      {
-                                                          radio_grp.setBackgroundResource(R.drawable.square_bg);
-                                                          cod_rbtn.setBackgroundResource(R.color.transparent);
-                                                          cod_rbtn.setTextColor(getResources().getColor(R.color.black));
+                                                     }
+                                                     else if (checkedId==R.id.card_rbtn)
+                                                     {
+                                                         radio_grp.setBackgroundResource(R.drawable.square_bg);
+                                                         cod_rbtn.setBackgroundResource(R.color.transparent);
+                                                         cod_rbtn.setTextColor(getResources().getColor(R.color.black));
 
-                                                          online_rbtn.setBackgroundResource(R.color.transparent);
-                                                          online_rbtn.setTextColor(getResources().getColor(R.color.black));
+                                                         online_rbtn.setBackgroundResource(R.color.transparent);
+                                                         online_rbtn.setTextColor(getResources().getColor(R.color.black));
 
-                                                          bring_rbtn.setBackgroundResource(R.color.transparent);
-                                                          bring_rbtn.setTextColor(getResources().getColor(R.color.black));
+                                                         bring_rbtn.setBackgroundResource(R.color.transparent);
+                                                         bring_rbtn.setTextColor(getResources().getColor(R.color.black));
 
 
-                                                          card_rbtn.setBackgroundResource(R.color.buttons);
-                                                          card_rbtn.setTextColor(getResources().getColor(R.color.white));
+                                                         card_rbtn.setBackgroundResource(R.color.buttons);
+                                                         card_rbtn.setTextColor(getResources().getColor(R.color.white));
 
-                                                          payment_method  = "C";
-                                                          OrderTransactionType="C";
-                                                          payment_info_tvs.setText("Payment Method : Credit Card");
+                                                         payment_method  = "C";
+                                                         OrderTransactionType="C";
+                                                         payment_info_tvs.setText("Payment Method : Credit Card");
                                                          // payment_info_tvs.setText("Payment Method : ONLINE \n Coming soon ");
-                                                          btn_Contine.setEnabled(false);
-                                                          if (adapter!= null)
-                                                          {
-                                                              adapter.payment_method= OrderTransactionType;
-                                                          }
+                                                         btn_Contine.setEnabled(false);
+                                                         if (adapter!= null)
+                                                         {
+                                                             adapter.payment_method= OrderTransactionType;
+                                                         }
 
-                                                      }
-                                                      else if (checkedId==R.id.bring_rbtn)
-                                                      {
-                                                          radio_grp.setBackgroundResource(R.drawable.square_bg);
-                                                          cod_rbtn.setBackgroundResource(R.color.transparent);
-                                                          cod_rbtn.setTextColor(getResources().getColor(R.color.black));
+                                                     }
+                                                     else if (checkedId==R.id.bring_rbtn)
+                                                     {
+                                                         radio_grp.setBackgroundResource(R.drawable.square_bg);
+                                                         cod_rbtn.setBackgroundResource(R.color.transparent);
+                                                         cod_rbtn.setTextColor(getResources().getColor(R.color.black));
 
-                                                          card_rbtn.setBackgroundResource(R.color.transparent);
-                                                          card_rbtn.setTextColor(getResources().getColor(R.color.black));
+                                                         card_rbtn.setBackgroundResource(R.color.transparent);
+                                                         card_rbtn.setTextColor(getResources().getColor(R.color.black));
 
-                                                          online_rbtn.setBackgroundResource(R.color.transparent);
-                                                          online_rbtn.setTextColor(getResources().getColor(R.color.black));
-
-
-                                                          bring_rbtn.setBackgroundResource(R.color.buttons);
-                                                          bring_rbtn.setTextColor(getResources().getColor(R.color.white));
+                                                         online_rbtn.setBackgroundResource(R.color.transparent);
+                                                         online_rbtn.setTextColor(getResources().getColor(R.color.black));
 
 
-                                                          payment_method  = "BT";
-                                                          OrderTransactionType="BT";
-                                                          payment_info_tvs.setText("Payment Method : Bring Terminal");
-                                                          // payment_info_tvs.setText("Payment Method : ONLINE \n Coming soon ");
-                                                          btn_Contine.setEnabled(false);
-                                                          if (adapter!= null)
-                                                          {
-                                                              adapter.payment_method= OrderTransactionType;
-                                                          }
+                                                         bring_rbtn.setBackgroundResource(R.color.buttons);
+                                                         bring_rbtn.setTextColor(getResources().getColor(R.color.white));
 
-                                                      }
-                                                  }
-                                              }
+
+                                                         payment_method  = "BT";
+                                                         OrderTransactionType="BT";
+                                                         payment_info_tvs.setText("Payment Method : Bring Terminal");
+                                                         // payment_info_tvs.setText("Payment Method : ONLINE \n Coming soon ");
+                                                         btn_Contine.setEnabled(false);
+                                                         if (adapter!= null)
+                                                         {
+                                                             adapter.payment_method= OrderTransactionType;
+                                                         }
+
+                                                     }
+                                                 }
+                                             }
         );
 
 
@@ -709,7 +710,7 @@ public class OrderSummary extends AppCompatActivity implements ForClicktimings, 
                     offers_layout.setVisibility(View.GONE);
 
                     shipping_tv.setVisibility(View.INVISIBLE);
-                   // complete_order_tv.setVisibility(View.INVISIBLE);
+                    // complete_order_tv.setVisibility(View.INVISIBLE);
                     offer_tv.setVisibility(View.VISIBLE);
                     plc_order_tv.setVisibility(View.INVISIBLE);
 
@@ -809,7 +810,7 @@ public class OrderSummary extends AppCompatActivity implements ForClicktimings, 
     @Override
     protected void onResume() {
         super.onResume();
-       // progressDialog.dismiss();
+        // progressDialog.dismiss();
     }
 
 
@@ -891,20 +892,20 @@ public class OrderSummary extends AppCompatActivity implements ForClicktimings, 
                     if (status) {
 
                         progressDialog.dismiss();
-//                        Intent intent=new Intent(OrderSummary.this,OrderSuccessActivity.class);
-//                        intent.putExtra("msg",msg);
-//                        intent.putExtra("amount",subTotalSuccess);
-//                        intent.putExtra("discount",couponSuccess);
-//                        intent.putExtra("totalAmount",totalSuccess);
-//                        intent.putExtra("vatCharge",vatSuccess);
-//                        intent.putExtra("shippingCharge",shippingChargeSuccess);
-//                        intent.putExtra("grand",grandSuccess);
-//                        intent.putExtra("vatRate",vatSuccessPer);
-//                        intent.putExtra("address",addressSuccess);
-//                        intent.putExtra("isCoupon",isCouponApplied);
-//                        intent.putExtra("coupon_code",cmcode);
-//                        intent.putExtra("couponSuccessText",couponSuccessText);
-//                        startActivity(intent);
+                        Intent intent=new Intent(OrderSummary.this,OrderSuccessActivity.class);
+                        intent.putExtra("msg",msg);
+                        intent.putExtra("amount",subTotalSuccess);
+                        intent.putExtra("discount",couponSuccess);
+                        intent.putExtra("totalAmount",totalSuccess);
+                        intent.putExtra("vatCharge",vatSuccess);
+                        intent.putExtra("shippingCharge",shippingChargeSuccess);
+                        intent.putExtra("grand",grandSuccess);
+                        intent.putExtra("vatRate",vatSuccessPer);
+                        intent.putExtra("address",addressSuccess);
+                        intent.putExtra("isCoupon",isCouponApplied);
+                        intent.putExtra("coupon_code",cmcode);
+                        intent.putExtra("couponSuccessText",couponSuccessText);
+                        startActivity(intent);
                         finish();
 
                         /*ShowOrderSuccess(msg,addressSuccess,subTotalSuccess,couponSuccess,couponSuccessText,totalSuccess,vatSuccess,
@@ -1022,23 +1023,23 @@ public class OrderSummary extends AppCompatActivity implements ForClicktimings, 
                                   String totalSuccess,String vatSuccess,
                                   String shippingChargeSuccess,String grandSuccess,
                                   String vatSuccessPer
-                                  ) {
+    ) {
 
-       // pos=4;
+        // pos=4;
         progressDialog.dismiss();
-//        Intent intent=new Intent(OrderSummary.this,OrderSuccessActivity.class);
-//        intent.putExtra("msg",message);
-//        intent.putExtra("amount",subTotalSuccess);
-//        intent.putExtra("discount",couponSuccess);
-//        intent.putExtra("totalAmount",totalSuccess);
-//        intent.putExtra("vatCharge",vatSuccess);
-//        intent.putExtra("shippingCharge",shippingChargeSuccess);
-//        intent.putExtra("grand",grandSuccess);
-//        intent.putExtra("vatRate",vatSuccessPer);
-//        intent.putExtra("address",addressSuccess);
-//        intent.putExtra("couponSuccessText",couponSuccessText);
-//        startActivity(intent);
-//        finish();
+        Intent intent=new Intent(OrderSummary.this,OrderSuccessActivity.class);
+        intent.putExtra("msg",message);
+        intent.putExtra("amount",subTotalSuccess);
+        intent.putExtra("discount",couponSuccess);
+        intent.putExtra("totalAmount",totalSuccess);
+        intent.putExtra("vatCharge",vatSuccess);
+        intent.putExtra("shippingCharge",shippingChargeSuccess);
+        intent.putExtra("grand",grandSuccess);
+        intent.putExtra("vatRate",vatSuccessPer);
+        intent.putExtra("address",addressSuccess);
+        intent.putExtra("couponSuccessText",couponSuccessText);
+        startActivity(intent);
+        finish();
 
 
       /*  pos=5;
@@ -1083,7 +1084,7 @@ public class OrderSummary extends AppCompatActivity implements ForClicktimings, 
         txtTotalItems.setText("" + db.getCartCount());
         totalItms.setText("" + db.getCartCount() + " " + " Items");
 
-       // subTotalAmountf.setText("AED " + String.format("%.2f", Double.parseDouble(total_atm)));
+        // subTotalAmountf.setText("AED " + String.format("%.2f", Double.parseDouble(total_atm)));
         subTotalSuccess=subTotalAmountf.getText().toString();
         if (isCouponApplied)
         {
@@ -1092,7 +1093,7 @@ public class OrderSummary extends AppCompatActivity implements ForClicktimings, 
             totalRow.setVisibility(View.VISIBLE);
             rowCouponf.setVisibility(View.VISIBLE);
             totalRowf.setVisibility(View.VISIBLE);
-           // ll_shipping_offer.setVisibility(View.VISIBLE);
+            // ll_shipping_offer.setVisibility(View.VISIBLE);
 
             couponPerText.setText("Coupon " + String.format("%.2f", couponPer) + "%");
             couponPerTextf.setText("Coupon " + String.format("%.2f", couponPer) + "%");
@@ -1137,7 +1138,7 @@ public class OrderSummary extends AppCompatActivity implements ForClicktimings, 
             vatPercent.setText("VAT " + String.format("%.2f", vatPer) + "%");
             vatPercentf.setText("VAT " + String.format("%.2f", vatPer) + "%");
             vatSuccess=vatPercent.getText().toString();
-           // ll_shipping_offer.setVisibility(View.GONE);
+            // ll_shipping_offer.setVisibility(View.GONE);
 
             vatCharge = 0.01 * vatPer * Double.parseDouble(total_atm);
             vatPercentAmount.setText("AED " + String.format("%.2f", vatCharge));
@@ -1214,24 +1215,24 @@ public class OrderSummary extends AppCompatActivity implements ForClicktimings, 
                             public void onResponse(String response) {
 
                                 Gson gson = new Gson();
-                                 coupon = gson.fromJson(response, ResponseCoupon.class);
+                                coupon = gson.fromJson(response, ResponseCoupon.class);
 
-                                    if (coupon.status) {
+                                if (coupon.status) {
 
-                                        isCouponApplied = true;
-                                        couponPer = coupon.result.get(0).discountValue;
-                                       // vatCharge = coupon.result.get(0).vatCharge;
+                                    isCouponApplied = true;
+                                    couponPer = coupon.result.get(0).discountValue;
+                                    // vatCharge = coupon.result.get(0).vatCharge;
 
-                                        couponCodeText = coupon.result.get(0).cmCode;
-                                        Toast.makeText(OrderSummary.this, coupon.message, Toast.LENGTH_SHORT).show();
-                                        offer_rv_layout.setVisibility(View.GONE);
-                                        couponLayout.setVisibility(View.VISIBLE);
-                                        updateData();
+                                    couponCodeText = coupon.result.get(0).cmCode;
+                                    Toast.makeText(OrderSummary.this, coupon.message, Toast.LENGTH_SHORT).show();
+                                    offer_rv_layout.setVisibility(View.GONE);
+                                    couponLayout.setVisibility(View.VISIBLE);
+                                    updateData();
 
-                                    } else {
+                                } else {
 
-                                        Toast.makeText(OrderSummary.this, coupon.message, Toast.LENGTH_SHORT).show();
-                                    }
+                                    Toast.makeText(OrderSummary.this, coupon.message, Toast.LENGTH_SHORT).show();
+                                }
                             }
                         },
                         new Response.ErrorListener() {
@@ -1347,21 +1348,21 @@ public class OrderSummary extends AppCompatActivity implements ForClicktimings, 
 //        }
 //        else
 //        {
-            if (txt_totalPrice.getText().toString() != null && !txt_totalPrice.getText().toString().equalsIgnoreCase("") && txt_deliver.getText().toString() != null && !txt_deliver.getText().toString().equalsIgnoreCase("")) {
+        if (txt_totalPrice.getText().toString() != null && !txt_totalPrice.getText().toString().equalsIgnoreCase("") && txt_deliver.getText().toString() != null && !txt_deliver.getText().toString().equalsIgnoreCase("")) {
 
-                //  String totalAmountt = totalAmount;
-                int totalQuantity = db.getCartCount();
-                    if (!totalAmount.equals("") && totalQuantity > 0) {
-                      //  progressDialog.show();
+            //  String totalAmountt = totalAmount;
+            int totalQuantity = db.getCartCount();
+            if (!totalAmount.equals("") && totalQuantity > 0) {
+                //  progressDialog.show();
                        /* continueUrl(totalQuantity, String.valueOf(totalAmount),subTotalSuccess,addressSuccess,couponSuccess,couponSuccessText,totalSuccess,vatSuccess,
                                 shippingChargeSuccess,grandSuccess,vatSuccessPer,TYPE_COUPON,OrderTransactionType);
                   */  } else {
-                        Toast.makeText(OrderSummary.this, "Something went wrong...please check your cart!", Toast.LENGTH_SHORT).show();
-                    }
-
-            } else {
-                Snackbar.make(view, "Please wait", Snackbar.LENGTH_LONG).show();
+                Toast.makeText(OrderSummary.this, "Something went wrong...please check your cart!", Toast.LENGTH_SHORT).show();
             }
+
+        } else {
+            Snackbar.make(view, "Please wait", Snackbar.LENGTH_LONG).show();
+        }
 //        }
 
     }
@@ -1430,7 +1431,7 @@ public class OrderSummary extends AppCompatActivity implements ForClicktimings, 
                         if (response.isSuccessful()) {
 
                             if (response.body().status) {
-                               // progressDialog.dismiss();
+                                // progressDialog.dismiss();
                                 offers_rv.setVisibility(View.VISIBLE);
                                 list.addAll(response.body().getResult());
 
@@ -1490,14 +1491,14 @@ public class OrderSummary extends AppCompatActivity implements ForClicktimings, 
 
                 couponPer=Double.parseDouble(discountValue);
                 vatPer=vatPers;
-               // vatCharge=vatCharges;
+                // vatCharge=vatCharges;
                 shippingCharge=shippingCharges;
                 discount=discounts;
                 grand=grands;
 
 
 
-              //  subTotalAmountf.setText("AED " + String.format("%.2f", amount));
+                //  subTotalAmountf.setText("AED " + String.format("%.2f", amount));
 
                 couponPerTextf.setText("Coupon " + String.format("%.2f", Double.parseDouble(discountValue)) + "%");
 
@@ -1552,7 +1553,7 @@ public class OrderSummary extends AppCompatActivity implements ForClicktimings, 
         btn_proceed_slide.resetSlider();
         btn_confirm_slide.resetSlider();
         IntentFilter intentFilter  = new IntentFilter("offers");
-//        registerReceiver(offersReceivers, intentFilter);
+        registerReceiver(offersReceivers, intentFilter);
     }
 
     @Override
@@ -1578,12 +1579,12 @@ public class OrderSummary extends AppCompatActivity implements ForClicktimings, 
         if (pos==3)
         {
             pos=2;
-           set3Pos();
+            set3Pos();
         }
         if (pos== 4)
         {
             pos=3;
-           set4Pos();
+            set4Pos();
         }
        /* if(pos==5){
             startActivity(new Intent(OrderSummary.this

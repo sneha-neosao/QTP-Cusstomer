@@ -10,7 +10,7 @@ public class SharedPreferenceUtil {
 
     public SharedPreferenceUtil(Context context) {
         this._prefs = context.getSharedPreferences("GOGrocer", Context.MODE_PRIVATE);
-//        this._editor = this._prefs.edit();
+        this._editor = this._prefs.edit();
 
     }
 

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="activities.OrderSuccessActivity">
+
+    <!--5th view-->
+    <LinearLayout
+        android:visibility="visible"
+        android:id="@+id/offers_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Your Order is Placed !"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="20sp"
+                    android:paddingStart="10sp"/>
+
+                <TextView
+                    android:layout_marginBottom="30dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Thank you for shopping with us."
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    android:paddingStart="10sp"/>
+
+                <LinearLayout
+                    android:layout_margin="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/square_background"
+                    >
+
+
+                    <TextView
+                        android:gravity="center"
+                        android:background="@color/colorPrimary"
+                        android:fontFamily="@font/montserrat_semibold"
+                        android:paddingStart="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="35sp"
+                        android:textColor="@color/white"
+                        android:textSize="13sp"
+                        android:text="Order Details"/>
+
+
+                    <TextView
+                        android:paddingTop="10sp"
+                        android:paddingStart="10sp"
+                        android:id="@+id/order_ids"
+                        android:gravity="center_vertical"
+                        android:fontFamily="@font/montserrat_semibold"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:textSize="13sp"
+                        android:paddingBottom="10sp"
+                        android:text="Order Id"/>
+
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:background="@color/grey"/>
+
+                    <LinearLayout
+                        android:layout_margin="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:background="@drawable/square_background"
+                        >
+                        <TextView
+                            android:fontFamily="@font/montserrat_semibold"
+                            android:layout_margin="5dp"
+                            android:paddingStart="5dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/delivery_tv"
+                            android:textColor="@color/black"
+                            android:textSize="13sp"
+                            android:maxLines="2"
+                            android:ellipsize="end"
+                            android:text="Shipping to : "/>
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.5dp"
+                            android:background="@color/grey"/>
+                        <include
+                            android:layout_margin="5dp"
+                            layout="@layout/item_price_table_layouts"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Continue Shopping"
+                    android:id="@+id/btn_cnt_shop"
+                    android:backgroundTint="#324764"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/montserrat_semibold"
+                    android:layout_margin="10dp"/>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

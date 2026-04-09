@@ -47,6 +47,7 @@ import adapters.Cart_adapter;
 import Config.ApiBaseURL;
 import Config.BaseURL;
 import Constants.CheckEmptyCartListener;
+import fragments.CartFragment;
 import ModelClass.NewSuborder;
 import com.grocery.QTPmart.R;
 import network.ApiInterface;
@@ -151,8 +152,8 @@ public class CartActivity extends AppCompatActivity implements CheckEmptyCartLis
 
         ll_Checkout = findViewById(R.id.ll_Checkout);
         btn_ShopNOw.setOnClickListener(v -> {
-            Intent intent=new Intent(CartActivity.this, MainDrawerActivity.class);
-            startActivity(intent);
+            /*Intent intent=new Intent(CartActivity.this, MainDrawerActivity.class);
+            startActivity(intent);*/
             finish();
         });
 
@@ -175,7 +176,7 @@ public class CartActivity extends AppCompatActivity implements CheckEmptyCartLis
                                 sessionManagement.getUserEmail()==null||sessionManagement.getUserEmail().isEmpty()||sessionManagement.getUserEmail().equalsIgnoreCase("null")||
                                 sessionManagement.getUserDOB()==null|| sessionManagement.getUserDOB().isEmpty()||sessionManagement.getUserDOB().equalsIgnoreCase("null")||
                                 sessionManagement.getUserCountryCode()==null||sessionManagement.getUserCountryCode().isEmpty()||sessionManagement.getUserCountryCode().equalsIgnoreCase("null"))
-                       // if(true)
+                        // if(true)
                         {
                             Toast.makeText(CartActivity.this, "First fill your profile", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(CartActivity.this, AddressLocationActivity2.class);
@@ -194,8 +195,8 @@ public class CartActivity extends AppCompatActivity implements CheckEmptyCartLis
                                 startActivityForResult(intent, 22);
                                 finish();
 
-//                                Intent intent = new Intent(CartActivity.this, OrderSummary.class);
-//                                startActivityForResult(intent,22);
+                               /* Intent intent = new Intent(CartActivity.this, OrderSummary.class);
+                                startActivityForResult(intent,22);*/
                             }
                         }
                     } else {
@@ -218,7 +219,7 @@ public class CartActivity extends AppCompatActivity implements CheckEmptyCartLis
 
 
         db = new DatabaseHandler(this);
-         if (db.getCartCount() == 0) {
+        if (db.getCartCount() == 0) {
         }
 
         if (sessionManagement.isLoggedIn()) {
@@ -248,7 +249,7 @@ public class CartActivity extends AppCompatActivity implements CheckEmptyCartLis
         }
 
 
-         adapter = new Cart_adapter(this,this, map, () -> {
+        adapter = new Cart_adapter(this,this, map, () -> {
             if (db.getCartCount() == 0) {
                 noData.setVisibility(View.VISIBLE);
                 ll_main_cart.setBackgroundResource(R.color.white);
@@ -285,13 +286,13 @@ public class CartActivity extends AppCompatActivity implements CheckEmptyCartLis
                 Log.e("dy", "dy :"+dy );
                 Log.e("map", "map :"+map.size() );
                 if (dy > 0) {
-                        Log.i("SCROLLING", "DOWN");
-                        //ll_Checkout_cv.setVisibility(View.GONE);
+                    Log.i("SCROLLING", "DOWN");
+                    //ll_Checkout_cv.setVisibility(View.GONE);
 
-                    } else if (dy < 0) {
-                        Log.i("SCROLLING", "UP");
-                        //ll_Checkout_cv.setVisibility(View.VISIBLE);
-                    }
+                } else if (dy < 0) {
+                    Log.i("SCROLLING", "UP");
+                    //ll_Checkout_cv.setVisibility(View.VISIBLE);
+                }
             }
         });
 
@@ -374,7 +375,7 @@ public class CartActivity extends AppCompatActivity implements CheckEmptyCartLis
             params.put("custID", custID);
         }
         params.put("BranchCode", ApiInterface.branchcode);
-       // params.put("SupplierID",);
+        // params.put("SupplierID",);
 
 
 
@@ -383,7 +384,7 @@ public class CartActivity extends AppCompatActivity implements CheckEmptyCartLis
 
             @Override
             public void onResponse(JSONObject response) {
-                Log.d("CheckApiCart", response.toString());
+                Log.d("CheckApiCartCartActivity", response.toString());
 
                 try {
                     boolean status = response.getBoolean("status");
@@ -398,7 +399,7 @@ public class CartActivity extends AppCompatActivity implements CheckEmptyCartLis
                             {
                                 stringBuilder.append(object.getString("supplierID"));
                             }
-                           // abc.substring(0, abc.lastIndexOf(","));
+                            // abc.substring(0, abc.lastIndexOf(","));
                             stringBuilder.append(",");
 
                             if(object.has("vatRate"))
@@ -419,7 +420,7 @@ public class CartActivity extends AppCompatActivity implements CheckEmptyCartLis
                         }
                         Log.e("CartProducts", "vatRate: "+vatRate );
                         supplierID=stringBuilder.toString();
-                       // supplierID.substring(0,supplierID.lastIndexOf(","));
+                        // supplierID.substring(0,supplierID.lastIndexOf(","));
                         if(supplierID.indexOf(",") != -1){
                             supplierID = supplierID.substring(0,supplierID.length() - 1);
                         }
