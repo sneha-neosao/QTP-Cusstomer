@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F5F5"
+    tools:context="activities.RedeemVoucherActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bars"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            app:layout_scrollFlags="scroll|enterAlways"
+            android:id="@+id/ll1"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:background="#324764"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start|center_vertical"
+                android:layout_marginTop="2dp"
+                android:gravity="start"
+                android:onClick="onClickBack"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp">
+
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/ic_left_arrow"
+                    android:backgroundTint="@color/white" />
+
+                <ImageView
+                    android:id="@+id/img_logo"
+                    android:layout_width="32dp"
+                    android:layout_height="34dp"
+                    android:layout_marginStart="10dp"
+                    android:src="@drawable/qtp_logo_new_1"
+                    android:layout_gravity="center_vertical"
+                    />
+
+            </LinearLayout>
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginRight="10dp"
+                app:fontFamily="@font/montserrat_medium"
+                android:gravity="center|left"
+                android:text="Voucher"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_gravity="end|center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/search"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_loupe"
+                    app:tint="@color/white"
+                    android:layout_marginHorizontal="10dp"/>
+
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="10dp"
+                    android:onClick="onClickCart">
+
+                    <ImageView
+                        android:id="@+id/hotlist_bell"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginBottom="15dp"
+                        android:contentDescription="bell"
+                        android:src="@drawable/ic_cart"
+                        app:tint="@color/white" />
+
+                    <TextView
+                        android:id="@+id/cartCount"
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/xml_budget"
+                        android:padding="1dp"
+                        android:gravity="center"
+                        android:text="99"
+                        android:textColor="#ffffff"
+                        android:textSize="9sp"
+                        android:visibility="visible"/>
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/white"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Congratulations!"
+                android:textSize="28sp"
+                app:fontFamily="@font/montserrat_semibold"
+                android:textColor="#324763"
+                android:gravity="center"
+                android:layout_marginTop="30dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Your Voucher has Successfully redeemed"
+                android:textSize="16sp"
+                app:fontFamily="@font/montserrat_regular"
+                android:textColor="#707070"
+                android:gravity="center"
+                android:layout_gravity="center"
+
+                android:layout_marginTop="6dp"/>
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="60dp"
+                android:layout_marginEnd="-2dp"
+                android:layout_gravity="end"
+                app:tint="@color/orange"
+                android:src="@drawable/left_half_circle" />
+
+            <TextView
+                android:id="@+id/tvAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="-40dp"
+                android:text="$200"
+                android:textColor="@color/aqua"
+                android:textSize="50sp"
+                app:fontFamily="@font/montserrat_semibold" />
+
+            <TextView
+                android:id="@+id/tvVoucherDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="This voucher can be used in Lorem ipsum dolor sit amet"
+                android:textSize="12sp"
+                app:fontFamily="@font/montserrat_regular"
+                android:textColor="#707070"
+                android:gravity="center"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:lineSpacingExtra="10dp"
+                android:layout_marginTop="6dp"/>
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="-2dp"
+                app:tint="@color/orange"
+                android:src="@drawable/right_half_circle" />
+
+            <ImageView
+                android:layout_width="114dp"
+                android:layout_height="104dp"
+                android:src="@drawable/coins"
+                android:layout_gravity="center"
+                android:layout_marginTop="-20dp"/>
+
+            <TextView
+                android:id="@+id/tvValidity"
+                android:layout_marginTop="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#324763"
+                app:fontFamily="@font/montserrat_semi_bold"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="Valid until 31st July 2021"
+                android:textSize="18sp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="20dp"
+                />
+        </LinearLayout>
+    </ScrollView>
+    </LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -85,6 +85,8 @@ import adapters.BannerAdapter1;
 import fragments.NewNotificationFragment;
 import fragments.NewSearchFragment;
 import fragments.ProfileViewFragment;
+import fragments.RecentlyViewedFragment;
+import fragments.VoucherFragment;
 import util.CustomVolleyJsonRequest;
 import util.DatabaseHandler;
 import util.FetchAddressTask;
@@ -402,22 +404,22 @@ public class MainDrawerActivity extends AppCompatActivity implements
         });
 
         ll_recently_viewed.setOnClickListener(view -> {
-            //Intent intent = new Intent(this, ViewAll_TopDeals.class);
-            //intent.putExtra("action_name", "Recent_Details_Fragment");
-            // startActivity(intent);
-//            bottomNavigation.show(ID_HOME, true);
-//            bottomNavigation.setVisibility(View.VISIBLE);
-//            setToolbarAndLoadFragment("", new RecentlyViewedFragment());
-//            viewSelector("Recently Viewed");
+            Intent intent = new Intent(this, ViewAll_TopDeals.class);
+            intent.putExtra("action_name", "Recent_Details_Fragment");
+             startActivity(intent);
+            bottomNavigation.show(ID_HOME, true);
+            bottomNavigation.setVisibility(View.VISIBLE);
+            setToolbarAndLoadFragment("", new RecentlyViewedFragment());
+            viewSelector("Recently Viewed");
         });
 
         ll_vouchers.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                bottomNavigation.show(ID_HOME, true);
-//                bottomNavigation.setVisibility(View.VISIBLE);
-//                setToolbarAndLoadFragment("", new VoucherFragment());
-//                viewSelector("Voucher");
+                bottomNavigation.show(ID_HOME, true);
+                bottomNavigation.setVisibility(View.VISIBLE);
+                setToolbarAndLoadFragment("", new VoucherFragment());
+                viewSelector("Voucher");
             }
         });
 
@@ -441,13 +443,13 @@ public class MainDrawerActivity extends AppCompatActivity implements
 
 
         ll_refer.setOnClickListener(view -> {
-            //  bottomNavigation.show(ID_HOME, true);
-            // bottomNavigation.setVisibility(View.VISIBLE);
-            // setToolbarAndLoadFragment("", new RecentlyViewedFragment());
-            // viewSelector("Home");
+              bottomNavigation.show(ID_HOME, true);
+             bottomNavigation.setVisibility(View.VISIBLE);
+             setToolbarAndLoadFragment("", new RecentlyViewedFragment());
+             viewSelector("Home");
 
-//            Intent intent = new Intent(MainDrawerActivity.this, ReferActivity.class);
-//            startActivity(intent);
+            Intent intent = new Intent(MainDrawerActivity.this, ReferActivity.class);
+            startActivity(intent);
         });
 
         ll_home.setOnClickListener(view -> {
@@ -541,13 +543,13 @@ public class MainDrawerActivity extends AppCompatActivity implements
 
 
         if (sessionManagement.isLoggedIn()) {
-//            if (NetworkConnection.connectionChecking(MainDrawerActivity.this)) {
-//                new Thread(this::getCartProducts).start();
-//                //new Thread(this::getAllFav).start();
-//                //new Thread(this::getCounts).start();
-//            } else {
-//                showToast(getString(R.string.no_internet));
-//            }
+            if (NetworkConnection.connectionChecking(MainDrawerActivity.this)) {
+                new Thread(this::getCartProducts).start();
+                //new Thread(this::getAllFav).start();
+                //new Thread(this::getCounts).start();
+            } else {
+                showToast(getString(R.string.no_internet));
+            }
         }
 
 
