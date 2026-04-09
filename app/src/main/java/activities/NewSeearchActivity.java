@@ -22,6 +22,8 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.content.Context;
+import android.view.inputmethod.InputMethodManager;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -131,6 +133,8 @@ public class NewSeearchActivity extends AppCompatActivity implements NewRecentSe
 
 
         edt_search.requestFocus();
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
 
         fromIntent=getIntent().getIntExtra("fromIntent",0);
 

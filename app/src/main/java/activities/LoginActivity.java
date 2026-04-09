@@ -199,7 +199,7 @@ public class LoginActivity extends AppCompatActivity  implements GoogleApiClient
 //        flag_view.setOnClickListener(view -> startActivityForResult(new Intent(LoginActivity.this, FlagActivity.class), 15));
 
         skip.setOnClickListener(v -> {
-            sessionManagement.createLoginSession("", "", "", "", "" ,true,"");
+            sessionManagement.createLoginSessionSkip("", "", "", "", "" ,true,"");
             Intent intent = new Intent(LoginActivity.this, MainDrawerActivity.class);
             intent.putExtra("loadFrag",1);
             startActivity(intent);
@@ -404,7 +404,7 @@ public class LoginActivity extends AppCompatActivity  implements GoogleApiClient
                     editor.apply();
                     sessionManagement.setStreetArea(address1);
                     sessionManagement.setHouseBuilding(address2);
-                    sessionManagement.createLoginSession(user_id, user_email, user_fullname, user_phone, password, area,role,supplierId);
+                    sessionManagement.createLoginSessionLogin(user_id, user_email, user_fullname, user_phone, password, area,role,supplierId);
                     sessionManagement.setUserBlockStatus(st);
 
                     sessionManagement.setUserid(user_id);
@@ -626,7 +626,7 @@ public class LoginActivity extends AppCompatActivity  implements GoogleApiClient
                             editor.apply();
                             sessionManagement.setStreetArea(address1);
                             sessionManagement.setHouseBuilding(address2);
-                            sessionManagement.createLoginSession(user_id, user_email, user_fullname, user_phone, password, address,role,supplierId);
+                            sessionManagement.createLoginSessionLogin(user_id, user_email, user_fullname, user_phone, password, address,role,supplierId);
                             sessionManagement.setUserBlockStatus(st);
 
                             sessionManagement.setUserid(user_id);

@@ -953,17 +953,17 @@ public class ProfileEditNewFragment extends Fragment {
                             editor.putString(BaseURL.USER_COUNTRY_CODE,countryCode);
                             editor.apply();
                             Toast.makeText(getActivity(), "" + message, Toast.LENGTH_SHORT).show();
-                            //sessionManagement.createLoginSession(getid, getemail, getname, getphone, "", getAddress,role,supplierCode);
-                           /* sessionManagement.createUpdateProfileSession(getid, edt_email.getText().toString(),
+//                            sessionManagement.createLoginSession(getid, getemail, getname, getphone, "", getAddress,role,supplierCode);
+                            sessionManagement.createUpdateProfileSession(getid, edt_email.getText().toString(),
                             edt_fullName.getText().toString(),
                                     edt_contact.getText().toString(), edt_area.getText().toString(),role,supplierCode,
                                     edt_country.getText().toString(), edt_state.getText().toString(),
                                     edt_city.getText().toString(), edt_landmark.getText().toString(),
                                     edt_street.getText().toString(), edt_dob.getText().toString(),
-                                    edt_pincode.getText().toString(),countryCode);*/
-                           /* Intent intent = new Intent(getContext(), MainDrawerActivity.class);
+                                    edt_pincode.getText().toString(),countryCode);
+                            Intent intent = new Intent(getContext(), MainDrawerActivity.class);
                             intent.putExtra("loadFrag",1);
-                            startActivity(intent);*/
+                            startActivity(intent);
 
                         } catch (Exception e) {
                             e.printStackTrace();

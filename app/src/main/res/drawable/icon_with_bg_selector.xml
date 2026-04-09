@@ -1,0 +1,18 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Selected -->
+    <item android:state_checked="true">
+        <layer-list>
+            <item android:drawable="@drawable/white_circle_bg"/>
+            <item>
+                <bitmap
+                    android:src="@drawable/ic_home"
+                    android:gravity="center"/>
+            </item>
+        </layer-list>
+    </item>
+
+    <!-- Default -->
+    <item android:drawable="@drawable/ic_home"/>
+
+</selector>

@@ -202,10 +202,10 @@ public class SignUpActivity extends AppCompatActivity {
         }
 //        country_c.setText("");
 
-       /* skip.setOnClickListener(v -> {
-            session_management.createLoginSession("", "", "", "", "", true,"");
+        skip.setOnClickListener(v -> {
+            session_management.createLoginSessionSkip("", "", "", "", "", true,"");
             finish();
-        });*/
+        });
 
 /*
         flag_view.setOnClickListener(view -> startActivityForResult(new Intent(SignUpActivity.this, FlagActivity.class), 15));
@@ -361,7 +361,7 @@ public class SignUpActivity extends AppCompatActivity {
                             session_management.setStreetArea(address1);
                             session_management.setHouseBuilding(address2);
 
-                            session_management.createLoginSession(id, user_email, user_name, user_phone, password,address,"customer","");
+                            session_management.createLoginSessionLogin(id, user_email, user_name, user_phone, password,address,"customer","");
                             session_management.setUserBlockStatus(st);
 
                             session_management.setUserid(id);
@@ -669,7 +669,7 @@ public class SignUpActivity extends AppCompatActivity {
                             editor.apply();
                             session_management.setStreetArea(address1);
                             session_management.setHouseBuilding(address2);
-                            session_management.createLoginSession(user_id, user_email, user_fullname, user_phone, password, address,role,supplierId);
+                            session_management.createLoginSessionLogin(user_id, user_email, user_fullname, user_phone, password, address,role,supplierId);
                             session_management.setUserBlockStatus(st);
 
                             session_management.setUserid(user_id);
@@ -725,7 +725,7 @@ public class SignUpActivity extends AppCompatActivity {
 
                         }
 
-                        /*JSONObject resultObj = jsonObject.getJSONObject("result");
+                        JSONObject resultObj = jsonObject.getJSONObject("result");
 
                         String user_name = resultObj.getString("custName");
                         String id = resultObj.getString("custID");
@@ -750,7 +750,7 @@ public class SignUpActivity extends AppCompatActivity {
                         session_management.setStreetArea(address1);
                         session_management.setHouseBuilding(address2);
 
-                        session_management.createLoginSession(id, user_email, user_name, user_phone, password, address, "customer", "");
+                        session_management.createLoginSessionLogin(id, user_email, user_name, user_phone, password, address, "customer", "");
                         session_management.setUserBlockStatus(st);
                         if (dbHandler.getCartCount() > 0) {
                             map = dbHandler.getCartAll();
@@ -768,7 +768,7 @@ public class SignUpActivity extends AppCompatActivity {
                                 finish();
                             }
 
-                        }*/
+                        }
                         Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
 
                     } else {

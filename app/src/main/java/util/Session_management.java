@@ -90,7 +90,7 @@ public class Session_management {
 
     }
 //
-    public void createLoginSession(String id, String email, String name, String mobile, String password,String address,String role,String supplierId) {
+    public void createLoginSessionLogin(String id, String email, String name, String mobile, String password,String address,String role,String supplierId) {
         pref.setBoolean(IS_LOGIN, true);
         pref.setString(KEY_ID, id);
         pref.setString(KEY_EMAIL, email);
@@ -243,7 +243,7 @@ public class Session_management {
 
 
 
-    public void createLoginSession(String id, String email, String name, String mobile, String password, boolean skip,String address) {
+    public void createLoginSessionSkip(String id, String email, String name, String mobile, String password, boolean skip,String address) {
 
         pref.setBoolean(IS_LOGIN, false);
         pref.setString(KEY_ID, id);

@@ -90,7 +90,7 @@
                         android:gravity="center_vertical"
                         android:orientation="horizontal"
                         android:padding="5dp"
-                        android:visibility="gone">
+                        android:visibility="visible">
 
                         <View
                             android:id="@+id/view_notification"
@@ -253,7 +253,7 @@
                         android:gravity="center_vertical"
                         android:orientation="horizontal"
                         android:padding="5dp"
-                        android:visibility="gone">
+                        android:visibility="visible">
 
                         <View
                             android:id="@+id/view_vouchers"
@@ -303,7 +303,7 @@
                         android:gravity="center_vertical"
                         android:orientation="horizontal"
                         android:padding="5dp"
-                        android:visibility="gone">
+                        android:visibility="visible">
 
                         <View
                             android:id="@+id/view_recently_viewed"
@@ -698,7 +698,7 @@
                     android:background="@color/colorPrimary"
                     android:gravity="center"
                     android:orientation="horizontal"
-                    android:visibility="gone">
+                    android:visibility="visible">
 
                     <ImageView
                         android:id="@+id/img_menu1"
@@ -1003,6 +1003,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom"
+                        app:cbn_selectedIconColor="@color/colorPrimary"
                         app:cbn_background="@color/colorPrimary"
                         app:cbn_fabColor="@android:color/transparent"
                         app:cbn_iconColor="@color/white"

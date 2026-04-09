@@ -123,6 +123,10 @@ public class SplashActivity extends AppCompatActivity {
                 SharedPreferences preferences =
                         getSharedPreferences("GOGrocer", MODE_PRIVATE);
 
+                Log.e("LOGIN_CHECK", "isLoggedIn: " + session_management.isLoggedIn());
+                Log.e("LOGIN_CHECK", "userId: " + session_management.userId());
+                Log.e("LOGIN_CHECK", "onboarding: " + preferences.getBoolean("onboarding_complete", false));
+
                 if(!preferences.getBoolean("onboarding_complete",false))
                 {
                     Intent onboarding = new Intent(SplashActivity.this, GetStartedActivity1.class);

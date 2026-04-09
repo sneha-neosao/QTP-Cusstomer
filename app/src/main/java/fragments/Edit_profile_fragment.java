@@ -1004,7 +1004,7 @@ public class Edit_profile_fragment extends Fragment implements View.OnClickListe
                             editor.putString(BaseURL.KEY_MOBILE, getphone);
                             editor.putString(BaseURL.KEY_PASSWORD, "");
                             editor.apply();
-                            sessionManagement.createLoginSession(getid, getemail, getname, getphone, "", getAddress,role,supplierCode);
+                            sessionManagement.createLoginSessionLogin(getid, getemail, getname, getphone, "", getAddress,role,supplierCode);
                             Intent intent = new Intent(getContext(), MainActivity.class);
                             startActivity(intent);
 
