@@ -47,6 +47,12 @@
             android:name="activities.ShippingDetailActivity"
             android:exported="false" />
         <activity
+            android:name="activities.ReferActivity"
+            android:exported="false" />
+        <activity
+            android:name="activities.ReferStatusActivity"
+            android:exported="false" />
+        <activity
             android:name="activities.AddressLocationActivity2"
             android:exported="false" />
         <activity

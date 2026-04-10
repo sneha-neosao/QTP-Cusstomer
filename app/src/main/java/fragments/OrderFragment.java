@@ -33,11 +33,10 @@ import Config.BaseURL;
 import ModelClass.Counts;
 import ModelClass.NewGetOrderModel;
 import com.grocery.QTPmart.R;
-
-import adapters.OrderTabAdapter;
 import network.ApiInterface;
 import util.Session_management;
-import com.google.android.material.tabs.TabLayout;
+//import com.rahimlis.badgedtablayout.BadgedTabLayout;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -53,8 +52,8 @@ import static Config.BaseURL.KEY_ID;
 
 public class OrderFragment extends Fragment{
 
-   public static TabLayout tab_order_status;
-   public static TabLayout tabLayout;
+    public static TabLayout tab_order_status;
+    //public static BadgedTabLayout tabLayout;
     ViewPager viewPager;
     HashMap<String,String> userDetails;
     Session_management session_management;
@@ -69,7 +68,7 @@ public class OrderFragment extends Fragment{
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_orders, container, false);
 
-        tab_order_status=view.findViewById(R.id.tab_order_status);
+        //  tab_order_status=view.findViewById(R.id.tab_order_status);
         viewPager=view.findViewById(R.id.order_tab_pager);
 
         MainDrawerActivity.reelLyt.setVisibility(View.GONE);
@@ -81,14 +80,14 @@ public class OrderFragment extends Fragment{
 
         session_management = new Session_management(getContext().getApplicationContext());
         userDetails=session_management.getUserDetails();
-       tabLayout = (TabLayout) view.findViewById(R.id.tab_order_status);
+        //  tabLayout = (BadgedTabLayout) view.findViewById(R.id.tab_order_status);
 
         tab_order_status =  view.findViewById(R.id.tab_order_status);
 
 
 
         viewPager.setAdapter(tabAdapter = new OrderTabAdapter(getChildFragmentManager(), 6));
-        tab_order_status.setupWithViewPager(viewPager);
+        //tab_order_status.setupWithViewPager(viewPager);
         tab_order_status.setupWithViewPager(viewPager);
 
        /* if(!session_management.getIsOrderTabLoaded()){
@@ -99,52 +98,52 @@ public class OrderFragment extends Fragment{
         {
             if (i==0)
             {
-//                tab_order_status.getTabAt(0).setCustomView(R.layout.tab_badge);
-//                TextView textView_nm =  tab_order_status.getTabAt(i).getCustomView().findViewById(R.id.name_tv);
-//                tvAllCount =  tab_order_status.getTabAt(i).getCustomView().findViewById(R.id.text);
-//                tvAllCount.setText(allCount);
-//                textView_nm.setText("All");
+                tab_order_status.getTabAt(0).setCustomView(R.layout.tab_badge);
+                TextView textView_nm =  tab_order_status.getTabAt(i).getCustomView().findViewById(R.id.name_tv);
+                tvAllCount =  tab_order_status.getTabAt(i).getCustomView().findViewById(R.id.text);
+                tvAllCount.setText(allCount);
+                textView_nm.setText("All");
             }
             else  if (i==1)
             {
-//                tab_order_status.getTabAt(1).setCustomView(R.layout.tab_badge);
-//                TextView textView_nm =  tab_order_status.getTabAt(i).getCustomView().findViewById(R.id.name_tv);
-//                tvPendingCount=  tab_order_status.getTabAt(i).getCustomView().findViewById(R.id.text);
-//                tvPendingCount.setText(pendingCount);
-//                textView_nm.setText("Pending");
+                tab_order_status.getTabAt(1).setCustomView(R.layout.tab_badge);
+                TextView textView_nm =  tab_order_status.getTabAt(i).getCustomView().findViewById(R.id.name_tv);
+                tvPendingCount=  tab_order_status.getTabAt(i).getCustomView().findViewById(R.id.text);
+                tvPendingCount.setText(pendingCount);
+                textView_nm.setText("Pending");
             }
             else  if (i==2)
             {
-//                tab_order_status.getTabAt(2).setCustomView(R.layout.tab_badge);
-//                TextView textView_nm =  tab_order_status.getTabAt(i).getCustomView().findViewById(R.id.name_tv);
-//                tvAcceptedCount =  tab_order_status.getTabAt(i).getCustomView().findViewById(R.id.text);
-//                tvAcceptedCount.setText(acceptedCount);
-//                textView_nm.setText("Accepted");
+                tab_order_status.getTabAt(2).setCustomView(R.layout.tab_badge);
+                TextView textView_nm =  tab_order_status.getTabAt(i).getCustomView().findViewById(R.id.name_tv);
+                tvAcceptedCount =  tab_order_status.getTabAt(i).getCustomView().findViewById(R.id.text);
+                tvAcceptedCount.setText(acceptedCount);
+                textView_nm.setText("Accepted");
 
             } else  if (i==3)
             {
-//                tab_order_status.getTabAt(3).setCustomView(R.layout.tab_badge);
-//                TextView textView_nm =  tab_order_status.getTabAt(i).getCustomView().findViewById(R.id.name_tv);
-//                tvOnTheWayCount =  tab_order_status.getTabAt(i).getCustomView().findViewById(R.id.text);
-//                tvOnTheWayCount.setText(onTheWayCount);
-//                textView_nm.setText("On the Way");
+                tab_order_status.getTabAt(3).setCustomView(R.layout.tab_badge);
+                TextView textView_nm =  tab_order_status.getTabAt(i).getCustomView().findViewById(R.id.name_tv);
+                tvOnTheWayCount =  tab_order_status.getTabAt(i).getCustomView().findViewById(R.id.text);
+                tvOnTheWayCount.setText(onTheWayCount);
+                textView_nm.setText("On the Way");
 
             } else  if (i==4)
             {
-//                tab_order_status.getTabAt(4).setCustomView(R.layout.tab_badge);
-//                TextView textView_nm =  tab_order_status.getTabAt(i).getCustomView().findViewById(R.id.name_tv);
-//                tvDeliveredCount =  tab_order_status.getTabAt(i).getCustomView().findViewById(R.id.text);
-//                tvDeliveredCount.setText(deliveredCount);
-//                textView_nm.setText("Last Order");
+                tab_order_status.getTabAt(4).setCustomView(R.layout.tab_badge);
+                TextView textView_nm =  tab_order_status.getTabAt(i).getCustomView().findViewById(R.id.name_tv);
+                tvDeliveredCount =  tab_order_status.getTabAt(i).getCustomView().findViewById(R.id.text);
+                tvDeliveredCount.setText(deliveredCount);
+                textView_nm.setText("Last Order");
 
             }
             else  if (i==5)
             {
-//                tab_order_status.getTabAt(5).setCustomView(R.layout.tab_badge);
-//                TextView textView_nm =  tab_order_status.getTabAt(i).getCustomView().findViewById(R.id.name_tv);
-//                tvCanceledCount =  tab_order_status.getTabAt(i).getCustomView().findViewById(R.id.text);
-//                tvCanceledCount.setText(canceledCount);
-//                textView_nm.setText("Cancelled");
+                tab_order_status.getTabAt(5).setCustomView(R.layout.tab_badge);
+                TextView textView_nm =  tab_order_status.getTabAt(i).getCustomView().findViewById(R.id.name_tv);
+                tvCanceledCount =  tab_order_status.getTabAt(i).getCustomView().findViewById(R.id.text);
+                tvCanceledCount.setText(canceledCount);
+                textView_nm.setText("Cancelled");
 
             }
 
@@ -156,7 +155,7 @@ public class OrderFragment extends Fragment{
 
 
     public void getNewOrder(String statusCode){
-       // progressDialog.show();
+        // progressDialog.show();
         StringRequest stringRequest = new StringRequest(Request.Method.POST, ApiBaseURL.OrderList, response -> {
             Log.e("GetOrders", ""+response);
             try {
@@ -223,67 +222,67 @@ public class OrderFragment extends Fragment{
                             TextView textView =  tab_order_status.getTabAt(i).getCustomView().findViewById(R.id.text);*/
                             if (i==0)
                             {
-                               // textView.setText(listorl.getAllCount());
-//                                tab_order_status.getTabAt(0).setCustomView(R.layout.tab_badge);
-//                                TextView textView_nm =  tab_order_status.getTabAt(i).getCustomView().findViewById(R.id.name_tv);
-//                                TextView textView =  tab_order_status.getTabAt(i).getCustomView().findViewById(R.id.text);
-//                                allCount=counts.getAllCount();
-//                                textView.setText(allCount);
-//                                textView_nm.setText("All");
+                                // textView.setText(listorl.getAllCount());
+                                tab_order_status.getTabAt(0).setCustomView(R.layout.tab_badge);
+                                TextView textView_nm =  tab_order_status.getTabAt(i).getCustomView().findViewById(R.id.name_tv);
+                                TextView textView =  tab_order_status.getTabAt(i).getCustomView().findViewById(R.id.text);
+                                allCount=counts.getAllCount();
+                                textView.setText(allCount);
+                                textView_nm.setText("All");
                             }
                             else  if (i==1)
                             {
                                 //textView.setText(listorl.getPendingCount());
-//                                tab_order_status.getTabAt(1).setCustomView(R.layout.tab_badge);
-//                                TextView textView_nm =  tab_order_status.getTabAt(i).getCustomView().findViewById(R.id.name_tv);
-//                                TextView textView =  tab_order_status.getTabAt(i).getCustomView().findViewById(R.id.text);
-//                                pendingCount=counts.getPendingCount();
-//                                textView.setText(pendingCount);
-//                                textView_nm.setText("Pending");
+                                tab_order_status.getTabAt(1).setCustomView(R.layout.tab_badge);
+                                TextView textView_nm =  tab_order_status.getTabAt(i).getCustomView().findViewById(R.id.name_tv);
+                                TextView textView =  tab_order_status.getTabAt(i).getCustomView().findViewById(R.id.text);
+                                pendingCount=counts.getPendingCount();
+                                textView.setText(pendingCount);
+                                textView_nm.setText("Pending");
                             }
                             else  if (i==2)
                             {
                                 //textView.setText(listorl.getProcessingCount());
-//                                tab_order_status.getTabAt(2).setCustomView(R.layout.tab_badge);
-//                                TextView textView_nm =  tab_order_status.getTabAt(i).getCustomView().findViewById(R.id.name_tv);
-//                                TextView textView =  tab_order_status.getTabAt(i).getCustomView().findViewById(R.id.text);
-//                                acceptedCount=counts.getAccepted();
-//                                textView.setText(acceptedCount);
-//                                textView_nm.setText("Accepted");
+                                tab_order_status.getTabAt(2).setCustomView(R.layout.tab_badge);
+                                TextView textView_nm =  tab_order_status.getTabAt(i).getCustomView().findViewById(R.id.name_tv);
+                                TextView textView =  tab_order_status.getTabAt(i).getCustomView().findViewById(R.id.text);
+                                acceptedCount=counts.getAccepted();
+                                textView.setText(acceptedCount);
+                                textView_nm.setText("Accepted");
 
                             } else  if (i==3)
                             {
-//                                tab_order_status.getTabAt(3).setCustomView(R.layout.tab_badge);
-//                                TextView textView_nm =  tab_order_status.getTabAt(i).getCustomView().findViewById(R.id.name_tv);
-//                                TextView textView =  tab_order_status.getTabAt(i).getCustomView().findViewById(R.id.text);
-//
-//                                // textView.setText(listorl.getOnTheWayCount());
-//                                onTheWayCount=counts.getOnTheWayCount();
-//                                textView.setText(onTheWayCount);
-//                                textView_nm.setText("On the Way");
+                                tab_order_status.getTabAt(3).setCustomView(R.layout.tab_badge);
+                                TextView textView_nm =  tab_order_status.getTabAt(i).getCustomView().findViewById(R.id.name_tv);
+                                TextView textView =  tab_order_status.getTabAt(i).getCustomView().findViewById(R.id.text);
+
+                                // textView.setText(listorl.getOnTheWayCount());
+                                onTheWayCount=counts.getOnTheWayCount();
+                                textView.setText(onTheWayCount);
+                                textView_nm.setText("On the Way");
 
                             } else  if (i==4)
                             {
-//                                tab_order_status.getTabAt(4).setCustomView(R.layout.tab_badge);
-//                                TextView textView_nm =  tab_order_status.getTabAt(i).getCustomView().findViewById(R.id.name_tv);
-//                                TextView textView =  tab_order_status.getTabAt(i).getCustomView().findViewById(R.id.text);
-//
-//                                //textView.setText(listorl.getDeliveredCount());
-//                                deliveredCount=counts.getDeliveredCount();
-//                                textView.setText(deliveredCount);
-//                                textView_nm.setText("Last Order");
+                                tab_order_status.getTabAt(4).setCustomView(R.layout.tab_badge);
+                                TextView textView_nm =  tab_order_status.getTabAt(i).getCustomView().findViewById(R.id.name_tv);
+                                TextView textView =  tab_order_status.getTabAt(i).getCustomView().findViewById(R.id.text);
+
+                                //textView.setText(listorl.getDeliveredCount());
+                                deliveredCount=counts.getDeliveredCount();
+                                textView.setText(deliveredCount);
+                                textView_nm.setText("Last Order");
 
                             }
                             else  if (i==5)
                             {
-//                                tab_order_status.getTabAt(5).setCustomView(R.layout.tab_badge);
-//                                TextView textView_nm =  tab_order_status.getTabAt(i).getCustomView().findViewById(R.id.name_tv);
-//                                TextView textView =  tab_order_status.getTabAt(i).getCustomView().findViewById(R.id.text);
-//
-//                                //textView.setText(listorl.getDeliveredCount());
-//                                canceledCount=counts.getCanceledCount();
-//                                textView.setText(canceledCount);
-//                                textView_nm.setText("Cancelled");
+                                tab_order_status.getTabAt(5).setCustomView(R.layout.tab_badge);
+                                TextView textView_nm =  tab_order_status.getTabAt(i).getCustomView().findViewById(R.id.name_tv);
+                                TextView textView =  tab_order_status.getTabAt(i).getCustomView().findViewById(R.id.text);
+
+                                //textView.setText(listorl.getDeliveredCount());
+                                canceledCount=counts.getCanceledCount();
+                                textView.setText(canceledCount);
+                                textView_nm.setText("Cancelled");
 
                             }
 
@@ -295,7 +294,7 @@ public class OrderFragment extends Fragment{
                 {
                 }
             } catch (JSONException e) {
-              //  progressDialog.dismiss();
+                //  progressDialog.dismiss();
                 e.printStackTrace();
             } finally {
 
@@ -306,7 +305,7 @@ public class OrderFragment extends Fragment{
             public void onErrorResponse(VolleyError error) {
 
                 error.printStackTrace();
-               // progressDialog.dismiss();
+                // progressDialog.dismiss();
             }
         }) {
             @Override

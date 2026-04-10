@@ -32,7 +32,7 @@ public class OrderDetailAdapter1 extends RecyclerView.Adapter<SubOrdersHolder>
         this.context=context;
         this.newSuborderArrayList=newSuborderArrayList;
         this.orderId=orderId;
-       // this.newOrderItemArrayList=newOrderItemArrayList;
+        // this.newOrderItemArrayList=newOrderItemArrayList;
     }
 
     @NonNull
@@ -45,27 +45,27 @@ public class OrderDetailAdapter1 extends RecyclerView.Adapter<SubOrdersHolder>
     @Override
     public void onBindViewHolder(@NonNull SubOrdersHolder holder, int position) {
 
-            newSuborder=newSuborderArrayList.get(position);
-            holder.txt_seller_price.setText("AED "+newSuborder.getGrandtotal());
-            holder.txt_seller_name.setText("#"+newSuborder.getOrderRef());
-            //holder.txt_order_time.setText(newSuborder.getOrderDate()+" "+newSuborder.getOrderTime());
-            holder.txt_order_status.setText(newSuborder.getOrderStatus1());
-           // holder.txt_order_subtotal.setText("AED "+newSuborder.getSubTotal());
-          //  holder.txt_order_serviceCharge.setText("AED "+newSuborder.getShipping());
-           // holder.txt_order_number.setText(newSuborder.getOrderRef());
-           // holder.txt_order_date.setText(newSuborder.getOrderDate());
-           // holder.txt_order_total.setText("AED "+newSuborder.getGrandtotal());
-          //  holder.txt_order_paymode.setText(newSuborder.getOrderTransactionType());
-          //  holder.txt_order_deliAddress.setText(newSuborder.getAddressLine1()+" "+newSuborder.getAddressLine2());
+        newSuborder=newSuborderArrayList.get(position);
+        holder.txt_seller_price.setText("AED "+newSuborder.getGrandtotal());
+        holder.txt_seller_name.setText("#"+newSuborder.getOrderRef());
+        //holder.txt_order_time.setText(newSuborder.getOrderDate()+" "+newSuborder.getOrderTime());
+        holder.txt_order_status.setText(newSuborder.getOrderStatus1());
+        // holder.txt_order_subtotal.setText("AED "+newSuborder.getSubTotal());
+        //  holder.txt_order_serviceCharge.setText("AED "+newSuborder.getShipping());
+        // holder.txt_order_number.setText(newSuborder.getOrderRef());
+        // holder.txt_order_date.setText(newSuborder.getOrderDate());
+        // holder.txt_order_total.setText("AED "+newSuborder.getGrandtotal());
+        //  holder.txt_order_paymode.setText(newSuborder.getOrderTransactionType());
+        //  holder.txt_order_deliAddress.setText(newSuborder.getAddressLine1()+" "+newSuborder.getAddressLine2());
 
 
-            holder.img_seller_logo.requestFocus();
+        holder.img_seller_logo.requestFocus();
 
-            newOrderItemArrayList=newSuborder.getOrderItems();
-            if(newOrderItemArrayList.size()>0){
-                OrderItemAdapter orderItemAdapter=new OrderItemAdapter(context,newOrderItemArrayList,orderId);
-                holder.rv_orderItem.setAdapter(orderItemAdapter);
-            }
+        newOrderItemArrayList=newSuborder.getOrderItems();
+        if(newOrderItemArrayList.size()>0){
+            OrderItemAdapter orderItemAdapter=new OrderItemAdapter(context,newOrderItemArrayList,orderId);
+            holder.rv_orderItem.setAdapter(orderItemAdapter);
+        }
 
         if(newSuborder.getOrderStatus().equals("2"))
         {
@@ -81,14 +81,14 @@ public class OrderDetailAdapter1 extends RecyclerView.Adapter<SubOrdersHolder>
         else if(newSuborderArrayList.get(holder.getAdapterPosition()).getOrderStatus().equals("3"))
         {
 //            Glide.with(context).load(R.drawable.delivered_accepted).into(holder.img_seller_logo);
-            //Glide.with(context).load(R.drawable.delivered).into(holder.confirm_imageS);
-            holder.confirm_imageS.setVisibility(View.GONE);
-            holder.ivProcessingDoneTrack.setVisibility(View.VISIBLE);
+//            //Glide.with(context).load(R.drawable.delivered).into(holder.confirm_imageS);
+//            holder.confirm_imageS.setVisibility(View.GONE);
+//            holder.ivProcessingDoneTrack.setVisibility(View.VISIBLE);
         }
         else if(newSuborder.getOrderStatus().equals("4"))
         {
             Glide.with(context).load(R.drawable.ready_for_pickup).into(holder.img_seller_logo);
-           // Glide.with(context).load(R.drawable.delivered).into(holder.confirm_imageS);
+            // Glide.with(context).load(R.drawable.delivered).into(holder.confirm_imageS);
             holder.confirm_imageS.setVisibility(View.GONE);
             holder.ivProcessingDoneTrack.setVisibility(View.VISIBLE);
         }
@@ -98,7 +98,7 @@ public class OrderDetailAdapter1 extends RecyclerView.Adapter<SubOrdersHolder>
             //Glide.with(context).load(R.drawable.delivered).into(holder.confirm_imageS);
             holder.confirm_imageS.setVisibility(View.GONE);
             holder.ivProcessingDoneTrack.setVisibility(View.VISIBLE);
-           //Glide.with(context).load(R.drawable.delivered).into(holder.otw_imageS);
+            //Glide.with(context).load(R.drawable.delivered).into(holder.otw_imageS);
             holder.otw_imageS.setVisibility(View.GONE);
             holder.ivOTWDoneTrack.setVisibility(View.VISIBLE);
         }
@@ -108,7 +108,7 @@ public class OrderDetailAdapter1 extends RecyclerView.Adapter<SubOrdersHolder>
             //Glide.with(context).load(R.drawable.delivered).into(holder.confirm_imageS);
             holder.confirm_imageS.setVisibility(View.GONE);
             holder.ivProcessingDoneTrack.setVisibility(View.VISIBLE);
-           // Glide.with(context).load(R.drawable.delivered).into(holder.otw_imageS);
+            // Glide.with(context).load(R.drawable.delivered).into(holder.otw_imageS);
             holder.otw_imageS.setVisibility(View.GONE);
             holder.ivOTWDoneTrack.setVisibility(View.VISIBLE);
             //Glide.with(context).load(R.drawable.delivered).into(holder.delivered_imageS);

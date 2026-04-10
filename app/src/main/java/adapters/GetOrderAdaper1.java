@@ -139,12 +139,12 @@ public class GetOrderAdaper1 extends RecyclerView.Adapter<RecyclerView.ViewHolde
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         if (holder.getItemViewType() == VIEW_TYPE_ITEM) {
             OrdersViewHolder ordersViewHolder = (OrdersViewHolder) holder;
-            /*ordersViewHolder.ll_order_status.setVisibility(View.GONE);
+            ordersViewHolder.ll_order_status.setVisibility(View.GONE);
             ordersViewHolder.cvOrderDetails.setVisibility(View.GONE);
-            ordersViewHolder.llStar.setVisibility(View.GONE);*/
+            ordersViewHolder.llStar.setVisibility(View.GONE);
             reset1(ordersViewHolder);
             ordersViewHolder.llRating.setVisibility(View.GONE);
-           // ordersViewHolder.llRating.setVisibility(View.GONE);
+            ordersViewHolder.llRating.setVisibility(View.GONE);
 
 
         NewGetOrderModel newGetOrderModel = newGetOrderModelArrayList.get(holder.getAdapterPosition());
@@ -665,27 +665,43 @@ public class GetOrderAdaper1 extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     }
 
-    private void reset1(OrdersViewHolder ordersViewHolder){
-        ordersViewHolder.ll_order_status.setVisibility(View.GONE);
-        ordersViewHolder.cvOrderDetails.setVisibility(View.GONE);
-        ordersViewHolder.tvShowMore.setVisibility(View.GONE);
-        ordersViewHolder.cvMain.setEnabled(true);
-        ordersViewHolder.ll_status_track.setVisibility(View.GONE);
-        ordersViewHolder.llStar.setVisibility(View.GONE);
-        ordersViewHolder.btnRetryOrder.setVisibility(View.GONE);
-        ordersViewHolder.btnRetryPayment.setVisibility(View.GONE);
-        ordersViewHolder.ivStar1_1.setImageResource(R.drawable.star_1_grey);
-        ordersViewHolder.ivStar1_2.setImageResource(R.drawable.star_2_grey);
-        ordersViewHolder.ivStar1_3.setImageResource(R.drawable.star_3_grey);
-        ordersViewHolder.ivStar1_4.setImageResource(R.drawable.star_4_grey);
-        ordersViewHolder.ivStar1_5.setImageResource(R.drawable.star_5_grey);
-        ordersViewHolder.ivStar2_1.setImageResource(R.drawable.star_1_grey);
-        ordersViewHolder.ivStar2_2.setImageResource(R.drawable.star_2_grey);
-        ordersViewHolder.ivStar2_3.setImageResource(R.drawable.star_3_grey);
-        ordersViewHolder.ivStar2_4.setImageResource(R.drawable.star_4_grey);
-        ordersViewHolder.ivStar2_5.setImageResource(R.drawable.star_5_grey);
-        ordersViewHolder.ivRating.setImageResource(R.drawable.star_5);
+    private void reset1(OrdersViewHolder holder) {
+        // Always null-check before accessing
+        if (holder.ll_order_status != null) {
+            holder.ll_order_status.setVisibility(View.GONE);
+        }
+        if (holder.cvOrderDetails != null) {
+            holder.cvOrderDetails.setVisibility(View.GONE);
+        }
+        if (holder.llStar != null) {
+            holder.llStar.setVisibility(View.GONE);
+        }
+        if (holder.llRating != null) {
+            holder.llRating.setVisibility(View.GONE);
+        }
+        if (holder.tvShowMore != null) {
+            holder.tvShowMore.setVisibility(View.GONE);
+        }
+        if (holder.tvShowLess != null) {
+            holder.tvShowLess.setVisibility(View.GONE);
+        }
+        if (holder.btnRetryOrder != null) {
+            holder.btnRetryOrder.setVisibility(View.GONE);
+        }
+        if (holder.btnRetryPayment != null) {
+            holder.btnRetryPayment.setVisibility(View.GONE);
+        }
+        if (holder.ll_status_track != null) {
+            holder.ll_status_track.setVisibility(View.GONE);
+        }
+        if (holder.llDeliveryBoyDetails != null) {
+            holder.llDeliveryBoyDetails.setVisibility(View.GONE);
+        }
+        if (holder.llDeliveryFeedback != null) {
+            holder.llDeliveryFeedback.setVisibility(View.GONE);
+        }
     }
+
 
     private void hideStar(String orderStatus, OrdersViewHolder holder, CreateOrderResponseDto orderResponse){
         if(orderStatus.equals("24")){
