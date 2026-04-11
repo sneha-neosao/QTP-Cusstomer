@@ -603,13 +603,13 @@ public class MainActivity extends AppCompatActivity implements
             }
         });*/
 
-        if(favCount>0){
+/*        if(favCount>0){
             setBadge(ID_FAVOURITE, String.valueOf(favCount));
         }
         else
         {
             bottomNavigation.clearBadgeAtTabId(ID_FAVOURITE);
-        }
+        }*/
     }
 
 

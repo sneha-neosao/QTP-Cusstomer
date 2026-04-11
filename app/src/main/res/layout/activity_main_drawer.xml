@@ -998,17 +998,18 @@
                         android:id="@+id/nav_supplier_fragment"/>
 
 
-                    <com.qamar.curvedbottomnaviagtion.CurvedBottomNavigation
+                    <com.simform.custombottomnavigation.SSCustomBottomNavigation
                         android:id="@+id/bottomNavigation"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="97dp"
                         android:layout_gravity="bottom"
-                        app:cbn_selectedIconColor="@color/colorPrimary"
-                        app:cbn_background="@color/colorPrimary"
-                        app:cbn_fabColor="@android:color/transparent"
-                        app:cbn_iconColor="@color/white"
-                        app:cbn_height="76dp"
-                        app:cbn_curve_radius="38dp"
+                        app:ss_backgroundBottomColor="@color/colorPrimary"
+                        app:ss_circleColor="@color/white"
+                        app:ss_defaultIconColor="@color/white"
+                        app:ss_selectedIconColor="@color/colorPrimary"
+                        app:ss_reverseCurve="true"
+                        app:ss_waveHeight="25"
+                        app:ss_iconTextSize="0sp"
                         />
 
                     <!--  app:layout_behavior="@string/hide_bottom_view_on_scroll_behavior"-->

@@ -185,4 +185,8 @@
         <item>Enter OTP Manually</item>
     </string-array>
 
+    <string name="empty" translatable="false"></string>
+    <string name="search">Search</string>
+    <string name="favourite">Favourite</string>
+    <string name="orders">Orders</string>
 </resources>

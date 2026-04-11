@@ -24,14 +24,13 @@ import com.android.volley.RetryPolicy;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-//import BuildConfig;
+//import com.grocery.QTPmart.BuildConfig;
 import Config.ApiBaseURL;
 import PaymentDataModels.CreateOrderResponseDto;
 import PaymentDataModels.ResponseOrderModel;
 import PaymentDataModels1.OrderResponse;
 import PaymentDataModels1.ResponseOrderModel1;
 
-import com.google.firebase.installations.interop.BuildConfig;
 import com.grocery.QTPmart.R;
 import network.ApiInterface;
 import network.RequestBookPayment;
@@ -45,10 +44,6 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-import cn.pedant.SweetAlert.SweetAlertDialog;
-//import payment.sdk.android.PaymentClient;
-//import payment.sdk.android.cardpayment.CardPaymentData;
-//import payment.sdk.android.cardpayment.CardPaymentRequest;
 import retrofit2.Call;
 import retrofit2.Callback;
 
@@ -89,36 +84,6 @@ public class NetworkPaymentActivity  extends AppCompatActivity
         progressDialog=new ProgressDialog(this);
         db = new DatabaseHandler(this);
 
-        /*totalQuantity=getIntent().getStringExtra("totalQuantity");
-        totalAmount = getIntent().getStringExtra("totalAmount");
-        //subTotalSuccess = getIntent().getStringExtra("subTotalSuccess");
-        subTotal = getIntent().getDoubleExtra("subTotalSuccess",0);
-        addressSuccess =getIntent().getStringExtra("addressSuccess");
-        couponSuccess = getIntent().getStringExtra("couponSuccess");
-        couponSuccessText = getIntent().getStringExtra("couponSuccessText");
-        totalSuccess= getIntent().getStringExtra("totalSuccess");
-        vatSuccess= getIntent().getStringExtra("vatSuccess");
-        shippingChargeSuccess= getIntent().getStringExtra("shippingChargeSuccess");
-        grandSuccess = getIntent().getStringExtra("grandSuccess");
-        vatSuccessPer = getIntent().getStringExtra("vatSuccessPer");
-        TYPE_COUPON= getIntent().getStringExtra("TYPE_COUPON");
-        OrderTransactionType = getIntent().getStringExtra("OrderTransactionType");
-        isCouponApplied = getIntent().getBooleanExtra("isCouponApplied",false);
-        cmid = getIntent().getStringExtra("isCouponID");
-        cmcode = getIntent().getStringExtra("cmcode");
-        vatCharge= getIntent().getStringExtra("vatCharge");
-        shippingCharge= getIntent().getStringExtra("shippingCharge");
-        couponCodeText=getIntent().getStringExtra("couponCodeText");
-        //discount= getIntent().getStringExtra("discount");
-        discountInAmount= getIntent().getDoubleExtra("discount",0);
-        grand= String.valueOf(getIntent().getDoubleExtra("grand",0));
-        grandTotal= getIntent().getDoubleExtra("grand",0);
-        nextlimit =getIntent().getStringExtra("nextlimit");
-        total_atm= getIntent().getStringExtra("total_atm");
-        couponType= getIntent().getStringExtra("TYPE_COUPON");
-*/
-
-
         subTotal= getIntent().getDoubleExtra("SubTotal",0);
         discountInAmount= getIntent().getDoubleExtra("discountInAmount",0);
         vatTotal= getIntent().getDoubleExtra("vatTotal",0);
@@ -134,7 +99,10 @@ public class NetworkPaymentActivity  extends AppCompatActivity
         shippingCountry= getIntent().getStringExtra("shippingCountry");
         shippingLatitude= getIntent().getStringExtra("shippingLatitude");
         shippingLongitude= getIntent().getStringExtra("shippingLongitude");
-        orderStatus= getIntent().getStringExtra("OrderStatus");
+        Object rawOrderStatus = getIntent().getExtras() != null
+                ? getIntent().getExtras().get("OrderStatus")
+                : null;
+        orderStatus = rawOrderStatus != null ? String.valueOf(rawOrderStatus) : "";
         cartID= getIntent().getStringExtra("cartID");
 
         cmid = getIntent().getStringExtra("isCouponID");
@@ -156,17 +124,7 @@ public class NetworkPaymentActivity  extends AppCompatActivity
         custId =  sessionManagement.getUserDetails().get(KEY_ID);
         mobile =  sessionManagement.getUserDetails().get(KEY_MOBILE);
         email =  sessionManagement.getUserDetails().get(KEY_EMAIL);
-//        appVersion = BuildConfig.VERSION_NAME;
 
-
-
-
-        //int amt=(int)grandTotal;
-
-        //Log.e(TAG, "onCreate: "+amt );
-        //subTotalSuccess=subTotalSuccess.replace("AED ","");
-
-        //setCreateOrder2(grandTotal);
         setCreateOrder1l();
     }
 
@@ -191,9 +149,10 @@ public class NetworkPaymentActivity  extends AppCompatActivity
         requestBookPayment.setLatitude(sessionManagement.getLatPref());
         requestBookPayment.setLongitude(sessionManagement.getLangPref());
         requestBookPayment.setDeviceName("Android");
-//        requestBookPayment.setAppVersion(BuildConfig.VERSION_NAME);
+        requestBookPayment.setAppVersion("0.0.8");
         requestBookPayment.setProvince(shippingProvince);
         requestBookPayment.setAddressType(shippingAddressType);
+        requestBookPayment.setBranchCode(ApiInterface.branchcode);
 
         if (isCouponApplied) {
             requestBookPayment.setCMCode(cmcode);
@@ -210,41 +169,6 @@ public class NetworkPaymentActivity  extends AppCompatActivity
             requestBookPayment.setDecidedExisitingLimit("0");
         }
 
-     /*   HashMap<String, String> param = new HashMap<>();
-
-        param.put("custID", sessionManagement.getUserDetails().get(KEY_ID));
-        param.put("SubTotal", String.format("%.2f", Double.parseDouble(total_atm)));
-        param.put("Total", String.format("%.2f", Double.parseDouble(totalAmount)));
-        param.put("FirstName", sessionManagement.getUserDetails().get(KEY_NAME));
-        param.put("Mobile", sessionManagement.getUserDetails().get(KEY_MOBILE));
-        param.put("email", sessionManagement.getUserDetails().get(KEY_EMAIL));
-        param.put("AddressLine1", sessionManagement.getAddress());
-        param.put("City", sessionManagement.getLocationCity());
-        param.put("country", sessionManagement.getCountry());
-        param.put("DeviceName","Android");
-        param.put("latitude", sessionManagement.getLatPref());
-        param.put("longitude", sessionManagement.getLangPref());
-        param.put("tax", String.format("%.2f", vatCharge));
-        param.put("shipping", String.format("%.2f", shippingCharge));
-        param.put("discount",String.format("%.2f", discount));
-        param.put("grandtotal",String.format("%.2f", grand));
-
-        if (isCouponApplied) {
-            param.put("CMID", cmid);
-            param.put("CMCode", cmcode);
-            param.put("Promo", cmcode);
-            param.put("couponType", couponType);
-            param.put("DecidedExisitingLimit", nextlimit);
-        }
-        else
-        {
-            param.put("CMID","" );
-            param.put("CMCode","");
-            param.put("Promo", couponCodeText);
-            param.put("couponType", "");
-            param.put("DecidedExisitingLimit", "0");
-        }
-*/
         ServiceGenrator.getApiInterface().createOrderService(requestBookPayment).enqueue(
                 new Callback<ResponseOrderModel>() {
                     @Override
@@ -258,11 +182,6 @@ public class NetworkPaymentActivity  extends AppCompatActivity
                                 Log.e(TAG, "onResponse: "+PaymentGatewayRef );
                                 CreateOrderResponseDto responseDto = response.body().getOrderResponse();
                                 progressDialog.dismiss();
-//                                CardPaymentRequest request = new CardPaymentRequest(responseDto.getPaymentLinks().getPaymentAuthorization().getHref(),
-//                                        responseDto.getPaymentLinks().getPayment().getHref().split("=")[1]);
-//
-//                                PaymentClient paymentClient = new PaymentClient(NetworkPaymentActivity.this);
-//                                paymentClient.launchCardPayment(request, 0);
 
                                 db.clearCart();
                                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -294,39 +213,6 @@ public class NetworkPaymentActivity  extends AppCompatActivity
 
     public void setCreateOrder2(double amt) {
         progressDialog.show();
-        /*RequestBookPayment requestBookPayment=new RequestBookPayment();
-        requestBookPayment.setSubTotal(subTotalSuccess);
-        requestBookPayment.setDiscount(discount);
-        requestBookPayment.setEmail(sessionManagement.getUserDetails().get(KEY_EMAIL));
-        requestBookPayment.setCity(sessionManagement.getLocationCity());
-
-        requestBookPayment.setTax(vatCharge);
-        requestBookPayment.setShipping(shippingCharge);
-        requestBookPayment.setTotal(totalAmount);
-        requestBookPayment.setCountry(sessionManagement.getCountry());
-        requestBookPayment.setGrandtotal(amt);
-        requestBookPayment.setFirstName(sessionManagement.getUserDetails().get(KEY_NAME));
-        requestBookPayment.setAddressLine1(sessionManagement.getAddress());
-        requestBookPayment.setCustID(sessionManagement.getUserDetails().get(KEY_ID));
-        requestBookPayment.setMobile(sessionManagement.getUserDetails().get(KEY_MOBILE));
-        requestBookPayment.setLatitude(sessionManagement.getLatPref());
-        requestBookPayment.setLongitude(sessionManagement.getLangPref());
-        requestBookPayment.setDeviceName("Android");
-
-        if (isCouponApplied) {
-            requestBookPayment.setCMCode(cmcode);
-            requestBookPayment.setPromo(cmcode);
-            requestBookPayment.setCMID(cmid);
-            requestBookPayment.setCouponType(couponType);
-            requestBookPayment.setDecidedExisitingLimit(nextlimit);
-        }
-        else{
-            requestBookPayment.setCMCode("");
-            requestBookPayment.setPromo(couponCodeText);
-            requestBookPayment.setCMID("");
-            requestBookPayment.setCouponType("");
-            requestBookPayment.setDecidedExisitingLimit("0");
-        }*/
 
         if (isCouponApplied) {
             promo=cmcode;
@@ -340,51 +226,11 @@ public class NetworkPaymentActivity  extends AppCompatActivity
             nextlimit="0";
         }
 
-     /*   HashMap<String, String> param = new HashMap<>();
-
-        param.put("custID", sessionManagement.getUserDetails().get(KEY_ID));
-        param.put("SubTotal", String.format("%.2f", Double.parseDouble(total_atm)));
-        param.put("Total", String.format("%.2f", Double.parseDouble(totalAmount)));
-        param.put("FirstName", sessionManagement.getUserDetails().get(KEY_NAME));
-        param.put("Mobile", sessionManagement.getUserDetails().get(KEY_MOBILE));
-        param.put("email", sessionManagement.getUserDetails().get(KEY_EMAIL));
-        param.put("AddressLine1", sessionManagement.getAddress());
-        param.put("City", sessionManagement.getLocationCity());
-        param.put("country", sessionManagement.getCountry());
-        param.put("DeviceName","Android");
-        param.put("latitude", sessionManagement.getLatPref());
-        param.put("longitude", sessionManagement.getLangPref());
-        param.put("tax", String.format("%.2f", vatCharge));
-        param.put("shipping", String.format("%.2f", shippingCharge));
-        param.put("discount",String.format("%.2f", discount));
-        param.put("grandtotal",String.format("%.2f", grand));
-
-        if (isCouponApplied) {
-            param.put("CMID", cmid);
-            param.put("CMCode", cmcode);
-            param.put("Promo", cmcode);
-            param.put("couponType", couponType);
-            param.put("DecidedExisitingLimit", nextlimit);
-        }
-        else
-        {
-            param.put("CMID","" );
-            param.put("CMCode","");
-            param.put("Promo", couponCodeText);
-            param.put("couponType", "");
-            param.put("DecidedExisitingLimit", "0");
-        }
-*/
-//        Log.e("resq","sub"+subTotalSuccess+"dis:"+discount+"email:"+sessionManagement.getUserDetails().get(KEY_EMAIL)+"qty:"+totalQuantity+"coupon:"+couponType+"vat:"+
-//                vatCharge+"mCode:"+cmcode+"shipping:"+shippingCharge+"total:"+totalAmount+"country:"+shippingCountry+"grand:"+
-//                String.format("%.2f", grandTotal)+"nAME"+sessionManagement.getUserDetails().get(KEY_NAME)+"LIMIT:"+nextlimit+"promo:"+promo+"address:"+shippingAddress+"cmid:"+
-//                cmid+"city:"+shippingCity+"province:"+shippingProvince+"addressType:"+shippingAddressType+"Custid:"+sessionManagement.getUserDetails().get(KEY_ID)+"mob:"+sessionManagement.getUserDetails().get(KEY_MOBILE)+"DevNmae:"+"Android"+"lat:"+
-//                shippingLatitude+"Long:"+shippingLongitude+"Version:"+BuildConfig.VERSION_NAME);
         ServiceGenrator.getApiInterface().bookorderWithOnlinePayment(subTotalSuccess,discount,sessionManagement.getUserDetails().get(KEY_EMAIL),totalQuantity,couponType,
                 vatCharge,cmcode,shippingCharge,totalAmount,shippingCountry,
                 String.format("%.2f", grandTotal),sessionManagement.getUserDetails().get(KEY_NAME),nextlimit,promo,shippingAddress,
                 cmid,shippingCity,sessionManagement.getUserDetails().get(KEY_ID),sessionManagement.getUserDetails().get(KEY_MOBILE),"Android",
-                shippingLatitude,shippingLongitude, BuildConfig.VERSION_NAME,shippingProvince,shippingAddressType
+                shippingLatitude,shippingLongitude, "0.0.8",shippingProvince,shippingAddressType
                 ).enqueue(
                 new Callback<ResponseOrderModel1>() {
                     @Override
@@ -398,11 +244,6 @@ public class NetworkPaymentActivity  extends AppCompatActivity
                                 Log.e(TAG, "onResponse: "+PaymentGatewayRef );
                                 OrderResponse responseDto = response.body().getOrderResponse();
                                 progressDialog.dismiss();
-//                                CardPaymentRequest request = new CardPaymentRequest(responseDto.getLinks().getPaymentAuthorization().getHref(),
-//                                        responseDto.getLinks().getPayment().getHref().split("=")[1]);
-//
-//                                PaymentClient paymentClient = new PaymentClient(NetworkPaymentActivity.this);
-//                                paymentClient.launchCardPayment(request, 0);
 
                                 db.clearCart();
                                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -417,7 +258,6 @@ public class NetworkPaymentActivity  extends AppCompatActivity
                                 progressDialog.dismiss();
                                 finish();
                             }
-                            //Toast.makeText(NetworkPaymentActivity.this,""+response.body().getMessage(),Toast.LENGTH_SHORT).show();
                         } else{
                             progressDialog.dismiss();
                         }
@@ -434,7 +274,6 @@ public class NetworkPaymentActivity  extends AppCompatActivity
 
     private void setCreateOrder1l() {
 
-        //Log.e(TAG, "continueUrl: "+OrderTransType );
         progressDialog.show();
         StringRequest stringRequest = new StringRequest(Request.Method.POST, ApiBaseURL.OrderContinueOnline, new com.android.volley.Response.Listener<String>() {
             @SuppressLint("NewApi")
@@ -444,33 +283,14 @@ public class NetworkPaymentActivity  extends AppCompatActivity
                 try {
                     JSONObject jsonObject = new JSONObject(response);
                     boolean status = jsonObject.getBoolean("status");
-                    /*String msg = jsonObject.getString("message");
-                    String orderCode = jsonObject.getString("orderCode");
-                    String orderDate = jsonObject.getString("orderDate");*/
                      orderID = jsonObject.getString("orderID");
                     if (status) {
                         progressDialog.dismiss();
-                        //OrderPlacedSuccessDialog(orderCode,orderDate,grandSuccess,msg);
                         orderID=jsonObject.getString("orderID");
-                       // PaymentGatewayRef=response.body().getOrderResponse().getReference();
                         PaymentGatewayRef=jsonObject.getJSONObject("orderResponse").getString("reference");
                         Log.e(TAG, "onResponse: "+PaymentGatewayRef );
-                        //CreateOrderResponseDto responseDto = response.body().getOrderResponse();
-                       // CreateOrderResponseDto responseDto = new CreateOrderResponseDto();
 
                         progressDialog.dismiss();
-                        /*CardPaymentRequest request1 = new CardPaymentRequest(responseDto.getPaymentLinks().getPaymentAuthorization().getHref(),
-                                responseDto.getPaymentLinks().getPayment().getHref().split("=")[1]);*/
-
-//                       CardPaymentRequest request = new CardPaymentRequest(jsonObject.getJSONObject("orderResponse").getJSONObject("_links").getJSONObject("payment-authorization").getString("href"),
-//                                jsonObject.getJSONObject("orderResponse").getJSONObject("_links").getJSONObject("payment").getString("href").split("=")[1]);
-//
-//                       /* CardPaymentRequest request = new CardPaymentRequest("https://api-gateway.sandbox.ngenius-payments.com/transactions/paymentAuthorization",
-//                                "c6d477c8053cc253");*/
-//                        Log.e("requestGateWayUr",String.valueOf(request.getGatewayUrl()));
-//                        Log.e("requestNWCode",String.valueOf(request.getCode()));
-//                        PaymentClient paymentClient = new PaymentClient(NetworkPaymentActivity.this);
-//                        paymentClient.launchCardPayment(request, 0);
 
                         db.clearCart();
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -479,7 +299,6 @@ public class NetworkPaymentActivity  extends AppCompatActivity
                         }
                     } else {
                         progressDialog.dismiss();
-                        //Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
                     }
 
                 } catch (JSONException e) {
@@ -501,7 +320,6 @@ public class NetworkPaymentActivity  extends AppCompatActivity
                 param.put("SubTotal", String.format("%.2f", subTotal));
                 param.put("discount",String.format("%.2f", discountInAmount));
                 param.put("email", sessionManagement.getUserDetails().get(KEY_EMAIL));
-                param.put("OrderStatus", "" + orderStatus);
                 param.put("tax",  String.format("%.2f", vatTotal));
                 param.put("shipping", String.format("%.2f", deliveryCharges));
                 param.put("Total",  String.format("%.2f", total1));
@@ -515,9 +333,12 @@ public class NetworkPaymentActivity  extends AppCompatActivity
                 param.put("DeviceName","Android");
                 param.put("latitude", shippingLatitude);
                 param.put("longitude", shippingLongitude);
-                param.put("appVersion", BuildConfig.VERSION_NAME);
-                param.put("Province", shippingProvince);
-                param.put("AddressType", shippingAddressType);
+                param.put("appVersion", "0.0.8");
+                param.put("OrderStatus", orderStatus != null ? orderStatus : "0");
+                param.put("Province", shippingProvince != null && !shippingProvince.isEmpty() ? shippingProvince : "Unknown");
+                param.put("AddressType", shippingAddressType != null && !shippingAddressType.isEmpty() ? shippingAddressType : "Home");
+                param.put("BranchCode", ApiInterface.branchcode);
+                param.put("cartID", cartID != null ? cartID : "");
 
 
                 if (isCouponApplied1) {
@@ -540,22 +361,7 @@ public class NetworkPaymentActivity  extends AppCompatActivity
                 return param;
             }
         };
-        stringRequest.setRetryPolicy(new RetryPolicy() {
-            @Override
-            public int getCurrentTimeout() {
-                return 60000;
-            }
-
-            @Override
-            public int getCurrentRetryCount() {
-                return 1;
-            }
-
-            @Override
-            public void retry(VolleyError error) throws VolleyError {
-
-            }
-        });
+        
         RequestQueue requestQueue = Volley.newRequestQueue(NetworkPaymentActivity.this);
         requestQueue.getCache().clear();
         stringRequest.setRetryPolicy(new RetryPolicy() {
@@ -588,18 +394,6 @@ public class NetworkPaymentActivity  extends AppCompatActivity
             finish();
         } else {
             if (requestCode == 0) {
-
-//                CardPaymentData cardPaymentData = CardPaymentData.getFromIntent(data);
-//                Log.e(TAG, "onActivityResult: "+cardPaymentData.getCode() );
-//                if (cardPaymentData.getCode() == 2) {
-//                    continueUrl(Integer.parseInt(totalQuantity),totalAmount,subTotalSuccess,addressSuccess,couponSuccess
-//                            ,couponSuccessText,totalSuccess,vatSuccess,shippingChargeSuccess,grandSuccess,
-//                            vatSuccessPer,TYPE_COUPON,OrderTransactionType,PaymentGatewayRef);
-//                }
-//                if (cardPaymentData.getCode() !=2)
-//                {
-//                    transFailed(PaymentGatewayRef);
-//                }
             }
         }
     }
@@ -615,7 +409,6 @@ public class NetworkPaymentActivity  extends AppCompatActivity
                     boolean status = jsonObject.getBoolean("status");
                     String msg = jsonObject.getString("message");
                     if (status) {
-//                        startActivity(new Intent(NetworkPaymentActivity.this,FailedOrderActivity.class));
                         finish();
                         Toast.makeText(NetworkPaymentActivity.this, "Transaction failed", Toast.LENGTH_SHORT).show();
                     } else {
@@ -663,19 +456,6 @@ public class NetworkPaymentActivity  extends AppCompatActivity
             }
         };
 
-        stringRequest.setRetryPolicy(new RetryPolicy() {
-            @Override
-            public int getCurrentTimeout() {
-                return 60000;
-            }
-            @Override
-            public int getCurrentRetryCount() {
-                return 1;
-            }
-            @Override
-            public void retry(VolleyError error) throws VolleyError {
-            }
-        });
         RequestQueue requestQueue = Volley.newRequestQueue(NetworkPaymentActivity.this);
         requestQueue.getCache().clear();
         stringRequest.setRetryPolicy(new RetryPolicy() {
@@ -718,20 +498,6 @@ public class NetworkPaymentActivity  extends AppCompatActivity
                         String orderDate = jsonObject.getString("orderDate");
                         String orderRef = jsonObject.getString("orderRef");
                         progressDialog.dismiss();
-                        /*Intent intent=new Intent(NetworkPaymentActivity.this,OrderSuccessActivity.class);
-                        intent.putExtra("msg",msg);
-                        intent.putExtra("amount",subTotalSuccess);
-                        intent.putExtra("discount",couponSuccess);
-                        intent.putExtra("totalAmount",totalSuccess);
-                        intent.putExtra("vatCharge",vatSuccess);
-                        intent.putExtra("shippingCharge",shippingChargeSuccess);
-                        intent.putExtra("grand",grandSuccess);
-                        intent.putExtra("vatRate",vatSuccessPer);
-                        intent.putExtra("address",addressSuccess);
-                        intent.putExtra("isCoupon",isCouponApplied);
-                        intent.putExtra("couponSuccessText",couponSuccessText);
-                        startActivity(intent);
-                        finish();*/
 
                         OrderPlacedSuccessDialog(orderRef,orderDate,grandSuccess,msg);
 
@@ -751,15 +517,15 @@ public class NetworkPaymentActivity  extends AppCompatActivity
                 Log.e(TAG, "onErrorResponse: " + error);
             }
         }) {
-            //OrderID:2547
-            //IsPaymentSuccessful:1
-            //OrderStatus:1
-           // PaymentGatewayRef:
 
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 HashMap<String, String> param = new HashMap<>();
-                param.put("OrderStatus", "1");
+                Object rawOrderStatus = getIntent().getExtras().get("OrderStatus");
+                String orderStatusStr = rawOrderStatus != null ? String.valueOf(rawOrderStatus) : "";
+
+                param.put("OrderStatus", orderStatusStr);
+
                 param.put("orderID", "" + orderID);
                 param.put("IsPaymentSuccessful","1");
                 param.put("PaymentGatewayRef",PaymentGatewayRef);
@@ -785,19 +551,7 @@ public class NetworkPaymentActivity  extends AppCompatActivity
                 return param;
             }
         };
-        stringRequest.setRetryPolicy(new RetryPolicy() {
-            @Override
-            public int getCurrentTimeout() {
-                return 60000;
-            }
-            @Override
-            public int getCurrentRetryCount() {
-                return 1;
-            }
-            @Override
-            public void retry(VolleyError error) throws VolleyError {
-            }
-        });
+
         RequestQueue requestQueue = Volley.newRequestQueue(NetworkPaymentActivity.this);
         requestQueue.getCache().clear();
         stringRequest.setRetryPolicy(new RetryPolicy() {

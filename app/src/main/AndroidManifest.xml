@@ -44,6 +44,9 @@
             android:name="activities.MainDrawerActivity"
             android:exported="false" />
         <activity
+            android:name="activities.NetworkPaymentActivity"
+            android:exported="false" />
+        <activity
             android:name="activities.ShippingDetailActivity"
             android:exported="false" />
         <activity

@@ -14,6 +14,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.ColorDrawable;
 import android.location.Address;
@@ -69,7 +70,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
 import com.grocery.QTPmart.R;
-import com.qamar.curvedbottomnaviagtion.CurvedBottomNavigation;
+import com.simform.custombottomnavigation.Model;
+import com.simform.custombottomnavigation.SSCustomBottomNavigation;
 import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.Picasso;
 import com.google.android.material.snackbar.Snackbar;
@@ -132,13 +134,14 @@ public class MainDrawerActivity extends AppCompatActivity implements
     double latitude = 0.0, longitude = 0.0;
     public static int menuClickFlag = 0;
     public static ImageView img_menu, iv_setting_drawer;
-    public static CurvedBottomNavigation bottomNavigation;
+    public static SSCustomBottomNavigation bottomNavigation;
     public int selectedId = 1;
-    private final static int ID_HOME = 1;
-    private final static int ID_MY_ORDERS = 2;
-    private final static int ID_SEARCH = 3;
-    private final static int ID_FAVOURITE = 4;
-    private final static int ID_CATEGORY = 5;
+    public static final int ID_HOME = 1;
+    public static final int ID_MY_ORDERS = 2;
+    public static final int ID_SEARCH = 3;
+    public static final int ID_FAVOURITE = 4;
+    public static final int ID_CATEGORY = 5;
+
     private FragmentClickListner fragmentClickListner;
     ImageView bell;
     private LocationManager locationManager;
@@ -566,7 +569,7 @@ public class MainDrawerActivity extends AppCompatActivity implements
         int favCount=pref.getInt("favcount",0);
         Log.e("favCount",String.valueOf(favCount));
         if(favCount>0){
-            bottomNavigation.setCount(ID_FAVOURITE, String.valueOf(favCount));
+            bottomNavigation.setCount(ID_FAVOURITE, Integer.parseInt(String.valueOf(favCount)));
         }
         else
         {
@@ -686,25 +689,37 @@ public class MainDrawerActivity extends AppCompatActivity implements
 
     @SuppressLint("ClickableViewAccessibility")
     private void initViews() {
-
         bottomNavigation = findViewById(R.id.bottomNavigation);
-        bottomNavigation.add(new CurvedBottomNavigation.Model(ID_HOME, "Home", R.drawable.ic_home));
-        bottomNavigation.add(new CurvedBottomNavigation.Model(ID_CATEGORY, "Category", R.drawable.ic_category));
-        bottomNavigation.add(new CurvedBottomNavigation.Model(ID_SEARCH, "Search", R.drawable.ic_loupe));
-        bottomNavigation.add(new CurvedBottomNavigation.Model(ID_FAVOURITE, "Favourite", R.drawable.ic_favorite_24));
-        bottomNavigation.add(new CurvedBottomNavigation.Model(ID_MY_ORDERS, "Orders", R.drawable.order));
+
+        bottomNavigation.setDefaultIconColor(Color.parseColor("#ffffff"));
+        bottomNavigation.setIconTextColor(Color.parseColor("#ffffff"));
+        bottomNavigation.setSelectedIconColor(ContextCompat.getColor(this, R.color.colorPrimary));
+        bottomNavigation.setCircleColor(Color.WHITE);
+
+        bottomNavigation.add(new Model(R.drawable.ic_home, 0, ID_HOME, R.string.empty, R.string.empty));
+        bottomNavigation.add(new Model(R.drawable.ic_category, 0, ID_CATEGORY, R.string.empty, R.string.empty));
+        bottomNavigation.add(new Model(R.drawable.ic_loupe, 0, ID_SEARCH, R.string.empty, R.string.empty));
+        bottomNavigation.add(new Model(R.drawable.ic_favorite_24, 0, ID_FAVOURITE, R.string.empty, R.string.empty));
+        bottomNavigation.add(new Model(R.drawable.order, 0, ID_MY_ORDERS, R.string.empty, R.string.empty));
+        
         bottomNavigation.show(ID_HOME, true);
+
+        bottomNavigation.clearAllCounts();
+        bottomNavigation.setCountBackgroundColor(Color.TRANSPARENT);
 
         cartLyt = findViewById(R.id.cartLyt);
         reelLyt = findViewById(R.id.reelLyt);
-        // bell = findViewById(R.id.bell);
         cart = findViewById(R.id.cart);
         cartCount = findViewById(R.id.cartCount);
+        reelCount = findViewById(R.id.reelCount);
 
         cartLyt.setOnClickListener(v -> {
             startActivity(new Intent(MainDrawerActivity.this, CartActivity.class));
         });
-
+        reelLyt.setOnClickListener(v->{
+            startActivity(new Intent(MainDrawerActivity.this, ReelsActivity.class));
+        });
+        
     }
 
     public void setToolbarAndLoadOrderFragment(String title, Fragment fragment) {
@@ -753,7 +768,6 @@ public class MainDrawerActivity extends AppCompatActivity implements
             switch (model.getId()) {
                 case ID_HOME:
                     loadFragment(new HomeFragment(fragmentClickListner));
-                    // viewSelector("Home");
                     selectedId = ID_HOME;
                     break;
                 case ID_MY_ORDERS:
@@ -1205,21 +1219,18 @@ public class MainDrawerActivity extends AppCompatActivity implements
     private void initBadges() {
 
         int badgeCount = pref.getInt("cardqnty", 0);
+
+        if (cartCount == null) {
+            Log.e("INIT_BADGE", "cartCount is NULL");
+            return; // prevent crash
+        }
+
         if (badgeCount > 0) {
-            cartCount.setText("" + badgeCount);
+            cartCount.setText(String.valueOf(badgeCount));
             cartCount.setVisibility(View.VISIBLE);
         } else {
             cartCount.setVisibility(View.GONE);
         }
-
-        /*int favCount=pref.getInt("favcount",0);
-        if(favCount>0){
-            bottomNavigation.setCount(ID_FAVOURITE, String.valueOf(favCount));
-        }
-        else
-        {
-            bottomNavigation.clearCount(ID_FAVOURITE);
-        }*/
     }
 
 

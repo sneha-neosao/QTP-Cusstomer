@@ -98,6 +98,7 @@ dependencies {
     androidTestImplementation libs.ext.junit
     androidTestImplementation libs.espresso.core
     implementation libs.recyclerviewanimators
+    implementation libs.ss.custom.bottom.navigation
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 }

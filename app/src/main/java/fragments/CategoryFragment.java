@@ -65,9 +65,12 @@ public class CategoryFragment extends Fragment {
     private FragmentClickListner fragmentClickListner;
     LinearLayout ll2;
 
+    public CategoryFragment() {
+        // Required empty public constructor
+    }
+
     public CategoryFragment(FragmentClickListner fragmentClickListner) {
         this.fragmentClickListner = fragmentClickListner;
-        // Required empty public constructor
     }
 
     @Override

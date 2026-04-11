@@ -86,10 +86,10 @@ public class SubCategoryActivity extends AppCompatActivity {
             @Override
             public void onItemClick(View view, int position) {
 
-//                Intent intent = new Intent(SubCategoryActivity.this, ProductTabActivity.class);
-//                intent.putExtra("cat_id",subcateList.get(position).getId());
-//                intent.putExtra("title", subcateList.get(position).getName());
-//                startActivityForResult(intent, 24);
+                Intent intent = new Intent(SubCategoryActivity.this, ProductTabActivity.class);
+                intent.putExtra("cat_id",subcateList.get(position).getId());
+                intent.putExtra("title", subcateList.get(position).getName());
+                startActivityForResult(intent, 24);
 //                Intent intent = new Intent(SubCategoryActivity.this, CategoryPage.class);
 //                intent.putExtra("cat_id",subcateList.get(position).getId());
 //                intent.putExtra("title", subcateList.get(position).getName());

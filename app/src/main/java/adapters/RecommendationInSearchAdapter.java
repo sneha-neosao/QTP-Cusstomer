@@ -437,7 +437,7 @@ public class RecommendationInSearchAdapter extends RecyclerView.Adapter<Recycler
                 preferences.registerOnSharedPreferenceChangeListener(new SharedPreferences.OnSharedPreferenceChangeListener() {
                     @Override
                     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String s) {
-                        MainDrawerActivity.bottomNavigation.setCount(4, String.valueOf(dbcart.getWishlistCount()));
+//                        MainDrawerActivity.bottomNavigation.setCount(4, dbcart.getWishlistCount());
                     }
                 });
             }

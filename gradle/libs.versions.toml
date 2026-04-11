@@ -50,6 +50,7 @@ viewpager2 = "1.0.0"
 volley = "1.2.1"
 waveview = "0.9.4"
 recyclerviewanimators = "4.0.2"
+ssCustomBottomNavigation = "3.6"
 [libraries]
 android-maps-utils = { module = "com.google.maps.android:android-maps-utils", version.ref = "androidMapsUtils" }
 app-update = { module = "com.google.android.play:app-update", version.ref = "appUpdate" }
@@ -103,6 +104,7 @@ viewpager2 = { module = "androidx.viewpager2:viewpager2", version.ref = "viewpag
 volley = { module = "com.android.volley:volley", version.ref = "volley" }
 waveview = { module = "com.github.narayanacharya:WaveView", version.ref = "waveview" }
 recyclerviewanimators = { module = "jp.wasabeef:recyclerview-animators", version.ref = "recyclerviewanimators" }
+ss-custom-bottom-navigation = { module = "com.github.simformsolutions:SSCustomBottomNavigation", version.ref = "ssCustomBottomNavigation" }
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 google-services = { id = "com.google.gms.google-services", version.ref = "googleServices" }

@@ -36,7 +36,7 @@ public class CommonFunctions {
                                     MainDrawerActivity.bottomNavigation.clearCount(4);
                                 }else {
                                     FavouriteFragment.noData.setVisibility(View.GONE);
-                                    MainDrawerActivity.bottomNavigation.setCount(4, String.valueOf(response.body().getResult().getFavouriteCount()));
+//                                    MainDrawerActivity.bottomNavigation.setCount(4, response.body().getResult().getFavouriteCount());
                                 }
                             }
                         }

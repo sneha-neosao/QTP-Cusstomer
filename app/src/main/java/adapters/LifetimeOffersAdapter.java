@@ -160,7 +160,7 @@ public class LifetimeOffersAdapter extends RecyclerView.Adapter<LifetimeOfferVie
                     //isShown=false;
                     notifyDataSetChanged();
 
-                    /*if (tempPosition==position){
+                    if (tempPosition==position){
                         holder.relativeLayout.setVisibility(View.VISIBLE);
                         holder.detailsTable.setVisibility(View.VISIBLE);
                         holder.showDetails.setVisibility(View.GONE);
@@ -185,7 +185,7 @@ public class LifetimeOffersAdapter extends RecyclerView.Adapter<LifetimeOfferVie
                             holder.showDetails.setVisibility(View.GONE);
 
 
-               *//* if (isShown) {
+                if (isShown) {
 
                     holder.detailsTable.setVisibility(View.GONE);
                     holder.showDetails.setText("Show Details");
@@ -195,7 +195,7 @@ public class LifetimeOffersAdapter extends RecyclerView.Adapter<LifetimeOfferVie
                     holder.detailsTable.setVisibility(View.VISIBLE);
                     holder.showDetails.setText("Hide Details");
                     isShown = true;
-                }*//*
+                }
                         }
                     });
 
@@ -207,18 +207,18 @@ public class LifetimeOffersAdapter extends RecyclerView.Adapter<LifetimeOfferVie
                             holder.showDetails.setVisibility(View.VISIBLE);
 
                         }
-                    });*/
+                    });
 
-//                    if (!payment_method.isEmpty())
-//                    {
-//                        if (payment_method.equals("ONLINE"))
-//                        {
-//                            Toast.makeText(activity, "Online payment mode coming soon", Toast.LENGTH_SHORT).show();
-//
-//                        }
-//                        else
-//                        {
-                    //holder.relativeLayout.setVisibility(View.VISIBLE);
+                    if (!payment_method.isEmpty())
+                    {
+                        if (payment_method.equals("ONLINE"))
+                        {
+                            Toast.makeText(activity, "Online payment mode coming soon", Toast.LENGTH_SHORT).show();
+
+                        }
+                        else
+                        {
+                    holder.relativeLayout.setVisibility(View.VISIBLE);
                             Intent intent = new Intent("offers");
 //                            intent.putExtra("msg", msg);
                             intent.putExtra("subtotal",amount);
@@ -234,15 +234,15 @@ public class LifetimeOffersAdapter extends RecyclerView.Adapter<LifetimeOfferVie
                             intent.putExtra("cmcode",offer.getCmCode());
                             intent.putExtra("nextlimit",offer.getLimitNumberOfUses());
                             activity.sendBroadcast(intent);
-//                            continueUrl(db.getCartCount(), String.valueOf(totalAmount), "offer", offer.cmCode,offer.discountValue);
+                            continueUrl(db.getCartCount(), String.valueOf(totalAmount), "offer", offer.cmCode,offer.discountValue);
 
-//                        }
-//
-//                    }
-//                    else
-//                    {
-//                        Toast.makeText(activity, "Please select payment mode", Toast.LENGTH_SHORT).show();
-//                    }
+                        }
+
+                    }
+                    else
+                    {
+                        Toast.makeText(activity, "Please select payment mode", Toast.LENGTH_SHORT).show();
+                    }
 
 
 
